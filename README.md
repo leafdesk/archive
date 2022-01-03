@@ -2,6 +2,8 @@
 
 ##### 깃허브 클론 코딩 (GitHub Clone Coding)
 
+(html 구조는 index.html 파일에, css 파일은 css 폴더에 있다.)
+
 > 단순한 클론 코딩이 아니라, 나만의 코드로 정리하는 것을 목표로 한다.
 
 1. Tiles (Grid)
