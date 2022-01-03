@@ -1,6 +1,6 @@
-# 이상건의 프론트엔드 학습 흔적
+# FRONTEND STUDY NOTE
 
-###### 깃허브 클론 코딩 (GitHub Clone Coding)
+##### 깃허브 클론 코딩 (GitHub Clone Coding)
 
 > 단순한 클론 코딩이 아니라, 나만의 코드로 정리하는 것을 목표로 한다.
 
