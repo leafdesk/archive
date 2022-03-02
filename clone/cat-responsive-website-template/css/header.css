@@ -3,7 +3,6 @@
 header {
   /* border: 1px solid lightgray; */
   display: flex;
-  max-width: 1200px; /* max- 를 붙여야 창이 작아지면 줄어든다. */
   height: 176px;
   margin: 0 auto;
   align-items: center; /* flex 박스 내부 아이템 세로 정렬: 가운데 */
