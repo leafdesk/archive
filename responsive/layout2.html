@@ -12,14 +12,20 @@
         color: #fff;
       }
       h1::before {
-        content: '1. ';
+        content: "1. ";
       }
-      h1:after {
-        content: ' - 기본';
+      h1::after {
+        content: " - 기본";
       }
       @media (max-width: 1280px) {
         body {
           background-color: #880e4f;
+        }
+        h1::before {
+          content: "2. ";
+        }
+        h1::after {
+          content: " - 1025px-1280px";
         }
       }
       @media (max-width: 1024px) {
