@@ -1,4 +1,31 @@
-.row {
-  background-color: aqua;
-  border: 1px solid red;
+.body__container {
+  max-width: 992px;
+  margin: 0 auto;
 }
+
+#header-wrap {
+  display: flex;
+  height: 80px;
+}
+
+#logo {
+  width: 250px;
+  border: 1px solid blue;
+}
+
+#menu {
+  display: flex;
+  border: 1px solid orange;
+  margin-left: auto;
+}
+
+#menu li {
+  padding: 0 15px;
+}
+
+/*
+  576px for portrait phones.
+  768px for tablets.
+  992px for laptops.
+  1200px for large devices.
+*/
