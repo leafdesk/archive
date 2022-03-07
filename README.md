@@ -2,11 +2,11 @@
 
 ##### 커밋 메시지 (Commit Message)
 
-- ⭐ : Initial, Add (:star:)
-- 🔨 : Update, Change, Refactor (:hammer:)
+- ⭐ : Initial, Add (:star)
+- 🔨 : Update, Change, Refactor (:hammer)
 - 🛠 : Fix
-- 🎉 : Replace directory, Change domain, Add deploy workflow (:tada:)
-- ✏️ : Update README.md (:pencil2:)
+- 🎉 : Replace directory, Change domain, Add deploy workflow (:tada)
+- ✏️ : Update README.md (:pencil2)
 
 ##### 깃허브 클론 코딩 (GitHub Clone Coding)
 
