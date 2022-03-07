@@ -67,20 +67,77 @@
       .s6 {
         width: 100%;
         height: 300px;
+        padding: 3%;
+        box-sizing: border-box;
         background-color: #006064;
         clear: both;
       }
       .s6 > div {
-        width: 23%;
-        margin: 1%;
+        width: 21%;
+        margin: 2%;
         height: 150px;
         background-color: #004244;
         float: left;
+        border-radius: 5px;
       }
       footer {
         width: 100%;
         height: 100px;
-        background-color: #001a1b;
+        background-color: #004244;
+      }
+
+      @media (max-width: 1280px) {
+        #wrap {
+          width: 100%;
+        }
+        .s3 {
+          width: 50%;
+        }
+        .s4 {
+          width: 50%;
+        }
+        .s5 {
+          display: none;
+        }
+        .s6 > div {
+          width: 29.3333%;
+        }
+        .s6 > div:nth-child(4) {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .s3 {
+          width: 100%;
+          height: 200px;
+        }
+        .s4 {
+          width: 100%;
+          height: 200px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        aside {
+          width: 100%;
+          height: 150px;
+        }
+        .s1 {
+          width: 100%;
+          height: 150px;
+        }
+        .s2 {
+          width: 100%;
+          height: 150px;
+        }
+        .s6 {
+          height: 600px;
+          padding: 5%;
+        }
+        .s6 > div {
+          width: 98%;
+        }
       }
     </style>
   </head>
