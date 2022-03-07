@@ -2,11 +2,11 @@
 
 ##### 커밋 메시지 (Commit Message)
 
-⭐ : Initial, Add
-🔨 : Update, Change, Refactor
-🛠 : Fix
-🎉 : Replace directory, Change domain, Add deploy workflow
-✏️ : Update README.md
+- ⭐ : Initial, Add
+- 🔨 : Update, Change, Refactor
+- 🛠 : Fix
+- 🎉 : Replace directory, Change domain, Add deploy workflow
+- ✏️ : Update README.md
 
 
 ##### 깃허브 클론 코딩 (GitHub Clone Coding)
