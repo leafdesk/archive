@@ -7,7 +7,7 @@
 #skip a {
   position: absolute; /* 왼쪽 상단에 스킵 네비게이션 고정 */
   left: 0;
-  top: -35px; /* 평소에는 숨김 */
+  top: -9999px; /* 평소에는 숨김 */
   border: 1px solid #fff;
   color: #fff;
   background-color: #333;
@@ -27,7 +27,7 @@
 #header {
   width: 100%;
   height: 325px;
-  background-color: #111;
+  background: url(../img/header_bg.jpg) center top repeat-x; /* 가운데, 위로 고정, 가로 방향으로만 반복 */
 }
 #contents {
   width: 100%;
@@ -67,5 +67,24 @@
   width: 990px;
   margin: 0 auto;
   height: inherit;
-  background-color: rgba(255, 255, 255, 0.3);
+  /* background-color: rgba(255, 255, 255, 0.3); */
+}
+
+/* Header */
+.header {
+}
+.header .header-menu {
+  text-align: right;
+}
+.header .header-menu a {
+  color: #fff;
+  padding: 10px 0 10px 13px;
+  display: inline-block; /* 위 아래 패딩 적용됨 */
+}
+.header .header-menu a:hover {
+  color: #666;
+}
+.header .header-tit {
+}
+.header .header-icon {
 }
