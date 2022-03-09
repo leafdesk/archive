@@ -1,6 +1,6 @@
 # FRONTEND STUDY NOTE
 
-##### 커밋 메시지 (Commit Message)
+#### 커밋 메시지 (Commit Message)
 
 - ⭐ : Initial, Add (:star)
 - 🔨 : Update, Change, Refactor (:hammer)
@@ -8,7 +8,15 @@
 - 🎉 : Replace directory, Change domain, Add deploy workflow (:tada)
 - ✏️ : Update README.md (:pencil2)
 
-##### 깃허브 클론 코딩 (GitHub Clone Coding)
+#### 이미지 표현 방식 \_ webStandard
+
+1. `img` 태그로 표현 : 의미가 있을 때 - alt 필요
+2. background 속성으로 표현 : 의미가 없을 때 - alt 필요 X
+3. background 속성으로 표현 (웹 표준 준수, 요즘 사이트)
+   - 가상 대체 문자(IR 효과) 사용
+   - **이미지 스프라이트** 사용 가능
+
+#### 깃허브 클론 코딩 (GitHub Clone Coding)
 
 (html 구조는 index.html 파일에, css 파일은 css 폴더에 있다.)
 
