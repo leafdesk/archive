@@ -1,0 +1,33 @@
+#page-wrap {
+  width: 100%;
+}
+
+header {
+  height: 150px;
+  background-color: #e3f2fd;
+}
+
+#about {
+  height: 500px;
+  background-color: #bbdefb;
+}
+
+#skills {
+  height: 500px;
+  background-color: #90caf9;
+}
+
+#projects {
+  height: 500px;
+  background-color: #64b5f6;
+}
+
+#contact {
+  height: 300px;
+  background-color: #42a5f5;
+}
+
+footer {
+  height: 150px;
+  background-color: #2196f3;
+}
