@@ -40,4 +40,19 @@
   height: 60px;
   display: inline-block;
   background: url(../img/icon.png);
+  margin: 0 3px;
+}
+/* 포지션 변경을 통해 아이콘 변경 */
+/* 이미지 스프라이트 */
+.header .header-icon a.icon1 {
+  background-position: 0 0;
+}
+.header .header-icon a.icon2 {
+  background-position: 0 -60px;
+}
+.header .header-icon a.icon3 {
+  background-position: 0 -120px;
+}
+.header .header-icon a.icon4 {
+  background-position: 0 -180px;
 }
