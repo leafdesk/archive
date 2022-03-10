@@ -1,0 +1,19 @@
+/* Skip Nav */
+#skip {
+  position: relative; /* 기준점 */
+}
+#skip a {
+  position: absolute; /* 왼쪽 상단에 스킵 네비게이션 고정 */
+  left: 0;
+  top: -9999px; /* 평소에는 위로 숨김 */
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: #333;
+  line-height: 30px;
+  width: 170px;
+  text-align: center;
+}
+#skip a:active,
+#skip a:focus {
+  top: 0; /* Tab 키를 눌러서 focus 되면 아래로 등장 */
+}
