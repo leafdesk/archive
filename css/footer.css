@@ -1,14 +1,11 @@
 footer .container {
-  /* display: flex; */
   padding: 20px 0;
   box-sizing: border-box;
   border-top: 1px solid #ddd;
 }
 footer div.copyright {
-  color: #555;
   padding: 10px 0;
 }
 footer div.email {
-  color: rgb(75, 159, 255);
   padding: 10px 0;
 }
