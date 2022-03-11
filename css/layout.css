@@ -7,17 +7,12 @@ header {
   background-color: #bbdefb;
 }
 
-#about {
-  height: 100px;
-  background-color: #90caf9;
-}
-
-#projects {
+#contents {
   height: 500px;
-  background-color: #64b5f6;
+  background-color: #90caf9;
 }
 
 footer {
   height: 150px;
-  background-color: #42a5f5;
+  background-color: #64b5f6;
 }
