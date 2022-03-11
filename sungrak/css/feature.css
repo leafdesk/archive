@@ -1,0 +1,19 @@
+.feature .inner {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.feature .first-grid-wrap {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 15px;
+  row-gap: 15px;
+  margin: 15px;
+}
+
+.feature .card {
+  height: 300px;
+  border: 1px solid blue;
+  border-radius: 5%;
+}
