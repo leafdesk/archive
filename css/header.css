@@ -1,0 +1,7 @@
+header #logo {
+  width: 90px;
+  height: 90px;
+  margin: 50px 0 30px;
+  background-color: blue;
+  border-radius: 50%;
+}
