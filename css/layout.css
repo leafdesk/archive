@@ -1,15 +1,17 @@
 #page-wrap {
   width: 100%;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 header {
-  height: 300px;
-  background-color: #bbdefb;
+  /* height: 350px; */
+  /* background-color: #bbdefb; */
+  box-sizing: border-box;
 }
 
 #contents {
   height: 500px;
-  background-color: #90caf9;
+  /* background-color: #90caf9; */
 }
 
 footer {
