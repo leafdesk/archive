@@ -1,20 +1,37 @@
 #page-wrap {
   width: 100%;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
-
 header {
-  /* height: 350px; */
-  /* background-color: #bbdefb; */
   box-sizing: border-box;
+  /* background-color: #bbdefb; */
 }
-
 #contents {
   height: 500px;
   /* background-color: #90caf9; */
 }
-
 footer {
   height: 150px;
   /* background-color: #64b5f6; */
+}
+
+@media (max-width: 1200px) {
+  #page-wrap,
+  header,
+  #contents,
+  footer {
+    width: 100%;
+  }
+  #page-wrap .container {
+    width: 90%;
+  }
+}
+@media (max-width: 992px) {
+  #page-wrap .container {
+    width: 95%;
+  }
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
 }
