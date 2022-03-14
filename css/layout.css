@@ -44,5 +44,10 @@ footer {
   }
 }
 @media (max-width: 576px) {
-  /* style */
+  footer .copyright {
+    float: none;
+  }
+  footer .email {
+    float: none;
+  }
 }
