@@ -1,0 +1,9 @@
+/* COMMON */
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.main-page {
+  max-width: 1316px; /* max- 를 붙여야 창이 작아지면 줄어든다. */
+  margin: 0 auto;
+}
