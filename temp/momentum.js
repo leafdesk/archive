@@ -50,7 +50,7 @@ const onLoginSubmit = function (event) {
   loginForm.classList.add(HIDDEN);
 };
 
-// [ 3. Main Function ]
+// [ 3. Conditional Branch : Login & Greeting ]
 
 // 로컬 스토리지에서 username을 가져와 savedUsername에 저장
 const savedUsername = localStorage.getItem(USERNAME);
