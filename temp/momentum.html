@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Document</title>
+
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
-    <!-- login -->
-    <form id="login">
+    <!-- login form -->
+    <form id="login" class="hidden">
       <!--
 
         :: 로그인 유저 네임 입력 창 ::
@@ -38,6 +44,9 @@
       -->
       <button>Log In</button>
     </form>
+
+    <!-- greeting message -->
+    <span id="greeting" class="hidden">greeting message</span>
 
     <!-- javascript connect -->
     <script src="./momentum.js"></script>
