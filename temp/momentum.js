@@ -93,9 +93,11 @@ const getClock = function () {
    * clock의 innerText를 hours:minutes:seconds로 변경
    */
   const date = new Date();
+
   const hours = String(date.getHours()).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
   const seconds = String(date.getSeconds()).padStart(2, "0");
+
   clock.innerText = `${hours}:${minutes}:${seconds}`;
 };
 
@@ -104,3 +106,72 @@ getClock();
 
 // 1000ms(1초)마다 getClock 실행 : 1초마다 갱긴
 setInterval(getClock, 1000);
+
+// [ 5. To-do List ]
+
+const todoForm = document.querySelector("#todo-form");
+const todoInput = todoForm.querySelector("input");
+const todoList = document.querySelector("#todo-list");
+
+// to-do 항목을 담을 빈 배열(Array) 생성
+const tasks = [];
+
+const deleteTodo = function (event) {
+  /**
+   * event가 발생한 target은 li > button
+   * target의 부모 요소는 li -> li 변수에 가져옴
+   * 해당 리스트 요소 삭제
+   */
+  const li = event.target.parentElement;
+  li.remove();
+};
+
+const paintTodo = function (newTodo) {
+  // <li><li> 생성
+  const li = document.createElement("li");
+
+  // <span>newTodo<span> 생성
+  const span = document.createElement("span");
+  span.innerText = newTodo;
+
+  // <button>❎<button> 생성
+  const button = document.createElement("button");
+  button.innerText = "❎";
+  button.addEventListener("click", deleteTodo);
+
+  /**
+   * span, button 순으로 li에 붙임
+   * appendChild 코드는 항상 뒤에서 (순서 때문)
+   *
+   * <li>
+   *   <span>newTodo</span>
+   *   <button>❎</button>
+   * </li>
+   */
+  li.appendChild(span);
+  li.appendChild(button);
+
+  /**
+   * todoList: <ul id="todo-list"></ul>
+   * 위에서 만든 <li>를 자식으로 삽입
+   */
+  todoList.appendChild(li);
+};
+
+const onTodoSubmit = function (event) {
+  /**
+   * 기본 동작 방지
+   * input에 입력된 value(tasks)를 newTodo에 저장
+   * input 비우기
+   * 새로 생성된 할 일을 tasks 배열에 push
+   * 새로 생성된 할 일을 화면에 그리기
+   */
+  event.preventDefault();
+  const newTodo = todoInput.value;
+  todoInput.value = "";
+  tasks.push(newTodo);
+  paintTodo(newTodo);
+};
+
+// todoForm에 submit 수신 시 onTodoSubmit 실행
+todoForm.addEventListener("submit", onTodoSubmit);
