@@ -113,8 +113,15 @@ const todoForm = document.querySelector("#todo-form");
 const todoInput = todoForm.querySelector("input");
 const todoList = document.querySelector("#todo-list");
 
-// to-do 항목을 담을 빈 배열(Array) 생성
-const tasks = [];
+const TASKS = "tasks";
+
+// to-do 항목을 담을 빈 배열(Array) 생성 -> 로컬 스토리지 저장을 위해
+let tasks = [];
+
+const saveTasks = function () {
+  // tasks 배열을 통째로 문자열로 변환하여 로컬 스토리지에 저장
+  localStorage.setItem(TASKS, JSON.stringify(tasks));
+};
 
 const deleteTodo = function (event) {
   /**
@@ -163,15 +170,34 @@ const onTodoSubmit = function (event) {
    * 기본 동작 방지
    * input에 입력된 value(tasks)를 newTodo에 저장
    * input 비우기
-   * 새로 생성된 할 일을 tasks 배열에 push
+   * 새로 생성된 할 일을 tasks 배열에 push (로컬 스토리지 저장을 위해)
    * 새로 생성된 할 일을 화면에 그리기
+   * tasks 배열을 로컬 스토리지에 저장
    */
   event.preventDefault();
   const newTodo = todoInput.value;
   todoInput.value = "";
   tasks.push(newTodo);
   paintTodo(newTodo);
+  saveTasks();
 };
 
 // todoForm에 submit 수신 시 onTodoSubmit 실행
 todoForm.addEventListener("submit", onTodoSubmit);
+
+// JSON.stringify로 로컬 스토리지에 저장된 tasks 문자열을 가져옴
+const savedTasks = localStorage.getItem(TASKS);
+
+if (savedTasks) {
+  // 로컬 스토리지에 이미 저장된 문자열을 해석해서 parsedTasks에 저장
+  const parsedTasks = JSON.parse(savedTasks);
+
+  // 해석된 기존의 내용(parsedTasks)을 tasks 배열에 복원
+  tasks = parsedTasks;
+
+  /**
+   * forEach 함수는 실행할 때 배열의 각 item을 자동으로 넘겨줌
+   * 로컬 스토리지의 각 항목을 화면에 그리기
+   */
+  parsedTasks.forEach((item) => paintTodo(item));
+}
