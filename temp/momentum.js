@@ -127,19 +127,27 @@ const deleteTodo = function (event) {
   /**
    * event가 발생한 target은 li > button
    * target의 부모 요소는 li -> li 변수에 가져옴
-   * 해당 리스트 요소 삭제
    */
   const li = event.target.parentElement;
+
+  // 해당 리스트 요소 삭제
   li.remove();
+
+  // filter를 통해 요소를 삭제한 새로운 배열으로 교체
+  tasks = tasks.filter((item) => item.id !== parseInt(li.id));
+
+  // tasks 배열을 로컬 스토리지에 저장
+  saveTasks();
 };
 
-const paintTodo = function (newTodo) {
-  // <li><li> 생성
+const paintTodo = function (newTodoObj) {
+  // <li><li> 생성 및 아이디 붙이기
   const li = document.createElement("li");
+  li.id = newTodoObj.id;
 
   // <span>newTodo<span> 생성
   const span = document.createElement("span");
-  span.innerText = newTodo;
+  span.innerText = newTodoObj.task;
 
   // <button>❎<button> 생성
   const button = document.createElement("button");
@@ -166,19 +174,24 @@ const paintTodo = function (newTodo) {
 };
 
 const onTodoSubmit = function (event) {
-  /**
-   * 기본 동작 방지
-   * input에 입력된 value(tasks)를 newTodo에 저장
-   * input 비우기
-   * 새로 생성된 할 일을 tasks 배열에 push (로컬 스토리지 저장을 위해)
-   * 새로 생성된 할 일을 화면에 그리기
-   * tasks 배열을 로컬 스토리지에 저장
-   */
+  // 기본 동작 방지
   event.preventDefault();
+
+  // input 값을 newTodo에 저장하고 input 폼 비우기
   const newTodo = todoInput.value;
   todoInput.value = "";
-  tasks.push(newTodo);
-  paintTodo(newTodo);
+
+  // id:task 객체 생성해서 tasks 배열에 push
+  const newTodoObj = {
+    task: newTodo,
+    id: Date.now(),
+  };
+  tasks.push(newTodoObj);
+
+  // newTodo, 즉 input 값을 화면에 그리기
+  paintTodo(newTodoObj);
+
+  // tasks 배열을 로컬 스토리지에 저장
   saveTasks();
 };
 
