@@ -1,0 +1,89 @@
+/* Common */
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+
+/* Layout */
+
+#page-wrap {
+  /* 콘텐츠 중앙 정렬을 위해 */
+  width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* To-do Wrap & Title */
+
+#todo-wrap {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 150px;
+}
+#todo-wrap h1 {
+  text-align: center;
+}
+
+/* Input Form */
+
+#todo-form {
+  margin: 10px 0;
+  text-align: center;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+#todo-form input {
+  width: 600px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 28px;
+}
+#todo-form input:focus {
+  outline: none;
+  border-color: #51a7e8;
+}
+
+/* To-do List */
+
+/*
+  <ul>
+    <li id="아이디">
+      <span>항목 내용</span>
+      <button>버튼 내용</button>
+    </li>
+  </ul>
+*/
+
+#todo-list {
+  width: 100%;
+  box-sizing: border-box;
+}
+#todo-list li {
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 28px;
+  background-color: #fff;
+}
+
+/* Footer */
+
+footer {
+  line-height: 1.5;
+  text-align: center;
+  background-color: rgb(191, 214, 255);
+  height: 150px;
+  /* position: relative; */
+  transform: translateY(-100%);
+}
