@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="../components/main/reset.css" />
     <link rel="stylesheet" href="../components/main/style.css" />
     <link rel="stylesheet" href="../components/toDoList/ToDoList.css" />
+
+    <link
+      href="//db.onlinewebfonts.com/c/67680f2eb947c5cbd58b40961b4a61e9?family=Apple+SD+Gothic+Neo"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
 
   <body>
@@ -23,20 +29,36 @@
       * GitHub Mobile App
     -->
 
-    <!-- intro -->
-    <h3 id="intro" class="gray-text">
-      'Minimal To-do List' with JavaScript. Start at 2022. 3. 17.
-    </h3>
+    <!-- page-wrap -->
+    <div id="page-wrap">
+      <!-- todo-wrap -->
+      <div id="todo-wrap">
+        <!-- todo-title -->
+        <h1>To-do List</h1>
 
-    <!-- wrap -->
-    <div id="wrap">
-      <!-- todo-form -->
-      <form id="todo-form">
-        <input required type="text" />
-      </form>
+        <!-- todo-form -->
+        <form id="todo-form">
+          <input required type="text" />
+        </form>
 
-      <!-- todo-list -->
-      <ul id="todo-list"></ul>
+        <!-- 
+
+          :: todo-list ::
+
+          <ul>
+            <li id="아이디">
+              <span>항목 내용</span>
+              <button>버튼 내용</button>
+            </li>
+          </ul>
+
+        -->
+        <ul id="todo-list"></ul>
+      </div>
+
+      <footer class="gray-text">
+        'Minimal To-do List' with JavaScript. Start at 2022. 3. 17.
+      </footer>
     </div>
 
     <!-- javascript connection -->
