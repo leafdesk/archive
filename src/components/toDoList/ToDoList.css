@@ -1,10 +1,13 @@
 /* Common */
 
 html {
+  width: 100%;
   height: 100%;
 }
 body {
+  width: 100%;
   height: 100%;
+  background-color: rgb(235, 235, 235);
 }
 
 /* Layout */
@@ -19,9 +22,11 @@ body {
 /* To-do Wrap & Title */
 
 #todo-wrap {
+  width: 100%;
   height: auto;
   min-height: 100%;
   padding-bottom: 150px;
+  background-color: rgb(232, 240, 255);
 }
 #todo-wrap h1 {
   text-align: center;
@@ -30,11 +35,10 @@ body {
 /* Input Form */
 
 #todo-form {
-  margin: 10px 0;
-  text-align: center;
-
   width: 100%;
   box-sizing: border-box;
+  margin: 10px 0;
+  text-align: center;
 }
 #todo-form input {
   width: 600px;
@@ -80,10 +84,35 @@ body {
 /* Footer */
 
 footer {
+  /* https://bit.ly/3qeIL11 참고 : 하단 고정 */
   line-height: 1.5;
   text-align: center;
   background-color: rgb(191, 214, 255);
+  width: 100%;
   height: 150px;
   /* position: relative; */
   transform: translateY(-100%);
+}
+
+/* Media Query */
+
+@media (max-width: 992px) {
+  #page-wrap {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  #page-wrap {
+    width: 100%;
+  }
+  #todo-form input,
+  #todo-list li {
+    width: 95%;
+  }
+}
+@media (max-width: 576px) {
+  #todo-form input,
+  #todo-list li {
+    width: 100%;
+  }
 }
