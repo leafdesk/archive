@@ -25,12 +25,14 @@ const paintItem = (item) => {
   const span = document.createElement("span");
   span.innerText = item.val;
 
-  const button = document.createElement("button");
-  button.innerText = "❎";
-  button.addEventListener("click", handleDeleteButton);
+  // <i class="fas fa-trash"></i> (Font Awesome Icon)
+  const trashIcon = document.createElement("i");
+  trashIcon.classList.add("fas");
+  trashIcon.classList.add("fa-trash");
+  trashIcon.addEventListener("click", handleDeleteButton);
 
   li.appendChild(span);
-  li.appendChild(button);
+  li.appendChild(trashIcon);
   toDoList.appendChild(li);
 };
 

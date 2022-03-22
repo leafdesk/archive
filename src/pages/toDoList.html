@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="../components/main/reset.css" />
     <link rel="stylesheet" href="../components/main/style.css" />
     <link rel="stylesheet" href="../components/toDoList/ToDoList.css" />
+
+    <!-- web fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -23,23 +33,46 @@
       * GitHub Mobile App
     -->
 
-    <!-- intro -->
-    <h3 id="intro" class="gray-text">
-      'Minimal To-do List' with JavaScript. Start at 2022. 3. 17.
-    </h3>
+    <!-- page-wrap -->
+    <div id="page-wrap">
+      <!-- todo-wrap -->
+      <div id="todo-wrap">
+        <!-- todo-title -->
+        <h1>TODO</h1>
 
-    <!-- wrap -->
-    <div id="wrap">
-      <!-- todo-form -->
-      <form id="todo-form">
-        <input required type="text" />
-      </form>
+        <!-- todo-form -->
+        <form id="todo-form">
+          <input required type="text" placeholder="Input your tasks..." />
+        </form>
 
-      <!-- todo-list -->
-      <ul id="todo-list"></ul>
+        <!-- 
+
+          :: todo-list ::
+
+          <ul>
+            <li id="아이디">
+              <span>항목 내용</span>
+              <i class="fas fa-trash"></i>
+            </li>
+          </ul>
+
+        -->
+        <ul id="todo-list"></ul>
+      </div>
+
+      <footer>
+        'Minimal To-do List' with JavaScript. <br />
+        Start at 2022. 3. 17.
+      </footer>
     </div>
 
     <!-- javascript connection -->
     <script src="../components/toDoList/ToDoList.js"></script>
+
+    <!-- font awesome icon -->
+    <script
+      src="https://kit.fontawesome.com/0209a12714.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
