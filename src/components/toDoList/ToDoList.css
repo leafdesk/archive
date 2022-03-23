@@ -17,7 +17,7 @@ body {
   width: 600px;
   height: 100%;
   margin: 0 auto;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 /* To-do Wrap & Title */
@@ -101,7 +101,7 @@ body {
   font-size: 20px;
   font-weight: 500;
   line-height: 1.2;
-  color: #5171ff;
+  color: #474747;
 
   display: flex;
   align-items: center;
@@ -114,15 +114,29 @@ body {
   width: 85%;
   display: inline-block;
 }
+#todo-list li.checked span {
+  text-decoration: line-through;
+  color: rgb(216, 216, 216);
+}
 #todo-list .fa-square-check {
   display: block;
   font-size: 16px;
   color: rgb(180, 180, 180);
+  transition: 0.3s;
+}
+#todo-list li.checked .fa-square-check {
+  color: #5171ff;
+  transition: 0.3s;
 }
 #todo-list .fa-trash {
   display: block;
   font-size: 16px;
   color: rgb(180, 180, 180);
+  transition: 0.3s;
+}
+#todo-list .fa-trash:hover {
+  color: #474747;
+  transition: 0.3s;
 }
 
 /* Footer */
@@ -131,14 +145,14 @@ footer {
   /* https://bit.ly/3qeIL11 참고 : 하단 고정 */
   line-height: 1.5;
   text-align: center;
-  background-color: #808080;
+  background-color: #b1b1b1;
   width: 100%;
   height: 150px;
   /* position: relative; */
   transform: translateY(-100%);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  color: #eee;
+  color: rgb(255, 255, 255);
   margin-top: 30px;
 }
 
