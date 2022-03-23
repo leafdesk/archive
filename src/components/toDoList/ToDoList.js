@@ -1,6 +1,7 @@
 const toDoForm = document.querySelector('#todo-form');
 const toDoInput = toDoForm.querySelector('input');
 const toDoList = document.querySelector('#todo-list');
+const clearButton = document.querySelector('#clear-completed');
 
 const TASKS = 'tasks';
 let _tasks = [];
@@ -89,7 +90,20 @@ const handleSubmit = (event) => {
   saveTasks();
 };
 
+const handleClearButton = () => {
+  for (let i in _tasks) {
+    if (_tasks[i].isChecked) {
+      const li = document.getElementById(_tasks[i].id);
+      li.remove();
+    }
+  }
+
+  _tasks = _tasks.filter((item) => item.isChecked === false);
+  saveTasks();
+};
+
 toDoForm.addEventListener('submit', handleSubmit);
+clearButton.addEventListener('click', handleClearButton);
 
 const savedTasks = localStorage.getItem(TASKS);
 if (savedTasks) {
