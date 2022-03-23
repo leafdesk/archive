@@ -1,8 +1,8 @@
-const toDoForm = document.querySelector('#todo-form');
-const toDoInput = toDoForm.querySelector('input');
-const toDoList = document.querySelector('#todo-list');
+const toDoForm = document.querySelector("#todo-form");
+const toDoInput = toDoForm.querySelector("input");
+const toDoList = document.querySelector("#todo-list");
 
-const TASKS = 'tasks';
+const TASKS = "tasks";
 let _tasks = [];
 
 const saveTasks = () => {
@@ -10,7 +10,31 @@ const saveTasks = () => {
 };
 
 const handleCheckBox = (event) => {
-  //
+  const li = event.target.parentElement;
+  const isChecked = li.className;
+
+  if (isChecked) {
+    // console.log("checked -> no checked");
+    li.classList.remove("checked");
+    for (let i in _tasks) {
+      if (_tasks[i].id === parseInt(li.id)) {
+        _tasks[i].isChecked = "n";
+      }
+    }
+    console.log(_tasks);
+  } else {
+    // console.log("no checked -> checked");
+    li.classList.add("checked");
+    for (let i in _tasks) {
+      if (_tasks[i].id === parseInt(li.id)) {
+        _tasks[i].isChecked = "y";
+      }
+    }
+    console.log(_tasks);
+  }
+
+  saveTasks();
+  // console.log(JSON.parse(localStorage.getItem(TASKS)));
 };
 
 const handleDeleteButton = (event) => {
@@ -23,23 +47,23 @@ const handleDeleteButton = (event) => {
 };
 
 const paintItem = (item) => {
-  const li = document.createElement('li');
+  const li = document.createElement("li");
   li.id = item.id;
 
   // <i class="fa-solid fa-square-check"></i>
-  const checkIcon = document.createElement('i');
-  checkIcon.classList.add('fa-solid');
-  checkIcon.classList.add('fa-square-check');
-  checkIcon.addEventListener('click', handleCheckBox);
+  const checkIcon = document.createElement("i");
+  checkIcon.classList.add("fa-solid");
+  checkIcon.classList.add("fa-square-check");
+  checkIcon.addEventListener("click", handleCheckBox);
 
-  const span = document.createElement('span');
+  const span = document.createElement("span");
   span.innerText = item.val;
 
   // <i class="fas fa-trash"></i> (Font Awesome Icon)
-  const trashIcon = document.createElement('i');
-  trashIcon.classList.add('fas');
-  trashIcon.classList.add('fa-trash');
-  trashIcon.addEventListener('click', handleDeleteButton);
+  const trashIcon = document.createElement("i");
+  trashIcon.classList.add("fas");
+  trashIcon.classList.add("fa-trash");
+  trashIcon.addEventListener("click", handleDeleteButton);
 
   li.appendChild(checkIcon);
   li.appendChild(span);
@@ -50,11 +74,12 @@ const paintItem = (item) => {
 const handleSubmit = (event) => {
   event.preventDefault();
   const _val = toDoInput.value;
-  toDoInput.value = '';
+  toDoInput.value = "";
 
   const item = {
     id: Date.now(),
     val: _val,
+    isChecked: "n",
   };
   _tasks.push(item);
   paintItem(item);
@@ -62,7 +87,7 @@ const handleSubmit = (event) => {
   saveTasks();
 };
 
-toDoForm.addEventListener('submit', handleSubmit);
+toDoForm.addEventListener("submit", handleSubmit);
 
 const savedTasks = localStorage.getItem(TASKS);
 if (savedTasks) {
