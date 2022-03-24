@@ -6,7 +6,7 @@ html {
 }
 body {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-color: #f5f5f5;
 }
 
@@ -15,7 +15,7 @@ body {
 #page-wrap {
   /* 콘텐츠 중앙 정렬을 위해 */
   width: 600px;
-  height: 100%;
+  /* height: 100%; */
   margin: 0 auto;
   font-family: 'Noto Sans KR', sans-serif;
 }
@@ -23,10 +23,11 @@ body {
 /* To-do Wrap & Title */
 
 #todo-wrap {
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  padding-bottom: 150px;
+  /* width: 100%; */
+  /* overflow: hidden; */
+  /* height: auto; */
+  /* min-height: 100%; */
+  /* padding-bottom: 70px; */
   /* background-color: rgb(232, 240, 255); */
 }
 #todo-wrap h1 {
@@ -34,7 +35,7 @@ body {
   font-size: 36px;
   font-weight: 900;
   padding: 10px;
-  margin-top: 30px;
+  margin-top: 120px;
   color: #474747;
   letter-spacing: 0.3em;
 }
@@ -43,29 +44,65 @@ body {
 
 #todo-form {
   width: 100%;
+  /* height: 60px; */
   box-sizing: border-box;
-  margin: 10px 0;
-  text-align: center;
-}
-#todo-form input {
-  width: 100%;
-  height: 60px;
-  padding: 15px;
-  box-sizing: border-box;
+  margin: 30px 0;
+  padding: 20px;
+  /* text-align: center; */
   border: 1px solid #ddd;
   border-radius: 10px;
+  background-color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#todo-form button {
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  display: block;
+  font-size: 18px;
+  color: rgb(180, 180, 180);
+  transition: 0.3s;
+}
+#todo-form button:hover {
+  color: #5171ff;
+  transition: 0.3s;
+}
+#todo-form input {
+  width: 85%;
+  height: 21px;
+  padding: 0;
+  margin: 0;
   font-size: 20px;
   font-weight: 600;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
 }
 #todo-form input::placeholder {
   color: rgb(211, 211, 211);
   font-weight: 500;
 }
-#todo-form input:focus {
+/* #todo-form input:focus {
   outline: none;
   border-color: #51a7e8;
+} */
+#todo-form .fa-xmark {
+  display: block;
+  height: 100%;
+  font-size: 20px;
+  color: rgb(180, 180, 180);
+  transition: 0.3s;
+}
+#todo-form .fa-xmark:hover {
+  color: #474747;
+  transition: 0.3s;
 }
 
 /* To-do List */
@@ -98,8 +135,8 @@ body {
   box-sizing: border-box;
   border-bottom: 1px solid #ddd;
   /* border-radius: 5px; */
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.2;
   color: #474747;
 
@@ -113,10 +150,12 @@ body {
 #todo-list span {
   width: 85%;
   display: inline-block;
+  transition: 0.3s;
 }
 #todo-list li.checked span {
   text-decoration: line-through;
   color: rgb(216, 216, 216);
+  transition: 0.3s;
 }
 #todo-list .fa-square-check {
   display: block;
@@ -143,7 +182,7 @@ body {
 
 #list-stat {
   width: 100%;
-  margin-top: 30px;
+  margin: 30px 0;
   background-color: #fff;
 
   padding: 20px;
@@ -154,6 +193,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+#active-num {
+  font-size: 14px;
+  color: rgb(180, 180, 180);
 }
 #clear-completed {
   border: none;
@@ -170,19 +213,18 @@ body {
 
 /* Footer */
 
+/* https://bit.ly/3qeIL11 참고 : 하단 고정 */
+
 footer {
-  /* https://bit.ly/3qeIL11 참고 : 하단 고정 */
   line-height: 1.5;
   text-align: center;
-  background-color: #b1b1b1;
+  /* background-color: #b1b1b1; */
   width: 100%;
-  height: 150px;
-  /* position: relative; */
-  transform: translateY(-100%);
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  color: rgb(255, 255, 255);
+  height: 70px;
+  /* transform: translateY(-100%); */
+  color: #aaa;
   margin-top: 30px;
+  font-family: 'Nanum Gothic Coding', monospace;
 }
 
 /* Media Query */
@@ -194,7 +236,7 @@ footer {
   #page-wrap {
     width: 85%;
   }
-  #todo-form input,
+  #todo-form,
   #todo-list li {
     width: 100%;
   }
