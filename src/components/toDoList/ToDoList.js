@@ -1,13 +1,20 @@
 const toDoForm = document.querySelector('#todo-form');
 const toDoInput = toDoForm.querySelector('input');
 const toDoList = document.querySelector('#todo-list');
+const activeNum = document.querySelector('#active-num');
 const clearButton = document.querySelector('#clear-completed');
 
 const TASKS = 'tasks';
 let _tasks = [];
 
+const showActiveNum = () => {
+  const activeItems = _tasks.filter((item) => item.isChecked === false);
+  activeNum.innerText = `${activeItems.length} items left`;
+};
+
 const saveTasks = () => {
   localStorage.setItem(TASKS, JSON.stringify(_tasks));
+  showActiveNum();
 };
 
 const handleCheckbox = (event) => {
@@ -116,4 +123,6 @@ if (savedTasks) {
     paintItem(item);
     // paintCheckbox(item);
   });
+
+  showActiveNum();
 }
