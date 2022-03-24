@@ -7,19 +7,22 @@ header #logo {
   text-indent: -9999px;
   display: inline-block;
 }
+
 header h1 {
   font-size: 48px;
   font-weight: 800;
   text-transform: uppercase;
   line-height: 1.2;
 }
+
 header span {
   display: block;
   margin: 30px 0;
   color: #333;
-  word-break: keep-all; /* 반응형 웹에서, 단어를 나누지 않음 */
+  word-break: keep-all;
   line-height: 1.8;
 }
+
 header .container {
   overflow: hidden;
 }

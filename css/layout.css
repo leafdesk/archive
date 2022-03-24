@@ -1,25 +1,27 @@
 /* Layout */
+
 #page-wrap {
   width: 100%;
   font-family: 'Noto Sans KR', sans-serif;
 }
+
 header {
-  width: 100%; /* width를 %로 설정해야 가로 스크롤바 생기지 않음 */
+  width: 100%;
   box-sizing: border-box;
-  /* background-color: #bbdefb; */
 }
+
 #contents {
-  width: 100%; /* width를 %로 설정해야 가로 스크롤바 생기지 않음 */
+  width: 100%;
   height: 500px;
-  /* background-color: #90caf9; */
 }
+
 footer {
-  width: 100%; /* width를 %로 설정해야 가로 스크롤바 생기지 않음 */
+  width: 100%;
   height: 150px;
-  /* background-color: #64b5f6; */
 }
 
 /* Container */
+
 .container {
   width: 65%;
   height: inherit;
@@ -28,30 +30,32 @@ footer {
 }
 
 /* Media Query */
+
 @media (max-width: 1200px) {
   #page-wrap .container {
     width: 75%;
   }
 }
+
 @media (max-width: 992px) {
   #page-wrap .container {
     width: 85%;
   }
 }
+
 @media (max-width: 768px) {
   #page-wrap .container {
     width: 95%;
   }
+
   header .container {
     text-align: center;
   }
+
   #contents-wrap,
   #footer-wrap {
     width: 90%;
     margin: 0 auto;
     display: block !important;
-    /* text-align: center; */
   }
-}
-@media (max-width: 576px) {
 }
