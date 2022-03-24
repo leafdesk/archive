@@ -1,7 +1,7 @@
 /* Layout */
 #page-wrap {
   width: 100%;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 header {
   width: 100%; /* width를 %로 설정해야 가로 스크롤바 생기지 않음 */
@@ -45,12 +45,13 @@ footer {
   header .container {
     text-align: center;
   }
+  #contents-wrap,
+  #footer-wrap {
+    width: 90%;
+    margin: 0 auto;
+    display: block !important;
+    /* text-align: center; */
+  }
 }
 @media (max-width: 576px) {
-  footer .copyright {
-    float: none;
-  }
-  footer .email {
-    float: none;
-  }
 }
