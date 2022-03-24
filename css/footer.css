@@ -2,10 +2,15 @@ footer .container {
   padding: 20px 0;
   box-sizing: border-box;
   border-top: 1px solid #ddd;
+  line-height: 2;
 }
-footer div.copyright {
+#footer-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+/* footer div.copyright {
   padding: 10px 0;
 }
 footer div.email {
   padding: 10px 0;
-}
+} */
