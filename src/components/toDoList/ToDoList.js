@@ -3,6 +3,7 @@ const toDoInput = toDoForm.querySelector('input');
 const toDoList = document.querySelector('#todo-list');
 const activeNum = document.querySelector('#active-num');
 const clearButton = document.querySelector('#clear-completed');
+const xMark = document.querySelector('.fa-xmark');
 
 const TASKS = 'tasks';
 let _tasks = [];
@@ -111,6 +112,7 @@ const handleClearButton = () => {
 
 toDoForm.addEventListener('submit', handleSubmit);
 clearButton.addEventListener('click', handleClearButton);
+xMark.addEventListener('click', (event) => (toDoInput.value = ''));
 
 const savedTasks = localStorage.getItem(TASKS);
 if (savedTasks) {
@@ -123,6 +125,5 @@ if (savedTasks) {
     paintItem(item);
     // paintCheckbox(item);
   });
-
   showActiveNum();
 }
