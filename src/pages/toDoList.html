@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minimal To-do List</title>
+    <title>Todo List</title>
 
     <link rel="stylesheet" href="../components/main/reset.css" />
     <link rel="stylesheet" href="../components/main/style.css" />
@@ -16,7 +16,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -40,7 +40,11 @@
 
         <!-- todo-form -->
         <form id="todo-form">
+          <button>
+            <i class="fa-solid fa-square-plus"></i>
+          </button>
           <input required type="text" placeholder="Input your tasks..." />
+          <i class="fa-solid fa-xmark"></i>
         </form>
 
         <!-- 
@@ -60,6 +64,7 @@
 
         <!-- list-stat -->
         <div id="list-stat">
+          <p id="active-num">0 items left</p>
           <button id="clear-completed">Clear Completed</button>
         </div>
       </div>
