@@ -8,9 +8,18 @@ const xMark = document.querySelector('.fa-xmark');
 const TASKS = 'tasks';
 let _tasks = [];
 
+const handleListBorder = () => {
+  if (_tasks.length === 0) {
+    toDoList.classList.add('hidden');
+  } else {
+    toDoList.classList.remove('hidden');
+  }
+};
+
 const showActiveNum = () => {
   const activeItems = _tasks.filter((item) => item.isChecked === false);
   activeNum.innerText = `${activeItems.length} items left`;
+  handleListBorder();
 };
 
 const saveTasks = () => {
@@ -115,15 +124,15 @@ clearButton.addEventListener('click', handleClearButton);
 xMark.addEventListener('click', (event) => (toDoInput.value = ''));
 
 const savedTasks = localStorage.getItem(TASKS);
+
 if (savedTasks) {
   const parsedTasks = JSON.parse(savedTasks);
   _tasks = parsedTasks;
-
-  console.log(_tasks);
 
   parsedTasks.forEach((item) => {
     paintItem(item);
     // paintCheckbox(item);
   });
-  showActiveNum();
 }
+showActiveNum();
+handleListBorder();
