@@ -4,22 +4,11 @@ a {
 }
 
 /* Text Color */
+
 .blue-text {
   color: #2196f3;
 }
+
 .gray-text {
   color: #757575;
-}
-
-/* Float */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: block;
-}
-.float-left {
-  float: left;
-}
-.float-right {
-  float: right;
 }
