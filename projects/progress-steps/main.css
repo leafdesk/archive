@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+:root {
+  --active-color: #66cdaa;
+  --empty-color: #e0e0e0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  border: 1px dashed rgb(113, 198, 255);
+}
+
+#progress {
+  display: none;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  margin: 0 0 30px;
+}
+
+.circle {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid var(--empty-color);
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.circle.active {
+  border-color: var(--active-color);
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  background-color: var(--active-color);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px 0;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: var(--empty-color);
+}
+
+.btn.active {
+  background-color: var(--active-color);
+}
+
+/* 디바이스 줄면 세로로 바꾸는 기능 ? */
