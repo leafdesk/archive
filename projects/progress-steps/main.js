@@ -1,7 +1,7 @@
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
-
 const list = document.querySelectorAll('li');
+const progress = document.getElementById('progress');
 
 const MAX_STEPS_NUM = 4;
 const CLICK = 'click';
@@ -30,16 +30,22 @@ const handleBtnLock = () => {
   }
 };
 
+const updateProgress = () => {
+  progress.style.width = (98 / (MAX_STEPS_NUM - 1)) * (_steps - 1) + '%';
+};
+
 const handlePrevBtn = (event) => {
   _steps--;
   handleBtnLock();
   deactivateCircle(_steps);
+  updateProgress();
 };
 
 const handleNextBtn = (event) => {
   _steps++;
   handleBtnLock();
   activateCircle(_steps);
+  updateProgress();
 };
 
 prev.addEventListener(CLICK, handlePrevBtn);
