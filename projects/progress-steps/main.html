@@ -4,8 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Progress Bar</title>
+
+    <title>Progress Steps</title>
+
+    <!-- stylesheets connection -->
+    <link rel="stylesheet" href="./main.css" />
   </head>
 
-  <body></body>
+  <body>
+    <div class="container">
+      <!-- progress-container -->
+      <div class="progress-container">
+        <div id="progress"></div>
+
+        <li class="circle">1</li>
+        <li class="circle">2</li>
+        <li class="circle">3</li>
+        <li class="circle">4</li>
+      </div>
+
+      <!-- btn-container -->
+      <div class="btn-container">
+        <button class="btn" id="prev">Prev</button>
+        <button class="btn" id="next">Next</button>
+      </div>
+    </div>
+
+    <!-- javascript connection -->
+    <script src="./main.js"></script>
+  </body>
 </html>
