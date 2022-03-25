@@ -5,12 +5,16 @@
   padding: 0;
   font-family: 'Nunito', sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 :root {
   --active-color: #66cdaa;
   --empty-color: #e0e0e0;
+  --num-color: #666666;
+  --btn-text-color: #ffffff;
+  --btn-disabled-text-color: rgba(0, 0, 0, 0.3);
 }
 
 html {
@@ -25,18 +29,37 @@ body {
 }
 
 .container {
-  border: 1px dashed rgb(113, 198, 255);
-}
-
-#progress {
-  display: none;
+  width: 400px;
+  position: relative;
 }
 
 .progress-container {
   display: flex;
   justify-content: space-between;
-  width: 400px;
-  margin: 0 0 30px;
+  margin: 0 0 40px;
+  height: 100%;
+}
+
+.progress-container::before {
+  content: '';
+  width: 99%;
+  height: 5px;
+  background-color: var(--empty-color);
+  position: absolute;
+  top: 20px;
+  left: 3px;
+  z-index: -1;
+}
+
+#progress {
+  width: 0%;
+  height: 5px;
+  background-color: var(--active-color);
+  position: absolute;
+  top: 20px;
+  left: 3px;
+  z-index: -1;
+  transition: 0.4s;
 }
 
 .circle {
@@ -48,6 +71,8 @@ body {
   border: 5px solid var(--empty-color);
   border-radius: 50%;
   transition: 0.4s;
+  color: var(--num-color);
+  background-color: #ffffff;
 }
 
 .circle.active {
@@ -71,6 +96,7 @@ body {
   margin: 0 20px 0;
   cursor: pointer;
   border: none;
+  color: var(--btn-text-color);
 }
 
 .btn:active {
@@ -80,10 +106,16 @@ body {
 .btn:disabled {
   cursor: not-allowed;
   background-color: var(--empty-color);
-}
-
-.btn.active {
-  background-color: var(--active-color);
+  color: var(--btn-disabled-text-color);
 }
 
 /* 디바이스 줄면 세로로 바꾸는 기능 ? */
+
+@media (max-width: 576px) {
+  .container {
+    width: 350px;
+  }
+  .btn {
+    margin: 10px;
+  }
+}
