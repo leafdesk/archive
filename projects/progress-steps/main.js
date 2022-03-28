@@ -1,6 +1,6 @@
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
-const list = document.querySelectorAll('li');
+const list = document.querySelectorAll('.circle');
 const progress = document.getElementById('progress');
 
 const MAX_STEPS_NUM = 4;
@@ -48,10 +48,33 @@ const handleNextBtn = (event) => {
   updateProgress();
 };
 
+const onCircleClick = (event) => {
+  const circle = event.target;
+  for (let i = 0; i < circle.parentNode.children.length; i++) {
+    if (circle.parentNode.children[i] === circle) {
+      const clickedCircleIndex = i + 1;
+
+      if (_steps < clickedCircleIndex) {
+        for (let j = _steps; j < clickedCircleIndex; j++) {
+          handleNextBtn();
+        }
+      } else if (_steps > clickedCircleIndex) {
+        for (let j = _steps; j > clickedCircleIndex; j--) {
+          handlePrevBtn();
+        }
+      } else {
+        // else if (_steps === clickedCircleIndex) { no action }
+      }
+    }
+  }
+};
+
 prev.addEventListener(CLICK, handlePrevBtn);
 next.addEventListener(CLICK, handleNextBtn);
 
+for (let i = 0; i < list.length; i++) {
+  list[i].addEventListener(CLICK, onCircleClick);
+}
+
 handleBtnLock();
 activateCircle(_steps);
-
-// 숫자를 누르면 그 부분으로 건너 뛰도록 만들기
