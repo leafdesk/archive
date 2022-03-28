@@ -73,6 +73,7 @@ body {
   transition: 0.4s;
   color: var(--num-color);
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .circle.active {
