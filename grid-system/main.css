@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header,
+article,
+aside,
+section,
+div,
+footer {
+  border: 1px dotted blue;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin: 24px;
+}
+
+header {
+  grid-column: 1 / 13;
+}
+
+article {
+  grid-column: 1 / 13;
+}
+
+aside {
+  grid-column: 1 / 5;
+}
+
+.s1 {
+  grid-column: 5 / 13;
+}
+
+.s2 {
+  grid-column: 5 / 13;
+}
+
+.s3 {
+}
+
+.s4 {
+}
+
+.s5 {
+}
+
+.s6 {
+}
+
+.s6 div {
+}
+
+footer {
+}
