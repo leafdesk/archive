@@ -187,10 +187,6 @@ header button {
 }
 
 @media (max-width: 840px) {
-  header {
-    padding-bottom: 0;
-  }
-
   header nav {
     display: none;
   }
@@ -211,6 +207,10 @@ header button {
 
   #masthead article .flag {
     display: inline-flex;
+  }
+
+  #masthead .description {
+    padding: 0 24px;
   }
 
   #masthead img {
