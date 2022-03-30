@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  border: none;
+  background: none;
+}
+
+:root {
+  --blue-color: #2400f8;
+  --orange-color: #fcaf61;
+  --title-color: #252f52;
+  --text-color: #626368;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+}
+
+.btn {
+  background-color: var(--blue-color);
+  height: 44px;
+  color: #ffffff;
+  border-radius: 50px;
+}
+
+header {
+  padding: 40px 0;
+}
+
+header .logo {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+}
+
+header .logo span {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+header .logo span:nth-child(1) {
+  color: var(--orange-color);
+}
+
+header .logo span:nth-child(2) {
+  color: var(--title-color);
+}
+
+header nav {
+  grid-column: 3 / -3;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-right: 16px;
+}
+
+header nav a {
+  margin: 0 20px;
+  color: var(--title-color);
+}
+
+header button {
+  grid-column: -1 / -3;
+}
+
+#masthead {
+  background-image: url(./img/city-background.png);
+  background-repeat: repeat-x;
+  background-position: bottom;
+  position: relative;
+}
+
+#masthead::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url(./img/accessory.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  left: -376px;
+  bottom: 60px;
+}
+
+#masthead article {
+  grid-column: 1 / 8;
+  margin-left: 60px;
+  align-self: center;
+  width: 80%;
+}
+
+#masthead .flag {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+#masthead .flag .icon {
+  width: 16px;
+  display: inline-block;
+  background-color: var(--orange-color);
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+#masthead .flag span {
+  background-color: #e2eaed;
+  height: 28px;
+  position: relative;
+  left: -16px;
+  padding-left: 24px;
+  padding-right: 40px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+}
+
+#masthead article h1 {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--title-color);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+#masthead .description {
+  display: inline-block;
+  color: var(--text-color);
+  margin-bottom: 32px;
+}
+
+#masthead button {
+  width: 140px;
+  margin-right: 16px;
+}
+
+#masthead a {
+  color: var(--blue-color);
+}
+
+#masthead img {
+  grid-column: -1 / -6;
+  /* object-fit: cover; */
+  width: 360px;
+}
+
+/* Skip Nav 만들기, Nav 클릭 시 해당 위치로 이동하기 */
