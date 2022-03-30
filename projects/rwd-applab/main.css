@@ -90,6 +90,7 @@ header button {
   background-position: bottom;
   left: -376px;
   bottom: 60px;
+  z-index: -1;
 }
 
 #masthead article {
@@ -139,6 +140,7 @@ header button {
   display: inline-block;
   color: var(--text-color);
   margin-bottom: 32px;
+  line-height: 1.7;
 }
 
 #masthead button {
@@ -152,8 +154,57 @@ header button {
 
 #masthead img {
   grid-column: -1 / -6;
-  /* object-fit: cover; */
   width: 360px;
+}
+
+@media (max-width: 992px) {
+  header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header .logo {
+    margin: 0 16px;
+  }
+
+  header nav {
+    width: 70%;
+    display: flex;
+    justify-content: right;
+  }
+
+  header button {
+    margin: 0 16px;
+    width: 140px;
+  }
+}
+
+@media (max-width: 840px) {
+  header nav {
+    display: none;
+  }
+
+  #masthead .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 660px;
+  }
+
+  #masthead article {
+    width: 440px;
+    text-align: center;
+    margin: 0;
+  }
+
+  #masthead article .flag {
+    display: inline-flex;
+  }
+
+  #masthead img {
+    display: none;
+  }
 }
 
 /* Skip Nav 만들기, Nav 클릭 시 해당 위치로 이동하기 */
