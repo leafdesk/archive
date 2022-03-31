@@ -79,6 +79,13 @@ header button {
   grid-column: -1 / -3;
 }
 
+header .fa-bars {
+  display: none;
+  margin-right: 24px;
+  color: var(--title-color);
+  font-size: 24px;
+}
+
 #masthead {
   background-image: url(./img/city-background.png);
   background-repeat: repeat-x;
@@ -191,6 +198,14 @@ header button {
     display: none;
   }
 
+  header button {
+    display: none;
+  }
+
+  header .fa-bars {
+    display: block;
+  }
+
   #masthead .container {
     display: flex;
     align-items: center;
@@ -207,6 +222,10 @@ header button {
 
   #masthead article .flag {
     display: inline-flex;
+  }
+
+  #masthead h1 {
+    padding: 0 12px;
   }
 
   #masthead .description {
