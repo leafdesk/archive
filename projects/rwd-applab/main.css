@@ -410,7 +410,7 @@ header .fa-bars {
 
   #awesome .description {
     display: inline-block;
-    width: 400px;
+    max-width: 400px;
   }
 
   #awesome .feature-box {
@@ -474,6 +474,10 @@ header .fa-bars {
 
   #companies .company:nth-of-type(2n) {
     grid-column: -2 / -6;
+  }
+
+  #awesome .description {
+    max-width: 340px;
   }
 
   #awesome .feature-box {
