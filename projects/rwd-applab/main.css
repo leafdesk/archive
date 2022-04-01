@@ -238,9 +238,35 @@ header .fa-bars {
   background-image: url(./img/company5.png);
 }
 
+#awesome .container {
+  position: relative;
+}
+
+#awesome .phone2 {
+  width: calc(576px * 0.9);
+  height: calc(839px * 0.9);
+  position: absolute;
+  left: -32px;
+  bottom: 4px;
+  background-image: url(./img/phone2.png);
+  background-size: contain;
+}
+
+#awesome .phone2::after {
+  content: '';
+  width: calc(665px * 0.9);
+  height: calc(723px * 0.9);
+  position: absolute;
+  left: -40px;
+  top: 136px;
+  background-image: url(./img/phone2-background.png);
+  background-size: contain;
+  z-index: -1;
+}
+
 #awesome article {
   grid-column: -2 / -8;
-  max-width: 400px;
+  width: 80%;
   padding-left: 72px;
   line-height: 1.7;
 }
@@ -269,7 +295,6 @@ header .fa-bars {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #333;
 }
 
 #awesome .text {
@@ -288,11 +313,15 @@ header .fa-bars {
 #awesome .feature-box li:nth-child(1) .pictogram::before {
   content: '';
   display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url(./img/pictogram-fast.svg);
+  width: 54px;
+  height: 54px;
+  position: relative;
+  top: 13px;
+  left: 13px;
+  background-image: url(./img/pictogram-fast.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 #awesome .feature-box li:nth-child(1) h3 {
@@ -306,11 +335,15 @@ header .fa-bars {
 #awesome .feature-box li:nth-child(2) .pictogram::before {
   content: '';
   display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url(./img/pictogram-prototyping.svg);
+  width: 54px;
+  height: 54px;
+  position: relative;
+  top: 13px;
+  left: 13px;
+  background-image: url(./img/pictogram-prototyping.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 #awesome .feature-box li:nth-child(2) h3 {
@@ -324,20 +357,79 @@ header .fa-bars {
 #awesome .feature-box li:nth-child(3) .pictogram::before {
   content: '';
   display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url(./img/pictogram-vector.svg);
+  width: 54px;
+  height: 54px;
+  position: relative;
+  top: 16px;
+  left: 13px;
+  background-image: url(./img/pictogram-vector.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 #awesome .feature-box li:nth-child(3) h3 {
   color: var(--green-title-color);
 }
 
+@media (max-width: 1200px) {
+  #awesome article {
+    grid-column: 7 / 13;
+  }
+
+  #awesome .phone2 {
+    left: 60px;
+  }
+
+  #awesome .phone2::after {
+    left: -48px;
+  }
+}
+
 @media (max-width: 1080px) {
+  #companies {
+    margin-bottom: 120px;
+  }
+
   #companies .company:nth-of-type(n) {
     grid-column: span 3;
+  }
+
+  #awesome .phone2,
+  #awesome .phone2::after {
+    display: none;
+  }
+
+  #awesome article {
+    grid-column: 1 / -1;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  #awesome .description {
+    display: inline-block;
+    width: 400px;
+  }
+
+  #awesome .feature-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+  }
+
+  #awesome .card {
+    display: block;
+    width: auto;
+  }
+
+  #awesome .text {
+    margin: 0 auto;
+  }
+
+  #awesome .pictogram {
+    display: inline-block;
   }
 }
 
@@ -369,6 +461,10 @@ header .fa-bars {
   #companies .company:nth-of-type(n) {
     grid-column: span 4;
   }
+
+  #awesome .feature-box {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
@@ -378,6 +474,22 @@ header .fa-bars {
 
   #companies .company:nth-of-type(2n) {
     grid-column: -2 / -6;
+  }
+
+  #awesome .feature-box {
+    display: block;
+  }
+
+  #awesome .card {
+    display: flex;
+    justify-content: center;
+  }
+
+  #awesome .text {
+    box-sizing: border-box;
+    margin: 0;
+    text-align: start;
+    padding-left: 24px;
   }
 }
 
