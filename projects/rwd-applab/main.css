@@ -148,6 +148,7 @@ header .fa-bars {
 
 #masthead .flag span {
   background-color: #e2eaed;
+  color: var(--title-color);
   height: 28px;
   position: relative;
   left: -16px;
@@ -388,7 +389,7 @@ header .fa-bars {
   color: var(--title-color);
   display: block;
   padding: 0 7% 0 1%;
-  width: 40%;
+  max-width: 440px;
   border-right: 1px solid #b9b9b7;
   line-height: 1.3;
 }
@@ -396,7 +397,7 @@ header .fa-bars {
 #smart-wrap span {
   line-height: 1.7;
   padding: 0 0 0 4%;
-  width: 38%;
+  max-width: 38%;
 }
 
 #smart .cards-box {
@@ -497,6 +498,54 @@ header .fa-bars {
   color: var(--green-title-color);
 }
 
+#designed {
+  padding: 64px 0 80px;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+#designed .container {
+  position: relative;
+  height: calc(547px * 0.93);
+}
+
+#designed .img {
+  width: calc(598px * 0.93);
+  height: calc(547px * 0.93);
+  background-image: url(./img/designed-background.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  left: -42px;
+}
+
+#designed article {
+  grid-column: -1 / -7;
+  padding: 0 0 0 52px;
+  align-self: center;
+}
+
+#designed h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--title-color);
+  line-height: 1.3;
+  margin-bottom: 16px;
+  max-width: 360px;
+}
+
+#designed span {
+  display: inline-block;
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+#designed button {
+  display: block;
+  width: 140px;
+  margin-top: 24px;
+}
+
 @media (max-width: 1200px) {
   #awesome article {
     grid-column: 7 / 13;
@@ -513,6 +562,12 @@ header .fa-bars {
   #smart-wrap {
     grid-column: 1 / -1;
     width: 100%;
+  }
+
+  #designed .img {
+    width: calc(598px * 0.8);
+    height: calc(547px * 0.8);
+    left: 64px;
   }
 }
 
@@ -573,14 +628,13 @@ header .fa-bars {
   #smart-wrap h2 {
     border-right: none;
     border-bottom: 1px solid #b9b9b7;
-    width: 440px;
     padding: 32px 0;
     margin: 0 auto;
   }
 
   #smart-wrap span {
     display: block;
-    width: 520px;
+    max-width: 520px;
     padding: 32px 0;
     margin: 0 auto;
   }
@@ -591,6 +645,10 @@ header .fa-bars {
 
   #smart .pictogram {
     display: inline-block;
+  }
+
+  #designed .img {
+    display: none;
   }
 }
 
@@ -668,11 +726,7 @@ header .fa-bars {
 
   #smart-wrap h2 {
     font-size: 32px;
-    width: 100%;
-  }
-
-  #smart-wrap span {
-    max-width: 560px;
+    max-width: 360px;
   }
 
   #smart .cards-box {
