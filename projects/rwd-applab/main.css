@@ -24,6 +24,7 @@
   --red-background-color: #ffecee;
   --blue-background-color: #f4f4fe;
   --green-background-color: #e4ffee;
+  --background-color: #ecf3fb;
 }
 
 .container {
@@ -650,6 +651,20 @@ header .fa-bars {
   #designed .img {
     display: none;
   }
+
+  #designed article {
+    grid-column: 1 / -1;
+    padding: 0;
+    justify-self: center;
+    text-align: center;
+  }
+
+  #designed h2,
+  #designed span,
+  #designed button {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media (max-width: 840px) {
@@ -726,6 +741,10 @@ header .fa-bars {
 
   #smart-wrap h2 {
     font-size: 32px;
+    max-width: 360px;
+  }
+
+  #smart-wrap span {
     max-width: 360px;
   }
 
