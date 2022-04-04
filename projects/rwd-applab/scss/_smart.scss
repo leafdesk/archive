@@ -1,0 +1,113 @@
+#smart {
+  .smart-wrap {
+    width: 100%;
+    margin: 120px auto;
+    grid-column: 1 / 12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: $title-color;
+      display: block;
+      padding: 0 7% 0 1%;
+      max-width: 440px;
+      border-right: 1px solid #b9b9b7;
+      line-height: 1.3;
+    }
+
+    span {
+      line-height: 1.7;
+      padding: 0 0 0 4%;
+      max-width: 38%;
+    }
+  }
+
+  .cards-box {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    justify-items: center;
+  }
+
+  .card {
+    width: 256px;
+    margin-bottom: 64px;
+  }
+
+  .pictogram {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 24px;
+    background-color: #ccc;
+  }
+
+  .text-wrap {
+    width: 100%;
+    line-height: 1.7;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .cards-box li {
+    @mixin pictogram($top, $left, $url) {
+      &::before {
+        content: '';
+        display: block;
+        width: 54px;
+        height: 54px;
+        position: relative;
+        top: $top;
+        left: $left;
+
+        background: {
+          image: url($url);
+          repeat: no-repeat;
+          position: center;
+          size: contain;
+        }
+      }
+    }
+
+    &:nth-child(1) {
+      .pictogram {
+        background-color: $red-background-color;
+        @include pictogram(15px, 17px, '../img/pictogram-bill.png');
+      }
+
+      h3 {
+        color: $red-title-color;
+      }
+    }
+
+    &:nth-child(2) {
+      .pictogram {
+        background-color: $blue-background-color;
+        @include pictogram(15px, 13px, '../img/pictogram-network.png');
+      }
+
+      h3 {
+        color: $blue-title-color;
+      }
+    }
+
+    &:nth-child(3) {
+      .pictogram {
+        background-color: $green-background-color;
+        @include pictogram(15px, 13px, '../img/pictogram-badge.png');
+      }
+
+      h3 {
+        color: $green-title-color;
+      }
+    }
+  }
+}
