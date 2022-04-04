@@ -6,5 +6,5 @@
 ## 📂 Mini-Projects
 
 1. Todo List (Complete)
-2. *Progress Steps Design* ?
-3. *Progress Bar Design* ?
+2. Progress Steps Design
+3. RWD: AppLab with Sass(SCSS)
