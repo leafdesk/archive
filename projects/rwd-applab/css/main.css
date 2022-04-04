@@ -217,9 +217,9 @@ header .fa-bars {
   position: absolute;
   left: -40px;
   top: 136px;
+  z-index: -1;
   background-image: url(../img/phone2-background.png);
   background-size: contain;
-  z-index: -1;
 }
 #awesome article {
   grid-column: -2/-8;
@@ -315,7 +315,7 @@ header .fa-bars {
   color: #409760;
 }
 
-#smart-wrap {
+#smart .smart-wrap {
   width: 100%;
   margin: 120px auto;
   grid-column: 1/12;
@@ -323,7 +323,7 @@ header .fa-bars {
   align-items: center;
   justify-content: center;
 }
-#smart-wrap h2 {
+#smart .smart-wrap h2 {
   font-size: 36px;
   font-weight: 700;
   color: #252f52;
@@ -333,12 +333,11 @@ header .fa-bars {
   border-right: 1px solid #b9b9b7;
   line-height: 1.3;
 }
-#smart-wrap span {
+#smart .smart-wrap span {
   line-height: 1.7;
   padding: 0 0 0 4%;
   max-width: 38%;
 }
-
 #smart .cards-box {
   grid-column: 1/-1;
   display: grid;
@@ -377,7 +376,7 @@ header .fa-bars {
   position: relative;
   top: 15px;
   left: 17px;
-  background-image: url(../img/pictogram-bill.png);
+  background-image: url("../img/pictogram-bill.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -396,7 +395,7 @@ header .fa-bars {
   position: relative;
   top: 15px;
   left: 13px;
-  background-image: url(../img/pictogram-network.png);
+  background-image: url("../img/pictogram-network.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -415,7 +414,7 @@ header .fa-bars {
   position: relative;
   top: 15px;
   left: 13px;
-  background-image: url(../img/pictogram-badge.png);
+  background-image: url("../img/pictogram-badge.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -435,12 +434,12 @@ header .fa-bars {
 #designed .img {
   width: 556.14px;
   height: 508.71px;
+  position: absolute;
+  left: -42px;
   background-image: url(../img/designed-background.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  position: absolute;
-  left: -42px;
 }
 #designed article {
   grid-column: -1/-7;
