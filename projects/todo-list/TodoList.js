@@ -91,7 +91,8 @@ const paintItem = (item) => {
   toDoList.appendChild(li);
 };
 
-const handleSubmit = (event) => {
+// form 제출 시
+toDoForm.onsubmit = (event) => {
   event.preventDefault();
   const _val = toDoInput.value;
   toDoInput.value = '';
@@ -107,7 +108,11 @@ const handleSubmit = (event) => {
   saveTasks();
 };
 
-const handleClearButton = () => {
+// 인풋 창의 'X' 클릭 시
+xMark.onclick = (event) => (toDoInput.value = '');
+
+// 쓰레기통 아이콘 클릭 시
+clearButton.onclick = () => {
   for (let i in _tasks) {
     if (_tasks[i].isChecked) {
       const li = document.getElementById(_tasks[i].id);
@@ -118,10 +123,6 @@ const handleClearButton = () => {
   _tasks = _tasks.filter((item) => item.isChecked === false);
   saveTasks();
 };
-
-toDoForm.addEventListener('submit', handleSubmit);
-clearButton.addEventListener('click', handleClearButton);
-xMark.addEventListener('click', (event) => (toDoInput.value = ''));
 
 const savedTasks = localStorage.getItem(TASKS);
 
