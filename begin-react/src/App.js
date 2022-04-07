@@ -1,12 +1,12 @@
 import React from 'react';
-import Modal from './Modal';
-import './App.css';
+import Wrapper from './Wrapper';
+import PhoneInputEx from './PhoneNumInputEx/InputEx';
 
 function App() {
   return (
-    <>
-      <Modal></Modal>
-    </>
+    <Wrapper>
+      <PhoneInputEx />
+    </Wrapper>
   );
 }
 
