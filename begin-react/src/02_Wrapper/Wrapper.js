@@ -5,7 +5,6 @@ function Wrapper({ children }) {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '80vw',
     textAlign: 'center',
   };
 
