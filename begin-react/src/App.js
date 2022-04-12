@@ -1,8 +1,27 @@
 import React from 'react';
-import Wrapper from './02_Wrapper/Wrapper';
+import List from './06_ArrayEx/ArrayEx';
 
-function App() {
-  return <Wrapper></Wrapper>;
-}
+const _arr = [
+  {
+    id: 1,
+    content: 'a',
+  },
+  {
+    id: 2,
+    content: 'b',
+  },
+  {
+    id: 3,
+    content: 'c',
+  },
+];
+
+const App = () => {
+  return (
+    <>
+      <List array={_arr} />
+    </>
+  );
+};
 
 export default App;
