@@ -1,25 +1,44 @@
-import React from 'react';
-import List from './06_ArrayEx/ArrayEx';
-
-const _arr = [
-  {
-    id: 1,
-    content: 'a',
-  },
-  {
-    id: 2,
-    content: 'b',
-  },
-  {
-    id: 3,
-    content: 'c',
-  },
-];
+import React, { useRef, useState } from 'react';
+import UserList from './06_ArrayEx/UserList';
+import CreateUser from './06_ArrayEx/CreateUser';
 
 const App = () => {
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: '',
+  });
+
+  const { username, email } = inputs;
+
+  const users = [
+    {
+      id: 1,
+      username: 'velopert',
+      email: 'public.velopert@gmail.com',
+    },
+    {
+      id: 2,
+      username: 'tester',
+      email: 'tester@example.com',
+    },
+    {
+      id: 3,
+      username: 'liz',
+      email: 'liz@example.com',
+    },
+  ];
+
+  const nextId = useRef(4);
+  const onCreate = () => {
+    // 나중에 구현 할 배열에 항목 추가하는 로직
+    // ...
+
+    nextId.current += 1;
+  };
   return (
     <>
-      <List array={_arr} />
+      <CreateUser />
+      <UserList users={users} />
     </>
   );
 };
