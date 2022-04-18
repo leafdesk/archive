@@ -10,7 +10,15 @@ const App = () => {
 
   const { username, email } = inputs;
 
-  const users = [
+  const onChange = (event) => {
+    const { name, value } = event.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const [users, setUsers] = useState([
     {
       id: 1,
       username: 'velopert',
@@ -26,19 +34,39 @@ const App = () => {
       username: 'liz',
       email: 'liz@example.com',
     },
-  ];
+  ]);
 
   const nextId = useRef(4);
+
   const onCreate = () => {
-    // 나중에 구현 할 배열에 항목 추가하는 로직
-    // ...
+    const user = {
+      id: nextId.current,
+      username,
+      email,
+    };
+    setUsers(users.concat(user));
+
+    setInputs({
+      username: '',
+      email: '',
+    });
 
     nextId.current += 1;
   };
+
+  const onRemove = (id) => {
+    setUsers(users.filter((user) => user.id !== id));
+  };
+
   return (
     <>
-      <CreateUser />
-      <UserList users={users} />
+      <CreateUser
+        username={username}
+        email={email}
+        onChange={onChange}
+        onCreate={onCreate}
+      />
+      <UserList users={users} onRemove={onRemove} />
     </>
   );
 };
