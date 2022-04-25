@@ -1,13 +1,14 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
-/* Common */
+body {
+  background-color: #fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 16px;
+}
 
 a {
   text-decoration: none;
 }
 
 /* Text Color */
-
 .blue-text {
   color: #2196f3;
 }
@@ -16,22 +17,8 @@ a {
   color: #757575;
 }
 
-/* Layout */
-
 #page-wrap {
   width: 100%;
-  font-family: 'Noto Sans KR', sans-serif;
-  /* font-family: 'Pretandard-Regular', sans-serif; */
-}
-
-header {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-#contents {
-  width: 100%;
-  height: 500px;
 }
 
 footer {
@@ -39,29 +26,105 @@ footer {
   height: 150px;
 }
 
-/* Container */
+header {
+  width: 100%;
+  margin: 70px 0 0;
+}
+header #logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 0 30px;
+  border-radius: 50%;
+  text-indent: -9999px;
+  display: inline-block;
+  text-align: center;
+  background-image: url(../images/logo.jpg);
+  background-size: cover;
+  box-shadow: 1px 1px 10px #eee;
+}
+header h1 {
+  font-size: 40px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+header p {
+  display: block;
+  margin: 30px 0;
+  color: #787878;
+  word-break: keep-all;
+  line-height: 1.8;
+}
 
+section.contents {
+  width: 100%;
+  font-size: 14px;
+}
+section.contents .container {
+  padding: 40px 0;
+}
+section.contents h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #292929;
+  margin-bottom: 32px;
+}
+section.contents li.item {
+  margin: 8px 0;
+  padding: 16px;
+  border: 2px solid #eff0f1;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+section.contents li.item p.list-title {
+  color: #292929;
+  font-weight: 500;
+  padding: 4px 0;
+}
+section.contents li.item p.description {
+  color: #787878;
+  font-weight: 500;
+  padding: 4px 0;
+}
+section.contents li.item p.date {
+  color: #b5b5b5;
+  font-size: 13px;
+}
+
+footer .container {
+  box-sizing: border-box;
+  padding: 20px 0;
+  line-height: 2;
+}
+footer #footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+footer #footer-wrap .email a {
+  color: #0969da;
+}
+footer #footer-wrap .email a:hover {
+  text-decoration: underline;
+}
+
+/* Container */
 .container {
-  width: 65%;
-  height: inherit;
+  max-width: 680px;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Media Query */
-
 @media (max-width: 1200px) {
   #page-wrap .container {
     width: 75%;
   }
 }
-
 @media (max-width: 992px) {
   #page-wrap .container {
     width: 85%;
   }
 }
-
 @media (max-width: 768px) {
   #page-wrap .container {
     width: 95%;
@@ -72,86 +135,11 @@ footer {
   }
 
   #contents-wrap,
-  #footer-wrap {
+#footer-wrap {
     width: 90%;
     margin: 0 auto;
     display: block !important;
   }
 }
 
-/* Header */
-
-header #logo {
-  width: 100px;
-  height: 100px;
-  margin: 70px 0 30px;
-  border-radius: 50%;
-  text-indent: -9999px;
-  display: inline-block;
-  background-image: url(../images/logo.jpg);
-  background-size: cover;
-  box-shadow: 1px 1px 10px #eee;
-}
-
-header h1 {
-  font-size: 48px;
-  font-weight: 800;
-  text-transform: uppercase;
-  line-height: 1.2;
-}
-
-header span {
-  display: block;
-  margin: 30px 0;
-  color: #333;
-  word-break: keep-all;
-  line-height: 1.8;
-}
-
-header .container {
-  overflow: hidden;
-}
-
-#contents .container {
-  box-sizing: border-box;
-  border-top: 1px solid #ddd;
-}
-
-#contents h3 {
-  margin: 30px 0;
-  padding-top: 20px;
-  font-size: 20px;
-}
-
-#contents a {
-  text-decoration: none;
-}
-
-#contents li.item {
-  padding: 10px 0;
-}
-
-#contents div.date {
-  display: inline-block;
-  margin-right: 20px;
-  width: 40px;
-  text-align: center;
-}
-
-#contents div.list-title {
-  display: inline-block;
-}
-
-/* Footer */
-
-footer .container {
-  box-sizing: border-box;
-  border-top: 1px solid #ddd;
-  padding: 20px 0;
-  line-height: 2;
-}
-
-#footer-wrap {
-  display: flex;
-  justify-content: space-between;
-}
+/*# sourceMappingURL=main.css.map */
