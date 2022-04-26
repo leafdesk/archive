@@ -19,7 +19,7 @@ export default class List extends Component {
         </li>`
       )
       // 콤마(,) 지우기 위해 join 사용
-      .join('');
+      .join('\n');
 
     return `
       <ul>
@@ -30,23 +30,20 @@ export default class List extends Component {
   }
 
   setEvent() {
-    const addBtn = this.target.querySelector('.addBtn');
-    const delBtns = this.target.querySelectorAll('.delBtn');
+    this.target.onclick = ({ target }) => {
+      const list = [...this.state.list];
 
-    addBtn.onclick = () => {
-      const { list } = this.state;
-      const newItem = `item${list.length + 1}`;
-      this.setState({ list: [...list, newItem] });
-    };
+      if (target.classList.contains('addBtn')) {
+        const newItem = `item${list.length + 1}`;
+        this.setState({
+          list: [...list, newItem],
+        });
+      }
 
-    delBtns.forEach((btn) => {
-      // 비구조화 할당으로 event 객체에서 바로 target을 뽑아낸 것 = event.target
-      btn.onclick = ({ target }) => {
-        const list = [...this.state.list];
-        // list 배열 요소 중, target의 data-index 값 위치에 있는 1개를 삭제
+      if (target.classList.contains('delBtn')) {
         list.splice(target.dataset.index, 1);
         this.setState({ list });
-      };
-    });
+      }
+    };
   }
 }
