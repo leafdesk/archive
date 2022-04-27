@@ -27,31 +27,86 @@
 
   <!-- React Script -->
   <script type="text/babel">
-    const App = () => {
-      const [minutes, setMinutes] = React.useState(0);
+    const MinutesToHours = () => {
+      const [amount, setAmount] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
 
       const onChange = (event) => {
-        setMinutes(() => event.target.value);
+        setAmount(() => event.target.value);
+      };
+
+      const reset = () => {
+        setAmount(() => 0);
+      };
+
+      const onInvert = () => {
+        reset();
+        setInverted((current) => !current);
       };
 
       return (
         <div>
-          <p>converter</p>
-
           <div>
-            <label htmlFor='minutes'>minutes</label>
+            <label htmlFor='amount'>amount</label>
             <input
-              value={minutes}
-              id='minutes'
+              value={inverted ? amount * 60 : amount}
+              id='amount'
               placeholder='min'
               type='number'
               onChange={onChange}
+              disabled={inverted}
             />
-            <h4>{minutes}</h4>
           </div>
 
-          <label htmlFor='hours'>hours</label>
-          <input id='hours' placeholder='hou' type='number' />
+          <div>
+            <label htmlFor='hours'>hours</label>
+            <input
+              value={inverted ? amount : Math.round(amount / 60)}
+              id='hours'
+              placeholder='hou'
+              type='number'
+              disabled={!inverted}
+            />
+          </div>
+
+          <button onClick={reset}>Reset</button>
+          <button onClick={onInvert}>
+            {inverted ? 'Turn back' : 'Invert'}
+          </button>
+        </div>
+      );
+    };
+
+    const KmToMiles = () => {
+      return (
+        <div>
+          <p>KM 2 M</p>
+        </div>
+      );
+    };
+
+    const App = () => {
+      const [index, setIndex] = React.useState('init');
+
+      const onSelect = (event) => {
+        setIndex(() => event.target.value);
+      };
+
+      return (
+        <div>
+          <p>converters</p>
+
+          <select value={index} onChange={onSelect}>
+            <option value='init'>Select your units</option>
+            <option value='m2h'>Minutes & Hours</option>
+            <option value='k2m'>Km & Miles</option>
+          </select>
+
+          <hr />
+
+          {index === 'init' ? 'Please select your units...' : null}
+          {index === 'm2h' ? <MinutesToHours /> : null}
+          {index === 'k2m' ? <KmToMiles /> : null}
         </div>
       );
     };
