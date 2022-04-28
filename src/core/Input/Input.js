@@ -4,13 +4,17 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Input = ({ name, placeholder }) => {
+const Input = ({ name, type, placeholder }) => {
   return (
     <div className={cx('Input')}>
       <label>{name}</label>
-      <input placeholder={placeholder} />
+      <input type={type} placeholder={placeholder} />
     </div>
   );
+};
+
+Input.defaultProps = {
+  type: 'text',
 };
 
 export default Input;
