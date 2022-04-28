@@ -1,0 +1,25 @@
+@import '../utils/_font.scss';
+@import '../utils/_color.scss';
+
+.Input {
+  padding: 8px;
+
+  label {
+    display: block;
+    font-size: 0.88em;
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+
+  input {
+    border: 1px solid $lightgray-border;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.96em;
+    font-weight: 400;
+
+    &::placeholder {
+      color: $lightgray-text;
+    }
+  }
+}
