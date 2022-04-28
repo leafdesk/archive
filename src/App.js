@@ -1,12 +1,20 @@
 import React from 'react';
-import ProjectList from './components/ProjectList/ProjectList';
+import Input from './core/Input/Input.js';
 
 function App() {
   return (
-    <>
-      <p>Projects</p>
-      <ProjectList />
-    </>
+    <div
+      style={{
+        width: 360,
+      }}
+    >
+      <form>
+        <Input name='Username' placeholder='Your name...' />
+        <br />
+        <Input name='Email Address' type='email' placeholder='Email' />
+        <br />
+      </form>
+    </div>
   );
 }
 
