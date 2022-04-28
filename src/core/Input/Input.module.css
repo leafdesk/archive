@@ -11,16 +11,27 @@
   font-size: 0.88em;
   font-weight: 500;
   margin: 0 0 8px;
+  color: #333333;
 }
 .Input input {
-  border: 1px solid #d5d7dc;
+  border: 1px solid #c7cad1;
   border-radius: 8px;
   padding: 10px 16px;
   font-size: 0.96em;
   font-weight: 400;
+  color: #333333;
+  caret-color: #5956f6;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 46px;
 }
 .Input input::placeholder {
   color: #8f8989;
+}
+.Input input:focus {
+  border: 2px solid #5956f6;
+  box-shadow: 0 0 4px rgba(75, 43, 243, 0.1);
 }
 
 /*# sourceMappingURL=Input.module.css.map */
