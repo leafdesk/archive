@@ -31,7 +31,7 @@ const Dropdown = ({ name, optionList }) => {
 };
 
 Dropdown.defaultProps = {
-  optionList: ['option A', 'option B', 'option C'],
+  optionList: ['defaultProps'],
 };
 
 export default Dropdown;
