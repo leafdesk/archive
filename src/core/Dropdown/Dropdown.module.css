@@ -40,7 +40,7 @@
 }
 .Dropdown .arrow {
   position: absolute;
-  top: 47px;
+  top: 50%;
   right: 24px;
   color: #c3c0c0;
 }
