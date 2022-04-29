@@ -11,7 +11,11 @@ const Designs = () => {
       <br />
       <Input name='Email Address' type='email' placeholder='Email' />
       <br />
-      <Dropdown name='Dropdown' optionList={optionList} />
+      <Dropdown
+        name='Dropdown'
+        placeholder='Selece option'
+        optionList={optionList}
+      />
       <br />
     </>
   );
