@@ -1,0 +1,50 @@
+@import '../utils/_font.scss';
+@import '../utils/_color.scss';
+
+.Dropdown {
+  padding: 8px;
+  position: relative;
+
+  label {
+    display: block;
+    font-size: 0.88em;
+    font-weight: 500;
+    margin: 0 0 8px;
+    color: $black-text;
+  }
+
+  select {
+    border: 1px solid $lightgray-border;
+    border-radius: 8px;
+    padding: 10px 16px;
+    box-sizing: border-box;
+    height: 46px;
+    background: $white-background;
+    width: 100%;
+    font-size: 0.96em;
+    font-weight: 400;
+    color: $lightgray-text;
+    outline: none;
+    appearance: none;
+
+    &:focus-within {
+      border: 2px solid $blue-border;
+      box-shadow: 0 0 4px rgba($blue-background, 0.1);
+    }
+  }
+
+  option {
+    color: $black-text;
+
+    &:disabled {
+      display: none;
+    }
+  }
+
+  .arrow {
+    position: absolute;
+    top: 47px;
+    right: 24px;
+    color: $lightgray-icon;
+  }
+}
