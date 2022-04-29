@@ -10,14 +10,14 @@ const Option = ({ option }) => {
   return <option>{option}</option>;
 };
 
-const Dropdown = ({ name, optionList }) => {
+const Dropdown = ({ name, placeholder, optionList }) => {
   return (
     <div className={cx('Dropdown')}>
       <label>{name}</label>
 
       <select defaultValue={'init'}>
         <option value='init' disabled>
-          Select option
+          {placeholder}
         </option>
 
         {optionList.map((option) => (
