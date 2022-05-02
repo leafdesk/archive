@@ -5,13 +5,24 @@ import Designs from './components/Designs/Designs.js';
 const menuList = ['Designs'];
 
 function App() {
+  const [menu, setMenu] = useState();
+
+  const onChange = (menu) => {
+    setMenu(menu);
+  };
+
   return (
     <div
       style={{
         width: 360,
       }}
     >
-      <Dropdown name="MENU" placeholder="Select MENU" optionList={menuList} />
+      <Dropdown
+        name='MENU'
+        placeholder='Select MENU'
+        optionList={menuList}
+        setParentState={onChange}
+      />
       <br />
       <div
         style={{
@@ -21,7 +32,7 @@ function App() {
       />
       <br />
 
-      <Designs />
+      {menu === 'Designs' ? <Designs /> : null}
     </div>
   );
 }
