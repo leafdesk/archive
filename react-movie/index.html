@@ -27,86 +27,32 @@
 
   <!-- React Script -->
   <script type="text/babel">
-    const MinutesToHours = () => {
-      const [amount, setAmount] = React.useState(0);
-      const [inverted, setInverted] = React.useState(false);
-
-      const onChange = (event) => {
-        setAmount(() => event.target.value);
-      };
-
-      const reset = () => {
-        setAmount(() => 0);
-      };
-
-      const onInvert = () => {
-        reset();
-        setInverted((current) => !current);
-      };
-
+    const Btn = ({ text }) => {
       return (
-        <div>
-          <div>
-            <label htmlFor='amount'>amount</label>
-            <input
-              value={inverted ? amount * 60 : amount}
-              id='amount'
-              placeholder='min'
-              type='number'
-              onChange={onChange}
-              disabled={inverted}
-            />
-          </div>
-
-          <div>
-            <label htmlFor='hours'>hours</label>
-            <input
-              value={inverted ? amount : Math.round(amount / 60)}
-              id='hours'
-              placeholder='hou'
-              type='number'
-              disabled={!inverted}
-            />
-          </div>
-
-          <button onClick={reset}>Reset</button>
-          <button onClick={onInvert}>
-            {inverted ? 'Turn back' : 'Invert'}
-          </button>
-        </div>
-      );
-    };
-
-    const KmToMiles = () => {
-      return (
-        <div>
-          <p>KM 2 M</p>
-        </div>
+        <button
+          style={{
+            backgroundColor: '#6495ED',
+            color: 'white',
+            padding: '12px 40px',
+            border: 0,
+            borderRadius: 50,
+            fontSize: 16,
+          }}
+        >
+          {text}
+        </button>
       );
     };
 
     const App = () => {
-      const [index, setIndex] = React.useState('init');
+      const [value, setValue] = React.useState('Save Changes');
 
-      const onSelect = (event) => {
-        setIndex(() => event.target.value);
-      };
+      const changeValue = () => setValue('Revert Changes');
 
       return (
         <div>
-          <p>converters</p>
-
-          <select value={index} onChange={onSelect}>
-            <option value='init'>Select your units</option>
-            <option value='m2h'>Minutes & Hours</option>
-            <option value='k2m'>Km & Miles</option>
-          </select>
-
-          <hr />
-
-          {index === 'init' ? 'Please select your units...' : null}
-          {index === 'm2h' ? <MinutesToHours /> : null}
-          {index === 'k2m' ? <KmToMiles /> : null}
+          <Btn text={value} onClick={changeValue} />
+          <Btn text='Continue' />
         </div>
       );
     };
