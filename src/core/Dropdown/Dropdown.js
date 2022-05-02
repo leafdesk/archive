@@ -22,16 +22,17 @@ const Dropdown = ({ name, placeholder, optionList }) => {
       <label>{name}</label>
 
       <select value={value} onChange={onChange}>
-        <option value="init" disabled>
+        <option value='init' disabled>
           {placeholder}
         </option>
 
+        {/* value={option} : option text와 value 일치 */}
         {optionList.map((option) => (
-          <Option option={option} value={value} key={key++} />
+          <Option option={option} value={option} key={key++} />
         ))}
       </select>
 
-      <MdKeyboardArrowDown className={cx('arrow')} size="25" />
+      <MdKeyboardArrowDown className={cx('arrow')} size='25' />
     </div>
   );
 };
