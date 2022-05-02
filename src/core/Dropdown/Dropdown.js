@@ -10,11 +10,12 @@ const Option = ({ option, value }) => {
   return <option value={value}>{option}</option>;
 };
 
-const Dropdown = ({ name, placeholder, optionList }) => {
+const Dropdown = ({ name, placeholder, optionList, changeParentState }) => {
   const [value, setValue] = useState('init');
 
   const onChange = (event) => {
     setValue(() => event.target.value);
+    changeParentState(event.target.value);
   };
 
   return (
