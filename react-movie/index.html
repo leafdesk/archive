@@ -25,9 +25,14 @@
   <!-- Load Babel -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+  <!-- Import React PropTypes -->
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
   <!-- React Script -->
   <script type="text/babel">
-    const Btn = ({ text }) => {
+    const Btn = ({ text, fontSize }) => {
+      console.log(`${text} was rendered.`);
+
       return (
         <button
           style={{
@@ -36,7 +41,7 @@
             padding: '12px 40px',
             border: 0,
             borderRadius: 50,
-            fontSize: 16,
+            fontSize,
           }}
         >
           {text}
@@ -44,15 +49,19 @@
       );
     };
 
+    Btn.propTypes = {
+      text: PropTypes.string,
+      fontSize: PropTypes.number,
+    };
+
     const App = () => {
       const [value, setValue] = React.useState('Save Changes');
-
       const changeValue = () => setValue('Revert Changes');
 
       return (
         <div>
-          <Btn text={value} onClick={changeValue} />
-          <Btn text='Continue' />
+          <Btn text='Save Changes' fontSize={18} />
+          <Btn text={14} fontSize={'Continue'} />
         </div>
       );
     };
