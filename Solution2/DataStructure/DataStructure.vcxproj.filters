@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\chap4">
+      <UniqueIdentifier>{a4c1929d-8bc4-4bd4-91dd-0e41f9835bc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\chap5">
+      <UniqueIdentifier>{ebaaea10-0138-414e-9dab-ec571a485584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\hw">
+      <UniqueIdentifier>{2cf09ae7-ab6d-48b3-91b7-b6d3b72123b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\chap3">
+      <UniqueIdentifier>{daba4338-0fe1-4431-9e54-ee3b52db78d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\chap6">
+      <UniqueIdentifier>{87879933-62e7-4149-843e-ba5440b60d47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\chap7">
+      <UniqueIdentifier>{f37f26d5-f58a-4632-a753-6a65284d4e84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\chap8">
+      <UniqueIdentifier>{02d309ca-a642-446f-97eb-3c6f2c9239ee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ActiveProject\ex4_10.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\ex4_12.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\ex4_13.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog4_2.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog4_3.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog4_6.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog4_7.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\ex4_16.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog4_9.c">
+      <Filter>소스 파일\chap4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog5_2.c">
+      <Filter>소스 파일\chap5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog5_3.c">
+      <Filter>소스 파일\chap5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog5_4.c">
+      <Filter>소스 파일\chap5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog5_5.c">
+      <Filter>소스 파일\chap5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog3_2.c">
+      <Filter>소스 파일\chap3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog3_3.c">
+      <Filter>소스 파일\chap3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\ex6_9.c">
+      <Filter>소스 파일\chap6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\ex6_10.c">
+      <Filter>소스 파일\chap6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\ex6_11.c">
+      <Filter>소스 파일\chap6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\ex6_12.c">
+      <Filter>소스 파일\chap6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\ex6_13.c">
+      <Filter>소스 파일\chap6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog6_9.c">
+      <Filter>소스 파일\chap6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\w3_Permutation.cpp">
+      <Filter>소스 파일\hw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\w3_exeTimeCal.cpp">
+      <Filter>소스 파일\hw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\w4_ExVal.c">
+      <Filter>소스 파일\hw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\w5_dAlloc.c">
+      <Filter>소스 파일\hw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\w6_Matrix.c">
+      <Filter>소스 파일\hw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\w7_Postfix.c">
+      <Filter>소스 파일\hw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\w11_Polynomial.c">
+      <Filter>소스 파일\hw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog7_4.c">
+      <Filter>소스 파일\chap7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog7_7.c">
+      <Filter>소스 파일\chap7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog7_8.c">
+      <Filter>소스 파일\chap7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog7_9.c">
+      <Filter>소스 파일\chap7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog7_12.c">
+      <Filter>소스 파일\chap7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog8_5.c">
+      <Filter>소스 파일\chap8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog8_3~4.c">
+      <Filter>소스 파일\chap8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog8_6.c">
+      <Filter>소스 파일\chap8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog8_7.c">
+      <Filter>소스 파일\chap8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\algo8_6~8.c">
+      <Filter>소스 파일\chap8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog8_8.c">
+      <Filter>소스 파일\chap8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog8_13.c">
+      <Filter>소스 파일\chap8</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ActiveProject\prog8_14.c">
+      <Filter>소스 파일\chap8</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ActiveProject\_DEQUE.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ActiveProject\_LIST.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ActiveProject\_LIST_ARRAY.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ActiveProject\_LIST_NODE.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ActiveProject\_QUEUE_CIR.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ActiveProject\_STACK.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ActiveProject\_STACK_DYN.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ActiveProject\_LIST_CIR.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
