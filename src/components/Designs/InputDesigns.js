@@ -7,12 +7,12 @@ const optionList = ['option A', 'option B', 'option C'];
 const InputDesigns = () => {
   return (
     <>
-      <Input name='Username' placeholder='Your name...' />
+      <Input label='Username' placeholder='Your name...' />
       <br />
-      <Input name='Email Address' type='email' placeholder='Email' />
+      <Input label='Email Address' type='email' placeholder='Email' />
       <br />
       <Dropdown
-        name='Dropdown'
+        label='Dropdown'
         placeholder='Selece option'
         optionList={optionList}
       />
