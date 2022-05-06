@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Dropdown from './core/Dropdown/Dropdown.js';
 import InputDesigns from './components/Designs/InputDesigns';
 import ButtonDesigns from './components/Designs/ButtonDesigns.js';
+import TodoList from './components/TodoList/TodoList.js';
 import Laboratory from './components/Laboratory/Laboratory.js';
 
-const menuList = ['Input Designs', 'Button Designs', 'Laboratory'];
+const menuList = ['Input Designs', 'Button Designs', 'Todo List', 'Laboratory'];
 
 function App() {
   const [menu, setMenu] = useState();
@@ -20,7 +21,7 @@ function App() {
       }}
     >
       <Dropdown
-        name='MENU'
+        label='MENU'
         placeholder='Select MENU'
         optionList={menuList}
         setParentState={onChange}
@@ -37,6 +38,7 @@ function App() {
 
       {menu === 'Input Designs' ? <InputDesigns /> : null}
       {menu === 'Button Designs' ? <ButtonDesigns /> : null}
+      {menu === 'Todo List' ? <TodoList /> : null}
       {menu === 'Laboratory' ? <Laboratory /> : null}
     </div>
   );
