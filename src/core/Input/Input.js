@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Input = ({ name, type, placeholder }) => {
+const Input = ({ name, label, type, placeholder }) => {
   const [value, setValue] = useState('');
 
   const onChange = (event) => {
@@ -13,8 +13,9 @@ const Input = ({ name, type, placeholder }) => {
 
   return (
     <div className={cx('Input')}>
-      <label>{name}</label>
+      {label ? <label>{label}</label> : null}
       <input
+        name={name}
         type={type}
         placeholder={placeholder}
         value={value}

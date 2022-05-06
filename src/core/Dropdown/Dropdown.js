@@ -10,7 +10,7 @@ const Option = ({ option, value }) => {
   return <option value={value}>{option}</option>;
 };
 
-const Dropdown = ({ name, placeholder, optionList, setParentState }) => {
+const Dropdown = ({ name, label, placeholder, optionList, setParentState }) => {
   const [value, setValue] = useState('init');
 
   const onChange = (event) => {
@@ -22,9 +22,9 @@ const Dropdown = ({ name, placeholder, optionList, setParentState }) => {
 
   return (
     <div className={cx('Dropdown')}>
-      <label>{name}</label>
+      {label ? <label>{label}</label> : null}
 
-      <select value={value} onChange={onChange}>
+      <select name={name} value={value} onChange={onChange}>
         <option value='init' disabled>
           {placeholder}
         </option>
