@@ -4,8 +4,17 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Input = ({ name, label, type, placeholder, setParentState }) => {
+const Input = ({
+  name,
+  label,
+  type,
+  placeholder,
+  parentValue,
+  setParentState,
+}) => {
   const [value, setValue] = useState('');
+
+  // console.log(parentValue);
 
   const onChange = (event) => {
     setValue(() => event.target.value);
@@ -21,7 +30,7 @@ const Input = ({ name, label, type, placeholder, setParentState }) => {
         name={name}
         type={type}
         placeholder={placeholder}
-        value={value}
+        value={parentValue}
         onChange={onChange}
       />
     </div>
