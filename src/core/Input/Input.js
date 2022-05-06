@@ -4,11 +4,14 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Input = ({ name, label, type, placeholder }) => {
+const Input = ({ name, label, type, placeholder, setParentState }) => {
   const [value, setValue] = useState('');
 
   const onChange = (event) => {
     setValue(() => event.target.value);
+    if (setParentState) {
+      setParentState(event.target.value);
+    }
   };
 
   return (
