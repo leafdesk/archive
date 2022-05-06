@@ -1,23 +1,39 @@
 import React, { useState, useEffect } from 'react';
 
-function Hello() {
-  function effectFn() {
-    console.log('created');
-  }
-  useEffect(effectFn, []);
-  return <h1>Hello</h1>;
-}
+const App = () => {
+  const [input, setInput] = useState('');
+  const [tasks, setTasks] = useState([]);
 
-function App() {
-  const [showing, setShowing] = useState(false);
-  const onClick = () => setShowing((prev) => !prev);
+  const onChange = (event) => setInput(event.target.value);
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if (input === '') return;
+    setInput('');
+    setTasks((current) => [input, ...current]);
+  };
 
   return (
-    <div>
-      <button onClick={onClick}>{showing ? 'Hide' : 'Show'}</button>
-      {showing ? <Hello /> : null}
-    </div>
+    <>
+      <p>Todolist w/ React ({tasks.length})</p>
+      <form onSubmit={onSubmit}>
+        <input
+          value={input}
+          onChange={onChange}
+          type='text'
+          placeholder='Write your todos...'
+        />
+        <button>Add</button>
+      </form>
+      <br />
+      <hr />
+      <br />
+      <ul>
+        {tasks.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </>
   );
-}
+};
 
 export default App;
