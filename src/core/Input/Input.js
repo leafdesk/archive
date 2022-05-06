@@ -14,8 +14,6 @@ const Input = ({
 }) => {
   const [value, setValue] = useState('');
 
-  // console.log(parentValue);
-
   const onChange = (event) => {
     setValue(() => event.target.value);
     if (setParentState) {
