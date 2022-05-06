@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Dropdown from './core/Dropdown/Dropdown.js';
-import Designs from './components/Designs/Designs.js';
+import InputDesigns from './components/Designs/InputDesigns';
+import ButtonDesigns from './components/Designs/ButtonDesigns.js';
+import Laboratory from './components/Laboratory/Laboratory.js';
 
-const menuList = ['Designs'];
+const menuList = ['Input Designs', 'Button Designs', 'Laboratory'];
 
 function App() {
   const [menu, setMenu] = useState();
@@ -24,6 +26,7 @@ function App() {
         setParentState={onChange}
       />
       <br />
+      {/* hr 대신 아래 div 사용 */}
       <div
         style={{
           height: 1,
@@ -32,7 +35,9 @@ function App() {
       />
       <br />
 
-      {menu === 'Designs' ? <Designs /> : null}
+      {menu === 'Input Designs' ? <InputDesigns /> : null}
+      {menu === 'Button Designs' ? <ButtonDesigns /> : null}
+      {menu === 'Laboratory' ? <Laboratory /> : null}
     </div>
   );
 }
