@@ -4,8 +4,15 @@ import InputDesigns from './components/Designs/InputDesigns';
 import ButtonDesigns from './components/Designs/ButtonDesigns.js';
 import TodoList from './components/TodoList/TodoList.js';
 import Laboratory from './components/Laboratory/Laboratory.js';
+import CoinTracker from './components/CoinTracker/CoinTracker';
 
-const menuList = ['Input Designs', 'Button Designs', 'Todo List', 'Laboratory'];
+const menuList = [
+  'Input Designs',
+  'Button Designs',
+  'Todo List',
+  'Coin Tracker',
+  'Laboratory',
+];
 
 function App() {
   const [menu, setMenu] = useState();
@@ -40,6 +47,7 @@ function App() {
       {menu === 'Button Designs' ? <ButtonDesigns /> : null}
       {menu === 'Todo List' ? <TodoList /> : null}
       {menu === 'Laboratory' ? <Laboratory /> : null}
+      {menu === 'Coin Tracker' ? <CoinTracker /> : null}
     </div>
   );
 }
