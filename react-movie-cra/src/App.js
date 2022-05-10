@@ -1,37 +1,43 @@
 import React, { useState, useEffect } from 'react';
 
 const App = () => {
-  const [input, setInput] = useState('');
-  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState([]);
 
-  const onChange = (event) => setInput(event.target.value);
-  const onSubmit = (event) => {
-    event.preventDefault();
-    if (input === '') return;
-    setInput('');
-    setTasks((current) => [input, ...current]);
+  const getMovies = async () => {
+    const json = await (
+      await fetch(
+        'https://yts.mx/api/v2/list_movies.json?minimun_rating=8.5&sort_by=year'
+      )
+    ).json();
+
+    setMovies(json.data.movies);
+    setLoading(false);
   };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  console.log(movies);
 
   return (
     <>
-      <p>Todolist w/ React ({tasks.length})</p>
-      <form onSubmit={onSubmit}>
-        <input
-          value={input}
-          onChange={onChange}
-          type='text'
-          placeholder='Write your todos...'
-        />
-        <button>Add</button>
-      </form>
-      <br />
-      <hr />
-      <br />
-      <ul>
-        {tasks.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        movies.map((movie) => (
+          <div key={movie.id}>
+            <h3>{movie.title}</h3>
+            <p>{movie.summary}</p>
+            <ul>
+              {movie.genres.map((genre) => (
+                <li key={genre}>{genre}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      )}
     </>
   );
 };
