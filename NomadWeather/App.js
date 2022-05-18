@@ -6,15 +6,17 @@ import { View, Text, Dimensions, StyleSheet, ScrollView } from 'react-native';
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 export default function App() {
-  const [location, setLocation] = useState(null);
+  const [city, setCity] = useState('Loading...');
   const [ok, setOk] = useState(true);
 
-  const ask = async () => {
+  const getWeather = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
     if (!granted) setOk(false);
+
     const {
       coords: { latitude, longitude },
     } = await Location.getCurrentPositionAsync({ accuracy: 5 });
+
     const location = await Location.reverseGeocodeAsync(
       {
         latitude,
@@ -23,17 +25,17 @@ export default function App() {
       { useGoogleMaps: false }
     );
 
-    console.log(location);
+    setCity(location[0].city);
   };
 
   useEffect(() => {
-    ask();
+    getWeather();
   }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.city}>
-        <Text style={styles.cityName}>Seoul</Text>
+        <Text style={styles.cityName}>{city}</Text>
       </View>
       <ScrollView
         pagingEnabled
