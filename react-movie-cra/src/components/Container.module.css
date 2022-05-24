@@ -1,0 +1,8 @@
+.Container {
+  margin: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+/*# sourceMappingURL=Container.module.css.map */
