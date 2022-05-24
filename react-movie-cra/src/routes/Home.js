@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Container from '../components/Container';
 import Movie from '../components/Movie';
 
 const Home = () => {
@@ -23,7 +24,7 @@ const Home = () => {
   console.log(movies);
 
   return (
-    <>
+    <Container>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -38,7 +39,7 @@ const Home = () => {
           />
         ))
       )}
-    </>
+    </Container>
   );
 };
 
