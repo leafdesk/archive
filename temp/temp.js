@@ -1,7 +1,2 @@
-setTimeout(() => {
-  console.log('First');
-
-  setTimeout(() => {
-    console.log('Second');
-  }, 1000);
-}, 2000);
+console.log(__filename);
+console.log(__dirname);
