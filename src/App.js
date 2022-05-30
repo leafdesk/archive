@@ -1,6 +1,6 @@
 import FlexBox from './core/FlexBox/FlexBox';
 import Sidebar from './components/Sidebar/Sidebar';
-import MobileDesigns from './components/Tabs/MobileDesigns';
+import MobileDesigns from './pages/MobileDesigns';
 
 import styles from './App.module.css';
 import classNames from 'classnames/bind';
