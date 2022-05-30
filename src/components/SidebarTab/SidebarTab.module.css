@@ -1,0 +1,16 @@
+.SidebarTab {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  padding: 8px 32px;
+  cursor: pointer;
+}
+.SidebarTab .icon {
+  padding: 0 16px 0 0;
+}
+.SidebarTab span {
+  font-size: 1.02em;
+  color: #606060;
+}
+
+/*# sourceMappingURL=SidebarTab.module.css.map */
