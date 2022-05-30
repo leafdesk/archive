@@ -25,6 +25,7 @@ const MobileDesigns = () => {
     <div
       style={{
         width: 360,
+        margin: '80px 0 0',
       }}
     >
       <Dropdown
