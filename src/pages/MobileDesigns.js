@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Dropdown from '../../core/Dropdown/Dropdown.js';
-import InputDesigns from '../Designs/InputDesigns';
-import ButtonDesigns from '../Designs/ButtonDesigns.js';
-import TodoList from '../TodoList/TodoList.js';
-import Laboratory from '../Laboratory/Laboratory.js';
-import CoinTracker from '../CoinTracker/CoinTracker';
+import Dropdown from '../core/Dropdown/Dropdown.js';
+import InputDesigns from '../components/Designs/InputDesigns';
+import ButtonDesigns from '../components/Designs/ButtonDesigns.js';
+import TodoList from '../components/TodoList/TodoList.js';
+import Laboratory from '../components/Laboratory/Laboratory.js';
+import CoinTracker from '../components/CoinTracker/CoinTracker';
 
 const menuList = [
   'Input Designs',
