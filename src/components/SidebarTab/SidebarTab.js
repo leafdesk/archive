@@ -3,10 +3,13 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const SidebarTab = ({ name }) => {
+const SidebarTab = ({ name, onClick, isFocused, icon }) => {
   return (
-    <div className={cx('SidebarTab')}>
-      <div className={cx('icon')}>◎</div>
+    <div
+      className={isFocused ? cx('SidebarTabFocused') : cx('SidebarTab')}
+      onClick={onClick}
+    >
+      <div className={cx('icon')}>{icon}</div>
       <span>{name}</span>
     </div>
   );
