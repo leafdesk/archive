@@ -1,18 +1,29 @@
-import { useState } from 'react';
+import useTabs from '../../hooks/useTabs.js';
 import SidebarTab from '../SidebarTab/SidebarTab.js';
+
 import styles from './Sidebar.module.css';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Sidebar = () => {
-  const [index, setIndex] = useState('Laboratory');
+const Sidebar = ({ tabs, setIndex }) => {
+  const { currentTab, setCurrentIndex } = useTabs(0, tabs);
+  currentTab.isFocused = true;
 
   return (
     <div className={cx('Sidebar')}>
-      <SidebarTab name='Laboratory' />
-      <SidebarTab name='Category 1' />
-      <SidebarTab name='Category 2' />
+      {tabs.map((tab, index) => (
+        <SidebarTab
+          key={index}
+          name={tab.name}
+          onClick={() => {
+            setCurrentIndex(index);
+            setIndex(index);
+          }}
+          isFocused={tab.isFocused}
+          icon={tab.icon}
+        />
+      ))}
     </div>
   );
 };
