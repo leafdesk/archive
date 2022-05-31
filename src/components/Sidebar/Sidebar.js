@@ -1,5 +1,6 @@
 import useTabs from '../../hooks/useTabs.js';
 import SidebarTab from '../SidebarTab/SidebarTab.js';
+import SidebarInfo from '../SidebarInfo/SidebarInfo.js';
 
 import styles from './Sidebar.module.css';
 import classNames from 'classnames/bind';
@@ -24,6 +25,7 @@ const Sidebar = ({ tabs, setIndex }) => {
           icon={tab.icon}
         />
       ))}
+      <SidebarInfo />
     </div>
   );
 };
