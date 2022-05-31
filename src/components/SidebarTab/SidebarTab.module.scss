@@ -1,18 +1,37 @@
 @import '../../core/utils/_color.scss';
 
-.SidebarTab {
+@mixin SidebarTabStyle {
   display: flex;
   align-items: center;
-  margin: 8px 0;
-  padding: 8px 32px;
+  padding: 12px 32px;
   cursor: pointer;
 
   .icon {
-    padding: 0 16px 0 0;
+    display: inline-block;
+    font-size: 1.2em;
+    padding: 4px 16px 0 0;
   }
 
   span {
-    font-size: 1.02em;
-    color: $gray-text;
+    font-size: 0.96em;
+  }
+}
+
+.SidebarTab {
+  @include SidebarTabStyle;
+  color: $lightgray-text;
+
+  span {
+    font-weight: 400;
+  }
+}
+
+.SidebarTabFocused {
+  @include SidebarTabStyle;
+  background-color: $lightgray-background;
+  color: $black-text;
+
+  span {
+    font-weight: 600;
   }
 }

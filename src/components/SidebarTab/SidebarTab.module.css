@@ -1,16 +1,40 @@
 .SidebarTab {
   display: flex;
   align-items: center;
-  margin: 8px 0;
-  padding: 8px 32px;
+  padding: 12px 32px;
   cursor: pointer;
+  color: #8f8989;
 }
 .SidebarTab .icon {
-  padding: 0 16px 0 0;
+  display: inline-block;
+  font-size: 1.2em;
+  padding: 4px 16px 0 0;
 }
 .SidebarTab span {
-  font-size: 1.02em;
-  color: #606060;
+  font-size: 0.96em;
+}
+.SidebarTab span {
+  font-weight: 400;
+}
+
+.SidebarTabFocused {
+  display: flex;
+  align-items: center;
+  padding: 12px 32px;
+  cursor: pointer;
+  background-color: #fafafa;
+  color: #333333;
+}
+.SidebarTabFocused .icon {
+  display: inline-block;
+  font-size: 1.2em;
+  padding: 4px 16px 0 0;
+}
+.SidebarTabFocused span {
+  font-size: 0.96em;
+}
+.SidebarTabFocused span {
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=SidebarTab.module.css.map */

@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["SidebarTab.module.scss","../../core/utils/_color.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA,OCLQ","file":"SidebarTab.module.css"}
+{"version":3,"sourceRoot":"","sources":["SidebarTab.module.scss","../../core/utils/_color.scss"],"names":[],"mappings":"AAmBA;EAhBE;EACA;EACA;EACA;EAeA,OCbe;;ADAf;EACE;EACA;EACA;;AAGF;EACE;;AAQF;EACE;;;AAIJ;EAzBE;EACA;EACA;EACA;EAwBA,kBC3BqB;ED4BrB,OCnBW;;ADJX;EACE;EACA;EACA;;AAGF;EACE;;AAkBF;EACE","file":"SidebarTab.module.css"}
