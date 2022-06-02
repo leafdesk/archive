@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FlexBox from './core/FlexBox/FlexBox';
 import Sidebar from './components/Sidebar/Sidebar';
-import ContentView from './components/ContentView/ContentView';
+import ContentView from './components/Container/ContentView/ContentView';
 import MobileHeader from './components/MobileHeader/MobileHeader';
 import MobileDesigns from './pages/MobileDesigns';
 
@@ -9,6 +9,7 @@ import { MdPalette, MdArticle } from 'react-icons/md';
 
 import styles from './App.module.css';
 import classNames from 'classnames/bind';
+import AppContainer from './components/Container/AppContainer/AppContainer';
 
 const cx = classNames.bind(styles);
 
@@ -39,13 +40,14 @@ const App = () => {
 
   return (
     <div className={cx('App')}>
-      <FlexBox>
+      <AppContainer>
         <Sidebar tabs={tabs} setIndex={setIndex} />
         <ContentView>
           <MobileHeader />
+          <div className={cx('blank')} />
           <FlexBox justifyContent='center'>{tabs[index].content}</FlexBox>
         </ContentView>
-      </FlexBox>
+      </AppContainer>
     </div>
   );
 };
