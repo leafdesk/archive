@@ -1,4 +1,5 @@
 @import '../../core/utils/_color.scss';
+@import '../../core/utils/_mixin.scss';
 
 .SidebarInfo {
   margin: 0 32px;
@@ -24,5 +25,9 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  @include laptop {
+    display: none;
   }
 }

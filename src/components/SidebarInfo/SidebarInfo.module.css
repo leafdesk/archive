@@ -21,5 +21,10 @@
 .SidebarInfo a:hover {
   text-decoration: underline;
 }
+@media (max-width: 992px) {
+  .SidebarInfo {
+    display: none;
+  }
+}
 
 /*# sourceMappingURL=SidebarInfo.module.css.map */

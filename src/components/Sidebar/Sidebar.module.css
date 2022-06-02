@@ -7,7 +7,8 @@
 }
 @media (max-width: 992px) {
   .Sidebar {
-    display: none;
+    padding: 54px 0 0;
+    height: auto;
   }
 }
 

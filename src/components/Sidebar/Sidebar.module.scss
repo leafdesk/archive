@@ -9,6 +9,8 @@
   position: relative;
 
   @include laptop {
-    display: none;
+    // display: none;
+    padding: 54px 0 0;
+    height: auto;
   }
 }
