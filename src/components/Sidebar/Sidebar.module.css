@@ -5,5 +5,10 @@
   border-right: 2px solid #f0f0f0;
   position: relative;
 }
+@media (max-width: 992px) {
+  .Sidebar {
+    display: none;
+  }
+}
 
 /*# sourceMappingURL=Sidebar.module.css.map */

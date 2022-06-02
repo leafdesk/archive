@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["Sidebar.module.scss","../../core/utils/_color.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA,kBCLiB;EDMjB;EACA","file":"Sidebar.module.css"}
+{"version":3,"sourceRoot":"","sources":["Sidebar.module.scss","../../core/utils/_color.scss","../../core/utils/_mixin.scss"],"names":[],"mappings":"AAGA;EACE;EACA;EACA,kBCNiB;EDOjB;EACA;;AEOA;EFZF;IAQI","file":"Sidebar.module.css"}
