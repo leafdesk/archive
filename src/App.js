@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import FlexBox from './core/FlexBox/FlexBox';
 import Sidebar from './components/Sidebar/Sidebar';
+import ContentView from './components/ContentView/ContentView';
 import MobileDesigns from './pages/MobileDesigns';
 
 import { MdPalette, MdArticle } from 'react-icons/md';
 
 import styles from './App.module.css';
 import classNames from 'classnames/bind';
+import MobileHeader from './components/MobileHeader/MobileHeader';
 
 const cx = classNames.bind(styles);
 
@@ -39,7 +41,10 @@ const App = () => {
     <div className={cx('App')}>
       <FlexBox>
         <Sidebar tabs={tabs} setIndex={setIndex} />
-        <FlexBox justifyContent='center'>{tabs[index].content}</FlexBox>
+        <ContentView>
+          <MobileHeader />
+          <FlexBox justifyContent='center'>{tabs[index].content}</FlexBox>
+        </ContentView>
       </FlexBox>
     </div>
   );
