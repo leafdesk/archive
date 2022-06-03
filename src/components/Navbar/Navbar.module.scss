@@ -10,7 +10,13 @@
 
   @include laptop {
     // display: none;
-    padding: 54px 0 0;
+    width: 100%;
     height: auto;
+    position: absolute;
+    top: 54px;
+    z-index: 1;
+    box-sizing: border-box;
+    border-right: none;
+    border-bottom: 2px solid $lightgray-background-secondary;
   }
 }
