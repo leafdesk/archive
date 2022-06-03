@@ -7,12 +7,14 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Navbar = ({ tabs, setIndex }) => {
+const Navbar = ({ tabs, setIndex, isOpened }) => {
   const { currentTab, setCurrentIndex } = useTabs(0, tabs);
   currentTab.isFocused = true;
 
+  console.log(isOpened);
+
   return (
-    <div className={cx('Navbar')}>
+    <div className={isOpened ? cx('NavbarOpened') : cx('NavbarClosed')}>
       {tabs.map((tab, index) => (
         <NavbarTab
           key={index}
