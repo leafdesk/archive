@@ -1,4 +1,4 @@
-.SidebarInfo {
+.NavbarInfo {
   margin: 0 32px;
   padding: 16px 0 32px;
   border-top: 1px solid #f0f0f0;
@@ -8,23 +8,23 @@
   left: 0;
   right: 0;
 }
-.SidebarInfo h3 {
+.NavbarInfo h3 {
   font-size: 1.04em;
   font-weight: 700;
   color: #333333;
 }
-.SidebarInfo a {
+.NavbarInfo a {
   font-size: 0.9em;
   color: #8f8989;
   text-decoration: none;
 }
-.SidebarInfo a:hover {
+.NavbarInfo a:hover {
   text-decoration: underline;
 }
 @media (max-width: 992px) {
-  .SidebarInfo {
+  .NavbarInfo {
     display: none;
   }
 }
 
-/*# sourceMappingURL=SidebarInfo.module.css.map */
+/*# sourceMappingURL=NavbarInfo.module.css.map */

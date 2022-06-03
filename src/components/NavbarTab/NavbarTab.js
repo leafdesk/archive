@@ -1,12 +1,12 @@
-import styles from './SidebarTab.module.css';
+import styles from './NavbarTab.module.css';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const SidebarTab = ({ name, onClick, isFocused, icon }) => {
+const NavbarTab = ({ name, onClick, isFocused, icon }) => {
   return (
     <div
-      className={isFocused ? cx('SidebarTabFocused') : cx('SidebarTab')}
+      className={isFocused ? cx('NavbarTabFocused') : cx('NavbarTab')}
       onClick={onClick}
     >
       <div className={cx('icon')}>{icon}</div>
@@ -15,4 +15,4 @@ const SidebarTab = ({ name, onClick, isFocused, icon }) => {
   );
 };
 
-export default SidebarTab;
+export default NavbarTab;

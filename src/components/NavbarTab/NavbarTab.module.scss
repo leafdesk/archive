@@ -1,6 +1,6 @@
 @import '../../core/utils/_color.scss';
 
-@mixin SidebarTabStyle {
+@mixin NavbarTabStyle {
   display: flex;
   align-items: center;
   padding: 12px 32px;
@@ -17,8 +17,8 @@
   }
 }
 
-.SidebarTab {
-  @include SidebarTabStyle;
+.NavbarTab {
+  @include NavbarTabStyle;
   color: $lightgray-text;
 
   span {
@@ -26,8 +26,8 @@
   }
 }
 
-.SidebarTabFocused {
-  @include SidebarTabStyle;
+.NavbarTabFocused {
+  @include NavbarTabStyle;
   background-color: $lightgray-background;
   color: $black-text;
 

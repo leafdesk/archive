@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import FlexBox from './core/FlexBox/FlexBox';
-import Sidebar from './components/Sidebar/Sidebar';
+import Navbar from './components/Navbar/Navbar';
 import ContentView from './components/Container/ContentView/ContentView';
 import MobileHeader from './components/MobileHeader/MobileHeader';
 import MobileDesigns from './pages/MobileDesigns';
@@ -41,7 +41,7 @@ const App = () => {
   return (
     <div className={cx('App')}>
       <AppContainer>
-        <Sidebar tabs={tabs} setIndex={setIndex} />
+        <Navbar tabs={tabs} setIndex={setIndex} />
         <ContentView>
           <MobileHeader />
           <div className={cx('blank')} />

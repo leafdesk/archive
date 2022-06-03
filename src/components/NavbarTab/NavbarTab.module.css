@@ -1,23 +1,23 @@
-.SidebarTab {
+.NavbarTab {
   display: flex;
   align-items: center;
   padding: 12px 32px;
   cursor: pointer;
   color: #8f8989;
 }
-.SidebarTab .icon {
+.NavbarTab .icon {
   display: inline-block;
   font-size: 1.2em;
   padding: 4px 16px 0 0;
 }
-.SidebarTab span {
+.NavbarTab span {
   font-size: 0.96em;
 }
-.SidebarTab span {
+.NavbarTab span {
   font-weight: 400;
 }
 
-.SidebarTabFocused {
+.NavbarTabFocused {
   display: flex;
   align-items: center;
   padding: 12px 32px;
@@ -25,16 +25,16 @@
   background-color: #fafafa;
   color: #333333;
 }
-.SidebarTabFocused .icon {
+.NavbarTabFocused .icon {
   display: inline-block;
   font-size: 1.2em;
   padding: 4px 16px 0 0;
 }
-.SidebarTabFocused span {
+.NavbarTabFocused span {
   font-size: 0.96em;
 }
-.SidebarTabFocused span {
+.NavbarTabFocused span {
   font-weight: 600;
 }
 
-/*# sourceMappingURL=SidebarTab.module.css.map */
+/*# sourceMappingURL=NavbarTab.module.css.map */

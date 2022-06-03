@@ -1,20 +1,20 @@
 import useTabs from '../../hooks/useTabs.js';
-import SidebarTab from '../SidebarTab/SidebarTab.js';
-import SidebarInfo from '../SidebarInfo/SidebarInfo.js';
+import NavbarTab from '../NavbarTab/NavbarTab.js';
+import NavbarInfo from '../NavbarInfo/NavbarInfo.js';
 
-import styles from './Sidebar.module.css';
+import styles from './Navbar.module.css';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Sidebar = ({ tabs, setIndex }) => {
+const Navbar = ({ tabs, setIndex }) => {
   const { currentTab, setCurrentIndex } = useTabs(0, tabs);
   currentTab.isFocused = true;
 
   return (
-    <div className={cx('Sidebar')}>
+    <div className={cx('Navbar')}>
       {tabs.map((tab, index) => (
-        <SidebarTab
+        <NavbarTab
           key={index}
           name={tab.name}
           onClick={() => {
@@ -25,9 +25,9 @@ const Sidebar = ({ tabs, setIndex }) => {
           icon={tab.icon}
         />
       ))}
-      <SidebarInfo />
+      <NavbarInfo />
     </div>
   );
 };
 
-export default Sidebar;
+export default Navbar;

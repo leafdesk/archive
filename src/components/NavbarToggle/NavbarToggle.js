@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { HiMenu } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
-import styles from './SidebarToggle.module.css';
+import styles from './NavbarToggle.module.css';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const SidebarToggle = () => {
+const NavbarToggle = () => {
   const [isOpened, setIsOpened] = useState(false);
 
   const onClick = () => {
@@ -14,10 +14,10 @@ const SidebarToggle = () => {
   };
 
   return (
-    <div className={cx('SidebarToggle')} onClick={onClick}>
+    <div className={cx('NavbarToggle')} onClick={onClick}>
       {isOpened ? <MdClose /> : <HiMenu />}
     </div>
   );
 };
 
-export default SidebarToggle;
+export default NavbarToggle;
