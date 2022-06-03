@@ -6,15 +6,17 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const NavbarToggle = () => {
+const NavbarToggle = ({ setMenuState }) => {
   const [isOpened, setIsOpened] = useState(false);
 
-  const onClick = () => {
-    setIsOpened(() => !isOpened);
-  };
-
   return (
-    <div className={cx('NavbarToggle')} onClick={onClick}>
+    <div
+      className={cx('NavbarToggle')}
+      onClick={() => {
+        setMenuState(!isOpened);
+        setIsOpened(!isOpened);
+      }}
+    >
       {isOpened ? <MdClose /> : <HiMenu />}
     </div>
   );
