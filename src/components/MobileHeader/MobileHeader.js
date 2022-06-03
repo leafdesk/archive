@@ -5,11 +5,11 @@ import FlexBox from '../../core/FlexBox/FlexBox';
 
 const cx = classNames.bind(styles);
 
-const MobileHeader = () => {
+const MobileHeader = ({ setMenuState }) => {
   return (
     <div className={cx('MobileHeader')}>
       <FlexBox alignItems='center' justifyContent='space-between'>
-        <NavbarToggle />
+        <NavbarToggle setMenuState={setMenuState} />
         <p>Test Logo</p>
         <div>User Icon</div>
       </FlexBox>
