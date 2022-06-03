@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 
 const App = () => {
   const [index, setIndex] = useState(0);
-  // console.log(index);
+  const [menuState, setMenuState] = useState(false);
 
   const tabs = [
     {
@@ -41,9 +41,9 @@ const App = () => {
   return (
     <div className={cx('App')}>
       <AppContainer>
-        <Navbar tabs={tabs} setIndex={setIndex} />
+        <Navbar tabs={tabs} setIndex={setIndex} isOpened={menuState} />
         <ContentView>
-          <MobileHeader />
+          <MobileHeader setMenuState={setMenuState} />
           <div className={cx('blank')} />
           <FlexBox justifyContent='center'>{tabs[index].content}</FlexBox>
         </ContentView>
