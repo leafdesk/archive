@@ -1,16 +1,16 @@
 @import '../../core/utils/_color.scss';
 @import '../../core/utils/_mixin.scss';
 
-.Navbar {
+@mixin NavbarStyle {
   min-width: 260px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: $white-background;
   border-right: 2px solid $lightgray-background-secondary;
   position: relative;
 
   @include laptop {
-    // display: none;
     width: 100%;
+    min-height: 0;
     height: auto;
     position: absolute;
     top: 54px;
@@ -18,5 +18,17 @@
     box-sizing: border-box;
     border-right: none;
     border-bottom: 2px solid $lightgray-background-secondary;
+  }
+}
+
+.NavbarOpened {
+  @include NavbarStyle;
+}
+
+.NavbarClosed {
+  @include NavbarStyle;
+
+  @include laptop {
+    display: none;
   }
 }
