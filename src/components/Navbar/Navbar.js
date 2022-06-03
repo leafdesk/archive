@@ -11,8 +11,6 @@ const Navbar = ({ tabs, setIndex, isOpened }) => {
   const { currentTab, setCurrentIndex } = useTabs(0, tabs);
   currentTab.isFocused = true;
 
-  console.log(isOpened);
-
   return (
     <div className={isOpened ? cx('NavbarOpened') : cx('NavbarClosed')}>
       {tabs.map((tab, index) => (
