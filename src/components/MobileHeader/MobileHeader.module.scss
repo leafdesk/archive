@@ -15,5 +15,6 @@
 
   @include laptop {
     display: block;
+    position: sticky;
   }
 }

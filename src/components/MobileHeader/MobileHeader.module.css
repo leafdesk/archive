@@ -13,6 +13,7 @@
 @media (max-width: 992px) {
   .MobileHeader {
     display: block;
+    position: sticky;
   }
 }
 
