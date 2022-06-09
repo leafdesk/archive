@@ -3,7 +3,6 @@ import Dropdown from '../core/Dropdown/Dropdown.js';
 import InputDesigns from '../components/Designs/InputDesigns';
 import ButtonDesigns from '../components/Designs/ButtonDesigns.js';
 import TodoList from '../components/TodoList/TodoList.js';
-import Laboratory from '../components/Laboratory/Laboratory.js';
 import CoinTracker from '../components/CoinTracker/CoinTracker';
 
 const menuList = [
@@ -11,10 +10,9 @@ const menuList = [
   'Button Designs',
   'Todo List',
   'Coin Tracker',
-  'Laboratory',
 ];
 
-const MobileDesigns = () => {
+const Laboratory = () => {
   const [menu, setMenu] = useState();
 
   const onChange = (menu) => {
@@ -46,10 +44,9 @@ const MobileDesigns = () => {
       {menu === 'Input Designs' ? <InputDesigns /> : null}
       {menu === 'Button Designs' ? <ButtonDesigns /> : null}
       {menu === 'Todo List' ? <TodoList /> : null}
-      {menu === 'Laboratory' ? <Laboratory /> : null}
       {menu === 'Coin Tracker' ? <CoinTracker /> : null}
     </div>
   );
 };
 
-export default MobileDesigns;
+export default Laboratory;
