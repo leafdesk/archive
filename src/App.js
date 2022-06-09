@@ -3,9 +3,10 @@ import FlexBox from './core/FlexBox/FlexBox';
 import Navbar from './components/Navbar/Navbar';
 import ContentView from './components/Container/ContentView/ContentView';
 import MobileHeader from './components/MobileHeader/MobileHeader';
-import MobileDesigns from './pages/MobileDesigns';
+import Laboratory from './pages/Laboratory';
 
 import { MdPalette, MdArticle } from 'react-icons/md';
+import { RiFlaskFill } from 'react-icons/ri';
 
 import styles from './App.module.css';
 import classNames from 'classnames/bind';
@@ -19,16 +20,16 @@ const App = () => {
 
   const tabs = [
     {
-      name: 'Mobile Designs',
-      content: <MobileDesigns />,
+      name: 'Laboratory',
+      content: <Laboratory />,
       isFocused: false,
-      icon: <MdPalette />,
+      icon: <RiFlaskFill />,
     },
     {
-      name: 'Category 1',
+      name: 'Design Guide',
       content: 'category 1',
       isFocused: false,
-      icon: <MdArticle />,
+      icon: <MdPalette />,
     },
     {
       name: 'Category 2',
