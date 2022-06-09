@@ -4,8 +4,9 @@ import Navbar from './components/Navbar/Navbar';
 import ContentView from './components/Container/ContentView/ContentView';
 import MobileHeader from './components/MobileHeader/MobileHeader';
 import Laboratory from './pages/Laboratory';
+import Dashboard from './pages/Dashboard';
 
-import { MdPalette, MdArticle } from 'react-icons/md';
+import { MdDashboard, MdPalette, MdArticle } from 'react-icons/md';
 import { RiFlaskFill } from 'react-icons/ri';
 
 import styles from './App.module.css';
@@ -19,6 +20,12 @@ const App = () => {
   const [menuState, setMenuState] = useState(false);
 
   const tabs = [
+    {
+      name: 'Dashboard',
+      content: <Dashboard />,
+      isFocused: false,
+      icon: <MdDashboard />,
+    },
     {
       name: 'Laboratory',
       content: <Laboratory />,
