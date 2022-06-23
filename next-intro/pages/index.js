@@ -1,6 +1,10 @@
 import Seo from '../components/Seo';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Home = ({ results }) => {
+  const router = useRouter();
+
   return (
     <>
       <div className='container'>
@@ -8,7 +12,11 @@ const Home = ({ results }) => {
         {results?.map((movie) => (
           <div className='movie' key={movie.id}>
             <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-            <h4>{movie.original_title}</h4>
+            <h4>
+              <Link href={`/movies/${movie.id}`}>
+                <a>{movie.original_title}</a>
+              </Link>
+            </h4>
           </div>
         ))}
       </div>
