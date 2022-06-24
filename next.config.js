@@ -12,8 +12,8 @@ module.exports = withPWA({
     runtimeCaching,
   },
   images: {
-    domains: ["imagedelivery.net"],
-    formats: ['image/avif', 'image/webp']
+    domains: ['imagedelivery.net'],
+    formats: ['image/avif', 'image/webp'],
   },
   async rewrites() {
     return {
@@ -31,6 +31,6 @@ module.exports = withPWA({
           destination: `https://www.googleapis.com/youtube/v3/search/?key=${API_KEY}:path*`,
         },
       ],
-    }
+    };
   },
-})
+});
