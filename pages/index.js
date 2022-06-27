@@ -605,10 +605,11 @@ export default function Home() {
             })}
           </Swiper>
         </div>
-      </div>
 
-      {/* 성락교회 미래세대 */}
-      <Department />
+        {/* 성락교회 미래세대 */}
+        <Department />
+      </div>
+      {/* end of container */}
 
       {/* 하단 메뉴 바 */}
       <HomeBar />
