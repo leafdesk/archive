@@ -2,7 +2,7 @@
 import { SWRConfig } from 'swr';
 
 // 글로벌 스타일
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import '../styles/tailwind.css';
 
 // 필요한 컴포넌트들
