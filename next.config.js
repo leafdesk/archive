@@ -1,8 +1,12 @@
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+const path = require('path');
 
 module.exports = withPWA({
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
   env: {
     API_KEY: process.env.NEXT_PUBLIC_YOUTUBE_API_KEY,
   },
