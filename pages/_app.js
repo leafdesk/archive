@@ -29,7 +29,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta name='theme-color' content='#ffffff' />
         <meta name='mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-capable' content='yes' />
-        <title>SRAPP</title>
+        <title>SRAPP developers</title>
         <link rel='manifest' href='/manifest.json' />
 
         <link
