@@ -1,10 +1,32 @@
-import { useState } from 'react';
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 const Praises = () => {
+  const router = useRouter();
+
   const [praiseDataPrc, setPraiseDataPrc] = useState([]);
   const [praiseDataPro, setPraiseDataPro] = useState([]);
+
+  const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+  // 성가대
+  const API_URL_PRC = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=6&playlistId=PLCNxYye_JJpZu77kdDQL8br9UXmYybrw7`;
+  // 헌금송
+  const API_URL_PRO = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=6&playlistId=PLCNxYye_JJpZ0jAa8IiITarzB-YF6aYdl`;
+
+  const getOnData = async () => {
+    const dataPrc = await axios.get(API_URL_PRC);
+    setPraiseDataPrc(dataPrc.data.items);
+
+    const dataPro = await axios.get(API_URL_PRO);
+    setPraiseDataPro(dataPro.data.items);
+  };
+
+  useEffect(() => {
+    getOnData();
+  }, []);
 
   return (
     <div className='section'>

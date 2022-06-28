@@ -38,10 +38,6 @@ export default function Home() {
   const API_URL_ONB = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=5&playlistId=PLCNxYye_JJpZKRGb7hy_FJ1OIv4fxTF7S`;
   // 온3분
   const API_URL_ONS = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=5&playlistId=PLCNxYye_JJpZmSoNBoZdnZ0CnpEGh3pQA`;
-  // 성가대
-  const API_URL_PRC = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=6&playlistId=PLCNxYye_JJpZu77kdDQL8br9UXmYybrw7`;
-  // 헌금송
-  const API_URL_PRO = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=6&playlistId=PLCNxYye_JJpZ0jAa8IiITarzB-YF6aYdl`;
 
   const date = new Date();
   const week = ['일', '월', '화', '수', '목', '금', '토'];
@@ -127,12 +123,6 @@ export default function Home() {
 
     const dataOns = await axios.get(API_URL_ONS);
     setWeekDataOns(dataOns.data.items);
-
-    const dataPrc = await axios.get(API_URL_PRC);
-    setPraiseDataPrc(dataPrc.data.items);
-
-    const dataPro = await axios.get(API_URL_PRO);
-    setPraiseDataPro(dataPro.data.items);
   };
 
   const getWeekData = (day) => {
