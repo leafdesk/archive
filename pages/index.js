@@ -18,7 +18,7 @@ import shortsMain from '../public/images/shorts_main.jpg';
 import mdBanner from '../public/icons/md_banner2.png';
 
 // 사용자 정의 컴포넌트 import
-import Praises from '../src/components/Praises/Praises';
+import Praise from '../src/components/Praise/Praise';
 import Department from '../src/components/Department/Department';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -265,7 +265,6 @@ export default function Home() {
             <Loading />
           </div>
         )}
-
         <div className={liveDatas.videoId ? 'section pt0' : 'section pt25'}>
           <div className='title'>주중 콘텐츠</div>
           <div className='days_wrap'>
@@ -435,7 +434,6 @@ export default function Home() {
             </ul>
           </div>
         </div>
-
         <div className='section quick_wrap'>
           {/* <div className="title">빠른접근</div> */}
           <ul className='quick_menu'>
@@ -516,13 +514,12 @@ export default function Home() {
             </li>
           </ul>
         </div>
-
         <div className='mdbanner'>
           <Image src={mdBanner} placeholder='blur' quality={100} />
         </div>
 
         {/* 은혜로운 찬양 */}
-        <Praises />
+        <Praise />
 
         {/* 성락교회 미래세대 */}
         <Department />
