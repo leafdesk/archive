@@ -20,6 +20,7 @@ import mdBanner from '../public/icons/md_banner2.png';
 // 사용자 정의 컴포넌트 import
 import Praise from '../src/components/Praise/Praise';
 import Department from '../src/components/Department/Department';
+import QuickMenu from '../src/components/QuickMenu/QuickMenu';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -434,86 +435,11 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div className='section quick_wrap'>
-          {/* <div className="title">빠른접근</div> */}
-          <ul className='quick_menu'>
-            <li
-              onClick={() => {
-                router.push('/sermonmain');
-              }}
-            >
-              <div className='img'>
-                <img src='/icons/ico_sermon_new.svg' alt='예배' />
-              </div>
-              <div className='txt'>예배</div>
-            </li>
-            <li
-              onClick={() => {
-                router.push('/praisemain');
-              }}
-            >
-              <div className='img'>
-                <img src='/icons/ico_quick_praise_new.svg' alt='찬양' />
-              </div>
-              <div className='txt'>찬양</div>
-            </li>
-            <li
-              onClick={() => {
-                router.push('/returnMain');
-              }}
-            >
-              <div className='img'>
-                <img src='/icons/ico_return.svg' alt='환언특강' />
-              </div>
-              <div className='txt'>환언특강</div>
-            </li>
-            <li
-              onClick={() => {
-                router.push('/onmain');
-              }}
-            >
-              <div className='img'>
-                <img src='/icons/ico_quick_onseries.svg' alt='온시리즈' />
-              </div>
-              <div className='txt'>온시리즈</div>
-            </li>
-            <li
-              onClick={() => {
-                router.push('/faith');
-              }}
-            >
-              <div className='img'>
-                <img src='/icons/ico_shorts.svg' alt='1분은혜' />
-              </div>
-              <div className='txt'>1분은혜</div>
-            </li>
-            <li
-              onClick={() => {
-                router.push('/weekly');
-              }}
-            >
-              <div className='img'>
-                <img src='/icons/ico_quick_weekly2.svg' alt='주보' />
-              </div>
-              <div className='txt'>주보</div>
-            </li>
-            {/* 
-            <li onClick={() => { router.push("/"); }}>
-              <div className="img"></div>
-              <div className="txt">교회소식</div>
-            </li> */}
-            <li
-              onClick={() => {
-                router.push('/offering');
-              }}
-            >
-              <div className='img'>
-                <img src='/icons/ico_quick_offering.svg' alt='헌금안내' />
-              </div>
-              <div className='txt'>헌금안내</div>
-            </li>
-          </ul>
-        </div>
+
+        {/* 퀵 메뉴 7개 */}
+        <QuickMenu />
+
+        {/* 교회 표어 */}
         <div className='mdbanner'>
           <Image src={mdBanner} placeholder='blur' quality={100} />
         </div>
