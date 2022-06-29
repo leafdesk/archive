@@ -47,6 +47,7 @@ const Praise = () => {
           let splitListDate = doc.snippet.publishedAt.split('T');
           let ListDate = splitListDate[0].split('-');
           let lDate = ListDate[0] + '. ' + ListDate[1] + '. ' + ListDate[2];
+
           return (
             <SwiperSlide className='movie_wrap' key={doc.id}>
               <div
@@ -73,12 +74,14 @@ const Praise = () => {
             </SwiperSlide>
           );
         })}
+
         {praiseDataPro.map((doc, i) => {
           let splitListTitle = doc.snippet.title.split('|');
           let ListTitle = splitListTitle[0];
           let splitListDate = doc.snippet.publishedAt.split('T');
           let ListDate = splitListDate[0].split('-');
           let lDate = ListDate[0] + '. ' + ListDate[1] + '. ' + ListDate[2];
+
           return (
             <SwiperSlide className='movie_wrap' key={doc.id}>
               <div
