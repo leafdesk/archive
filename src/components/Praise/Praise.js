@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-const Praises = () => {
+const Praise = () => {
   const router = useRouter();
 
   const [praiseDataPrc, setPraiseDataPrc] = useState([]);
@@ -108,4 +108,4 @@ const Praises = () => {
   );
 };
 
-export default Praises;
+export default Praise;
