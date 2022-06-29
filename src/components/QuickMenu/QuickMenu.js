@@ -42,12 +42,7 @@ const QuickMenu = () => {
           title='주보'
         />
 
-        {/* 
-            <li onClick={() => { router.push("/"); }}>
-              <div className="img"></div>
-              <div className="txt">교회소식</div>
-            </li> 
-        */}
+        {/* <QuickMenuItem pathname='/' imgSrc='' title='교회소식' /> */}
 
         <QuickMenuItem
           pathname='/offering'
