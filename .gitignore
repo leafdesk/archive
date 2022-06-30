@@ -39,3 +39,9 @@ yarn-error.log*
 # firebase
 /.firebase
 .firebaserc
+
+# pwa files
+/public/sw.js
+/public/sw.js.map
+/public/workbox-8b650d83.js
+/public/workbox-8b650d83.js.map
