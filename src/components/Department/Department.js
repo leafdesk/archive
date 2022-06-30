@@ -1,13 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
-
+import DepartmentItem from '../DepartmentItem/DepartmentItem';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/css';
-// import 'swiper/css/pagination';
-// import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper';
-// SwiperCore.use([Autoplay, Pagination, Navigation]);
-
-import bwmLogo from '../../../public/images/bwm_logo.png';
 
 import styles from './Department.module.scss';
 import classNames from 'classnames/bind';
@@ -19,6 +11,7 @@ const Department = () => {
     <>
       <div className='section pt0'>
         <div className='title'>성락교회 미래세대</div>
+
         <Swiper
           className={cn('Department')}
           spaceBetween={7}
@@ -27,58 +20,43 @@ const Department = () => {
           pagination={false}
         >
           <SwiperSlide className={cn('SwiperSlide')}>
-            <Link href='youtube://channel/UCkrWb-HCk3fA7szpbmLHTmw'>
-              <a>
-                <div className={cn('img')}>
-                  <Image src={bwmLogo} placeholder='blur' quality={100} />
-                </div>
-                <div className={cn('txt')}>청년부</div>
-              </a>
-            </Link>
+            <DepartmentItem
+              href='youtube://channel/UCkrWb-HCk3fA7szpbmLHTmw'
+              imgSrc='/images/bwm_logo.png'
+              title='청년부'
+            />
           </SwiperSlide>
 
           <SwiperSlide className={cn('SwiperSlide')}>
-            <Link href='youtube://channel/UCW6bF9L0ZK__Tlwl19B0FYQ'>
-              <a>
-                <div className={cn('img')}>
-                  <img src='../icons/thumb_cba.svg' alt='대학부' />
-                </div>
-                <div className={cn('txt')}>대학부</div>
-              </a>
-            </Link>
+            <DepartmentItem
+              href='youtube://channel/UCW6bF9L0ZK__Tlwl19B0FYQ'
+              imgSrc='/icons/thumb_cba.svg'
+              title='대학부'
+            />
           </SwiperSlide>
 
           <SwiperSlide className={cn('SwiperSlide')}>
-            <Link href='youtube://channel/UCcD3GeLh6aBwBN_A5yr4pEg'>
-              <a>
-                <div className={cn('img')}>
-                  <img src='../icons/thumb_high.svg' alt='고등부' />
-                </div>
-                <div className={cn('txt')}>고등부</div>
-              </a>
-            </Link>
+            <DepartmentItem
+              href='youtube://channel/UCcD3GeLh6aBwBN_A5yr4pEg'
+              imgSrc='/icons/thumb_high.svg'
+              title='고등부'
+            />
           </SwiperSlide>
 
           <SwiperSlide className={cn('SwiperSlide')}>
-            <Link href='youtube://channel/UCDzjhPXk9IypRuCopoFDvlg'>
-              <a>
-                <div className={cn('img')}>
-                  <img src='../icons/thumb_secondary.svg' alt='중등부' />
-                </div>
-                <div className={cn('txt')}>중등부</div>
-              </a>
-            </Link>
+            <DepartmentItem
+              href='youtube://channel/UCDzjhPXk9IypRuCopoFDvlg'
+              imgSrc='/icons/thumb_secondary.svg'
+              title='중등부'
+            />
           </SwiperSlide>
 
           <SwiperSlide className={cn('SwiperSlide')}>
-            <Link href='youtube://channel/UCVZgyTaNK1q-CKM481MO35A'>
-              <a>
-                <div className={cn('img')}>
-                  <img src='../icons/thumb_elementary.svg' alt='유치부' />
-                </div>
-                <div className={cn('txt')}>어린이부</div>
-              </a>
-            </Link>
+            <DepartmentItem
+              href='youtube://channel/UCVZgyTaNK1q-CKM481MO35A'
+              imgSrc='/icons/thumb_elementary.svg'
+              title='어린이부'
+            />
           </SwiperSlide>
         </Swiper>
       </div>
