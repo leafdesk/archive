@@ -1,13 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import YouTube from 'react-youtube';
 // import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper';
-import Loading from '../src/components/Loading';
-import Share from '../src/components/Share';
 import HomeBar from '../src/components/HomeBar';
 import useSWR from 'swr';
 import Image from 'next/image';
@@ -19,6 +16,7 @@ import WeekdayContent from '../src/components/WeekdayContent/WeekdayContent';
 import QuickMenu from '../src/components/QuickMenu/QuickMenu';
 import Praise from '../src/components/Praise/Praise';
 import Department from '../src/components/Department/Department';
+import SermonThisWeek from '../src/components/SermonThisWeek/SermonThisWeek';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -34,11 +32,7 @@ export default function Home() {
 
   const date = new Date();
   const week = ['일', '월', '화', '수', '목', '금', '토'];
-  const opts = {
-    width: '320px',
-    height: '200px',
-    playerVars: { autoplay: 1, rel: 0, modestbranding: 1 },
-  };
+
   const [isLoading, setIsLoading] = useState(true);
 
   const [liveDatas, setLiveDatas] = useState({
@@ -94,41 +88,8 @@ export default function Home() {
       <AppHeader />
 
       <div className='container'>
-        {isLoading === false ? (
-          <div className='section pt0'>
-            <div className='movie_wrap'>
-              <YouTube
-                videoId={liveDatas.videoId}
-                opts={opts}
-                containerClassName='iframe_wrap'
-              />
-              <div className='info'>
-                <Share
-                  title={liveDatas.title}
-                  thum='/images/kakao_def_new.jpg'
-                  vid={liveDatas.videoId}
-                />
-                <div
-                  className='tit pr25'
-                  onClick={() => {
-                    router.push(
-                      `/sermondetail?vid=${liveDatas.videoId}&vtit=${liveDatas.title}&vdate=${liveDatas.publishedAt}`,
-                      '/sermondetail'
-                    );
-                  }}
-                >
-                  <a href='#'>{liveDatas.title}</a>
-                </div>
-                <div className='date'>{liveDatas.publishedAt}</div>
-                <div className='preacher'>설교: 김성현 목사</div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className='loading_box'>
-            <Loading />
-          </div>
-        )}
+        {/* 이번 주 설교 */}
+        <SermonThisWeek isLoading={isLoading} liveDatas={liveDatas} />
 
         {/* 주중 콘텐츠 */}
         <WeekdayContent liveDatas={liveDatas} />
