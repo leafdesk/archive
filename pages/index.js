@@ -1,12 +1,9 @@
-import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper';
 import HomeBar from '../src/components/HomeBar';
-import useSWR from 'swr';
 import Image from 'next/image';
 import mdBanner from '../public/icons/md_banner2.png';
 
@@ -21,9 +18,6 @@ import SermonThisWeek from '../src/components/SermonThisWeek/SermonThisWeek';
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 export default function Home() {
-  const router = useRouter();
-  const { data } = useSWR('/api/contents');
-
   const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
   // 주일설교
   const API_URL_DEF = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=1&playlistId=PLCNxYye_JJpZXsl4cQEjzBWRUFSCb2MCE`;
