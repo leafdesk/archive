@@ -7,13 +7,13 @@ import HomeBar from '../src/components/HomeBar';
 import Image from 'next/image';
 import mdBanner from '../public/icons/md_banner2.png';
 
-// 사용자 정의 컴포넌트 import
+// 사용자 정의 컴포넌트
 import AppHeader from '../src/components/AppHeader/AppHeader';
+import SermonThisWeek from '../src/components/SermonThisWeek/SermonThisWeek';
 import WeekdayContent from '../src/components/WeekdayContent/WeekdayContent';
 import QuickMenu from '../src/components/QuickMenu/QuickMenu';
 import Praise from '../src/components/Praise/Praise';
 import Department from '../src/components/Department/Department';
-import SermonThisWeek from '../src/components/SermonThisWeek/SermonThisWeek';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -21,11 +21,8 @@ export default function Home() {
   const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
   // 주일설교
   const API_URL_DEF = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=1&playlistId=PLCNxYye_JJpZXsl4cQEjzBWRUFSCb2MCE`;
-  // 주일예배 1부 〔06:30 AM〕 · 3부 〔10:30 AM
+  // 주일예배 1부 〔06:30 AM〕 · 3부 〔10:30 AM〕
   const API_URL_SUN = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=2&playlistId=PLCNxYye_JJpYLa-0kkDLhDAw-Rzq3keT6`;
-
-  const date = new Date();
-  const week = ['일', '월', '화', '수', '목', '금', '토'];
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,6 +40,10 @@ export default function Home() {
     const videoTitle = '';
     const videoDate = '';
 
+    const date = new Date();
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
+
+    // date.getDay()가 반환하는 숫자는 week 배열의 인덱스와 같음
     if (week[date.getDay()] === '일') {
       api_data = await axios.get(API_URL_SUN);
       splitTitle = api_data.data.items[0].snippet.title.split('-');
@@ -62,6 +63,7 @@ export default function Home() {
       videoTitle = splitTitle[1].split('|');
       videoDate = splitDate[0].split('-');
     }
+
     setLiveDatas({
       videoId: api_data.data.items[0].snippet.resourceId.videoId,
       title: videoTitle[0],
@@ -69,6 +71,7 @@ export default function Home() {
       publishedAt: videoDate[0] + '. ' + videoDate[1] + '. ' + videoDate[2],
     });
 
+    // 라이브 데이터 로딩 끝
     setIsLoading(false);
   };
 
