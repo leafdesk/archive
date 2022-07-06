@@ -33,6 +33,8 @@ export default function Home() {
     publishedAt: '',
   });
 
+  console.log(axios.get(API_URL_SUN));
+
   const getLiveData = async () => {
     const api_data = {};
     const splitTitle = '';
