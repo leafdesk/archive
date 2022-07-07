@@ -25,7 +25,7 @@ export default function Home() {
   const API_URL_SUN = `https://www.googleapis.com/youtube/v3/playlistItems/?key=${API_KEY}&part=snippet,contentDetails&maxResults=2&playlistId=PLCNxYye_JJpYLa-0kkDLhDAw-Rzq3keT6`;
 
   const [isLoading, setIsLoading] = useState(true);
-
+  const [json, setJson] = useState({});
   const [liveDatas, setLiveDatas] = useState({
     videoId: '',
     title: '',
@@ -33,25 +33,14 @@ export default function Home() {
     publishedAt: '',
   });
 
-  console.log(axios.get(API_URL_SUN));
+  const date = new Date();
+  const week = ['일', '월', '화', '수', '목', '금', '토'];
 
-  const getLiveData = async () => {
-    const api_data = {};
-    const splitTitle = '';
-    const splitDate = '';
-    const videoTitle = '';
-    const videoDate = '';
-
-    const date = new Date();
-    const week = ['일', '월', '화', '수', '목', '금', '토'];
-
-    // date.getDay()가 반환하는 숫자는 week 배열의 인덱스와 같음
+  const getPlaylistItems = async () => {
     if (week[date.getDay()] === '일') {
-      api_data = await axios.get(API_URL_SUN);
-      splitTitle = api_data.data.items[0].snippet.title.split('-');
-      splitDate = api_data.data.items[0].snippet.publishedAt.split('T');
-      videoTitle = splitTitle[1].split('|');
-      videoDate = splitDate[0].split('-');
+      // 오늘이 일요일이라면, date.getDay() === 0
+      const json = await axios.get(API_URL_SUN);
+      setJson(() => json);
 
       let hours = new Date().getHours();
       if (hours > 7 && hours < 13) {
@@ -59,26 +48,26 @@ export default function Home() {
         setIsLive(true);
       }
     } else {
-      api_data = await axios.get(API_URL_DEF);
-      splitTitle = api_data.data.items[0].snippet.title.split('-');
-      splitDate = api_data.data.items[0].snippet.publishedAt.split('T');
-      videoTitle = splitTitle[1].split('|');
-      videoDate = splitDate[0].split('-');
+      // 오늘이 일요일이 아니라면,
+      json = await axios.get(API_URL_DEF);
+      setJson(() => json);
     }
-
-    setLiveDatas({
-      videoId: api_data.data.items[0].snippet.resourceId.videoId,
-      title: videoTitle[0],
-      thumbnails: api_data.data.items[0].snippet.thumbnails.medium.url,
-      publishedAt: videoDate[0] + '. ' + videoDate[1] + '. ' + videoDate[2],
-    });
-
-    // 라이브 데이터 로딩 끝
-    setIsLoading(false);
   };
 
   useEffect(() => {
-    getLiveData();
+    // API를 이용해 JSON 파일을 가져옴
+    getPlaylistItems();
+
+    setLiveDatas({
+      videoId: json.data.items[0].snippet.resourceId.videoId,
+      title: json.data.items[0].snippet.title.split('-')[1].split('|')[0],
+      thumbnails: json.data.items[0].snippet.thumbnails.medium.url,
+      publishedAt: json.data.items[0].snippet.publishedAt
+        .split('T')[0]
+        .replaceAll('-', '. '),
+    });
+
+    setIsLoading(false);
   }, []);
 
   return (
