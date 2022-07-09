@@ -54,9 +54,9 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     // API를 이용해 JSON 파일을 가져옴
-    getPlaylistItems();
+    await getPlaylistItems();
 
     setLiveDatas({
       videoId: json.data.items[0].snippet.resourceId.videoId,
