@@ -7,6 +7,11 @@ import Share from '../Share';
 import YouTube from 'react-youtube';
 import Image from 'next/image';
 
+import styles from './WeekdayContent.module.scss';
+import classNames from 'classnames/bind';
+
+const cn = classNames.bind(styles);
+
 const WeekdayContent = ({ liveDatas }) => {
   const router = useRouter();
   const [weeks, setWeeks] = useState('');
@@ -146,9 +151,9 @@ const WeekdayContent = ({ liveDatas }) => {
   return (
     <div className={liveDatas.videoId ? 'section pt0' : 'section pt25'}>
       <div className='title'>주중 콘텐츠</div>
-      <div className='days_wrap'>
+      <div className={cn('days_wrap')}>
         {/* day_list */}
-        <ul className='day_list'>
+        <ul className={cn('day_list')}>
           <li
             onClick={() => {
               getWeekData('월');
@@ -198,7 +203,7 @@ const WeekdayContent = ({ liveDatas }) => {
         {/* end of day_list */}
 
         {/* con_list */}
-        <ul className='con_list'>
+        <ul className={cn('con_list')}>
           {weekSelectDataOnm.title && (
             <li
               onClick={() => {
@@ -208,17 +213,17 @@ const WeekdayContent = ({ liveDatas }) => {
                 );
               }}
             >
-              <div className='movie'>
+              <div className={cn('movie')}>
                 {weekSelectDataOnm.thumbnails ? (
                   <img src={weekSelectDataOnm.thumbnails.medium.url} />
                 ) : null}
               </div>
-              <div className='info'>
-                <div className='tit'>
+              <div className={cn('info')}>
+                <div className={cn('tit')}>
                   {weekSelectDataOnm.title}
                   {/* <span className="tag_up">UP</span> */}
                 </div>
-                <div className='date'>
+                <div className={cn('date')}>
                   {weekSelectDataOnm.date.substring(0, 10)}
                 </div>
               </div>
@@ -233,14 +238,14 @@ const WeekdayContent = ({ liveDatas }) => {
                 );
               }}
             >
-              <div className='movie'>
+              <div className={cn('movie')}>
                 {weekSelectDataOnb.thumbnails ? (
                   <img src={weekSelectDataOnb.thumbnails.medium.url} />
                 ) : null}
               </div>
-              <div className='info'>
-                <div className='tit'>{weekSelectDataOnb.title}</div>
-                <div className='date'>
+              <div className={cn('info')}>
+                <div className={cn('tit')}>{weekSelectDataOnb.title}</div>
+                <div className={cn('date')}>
                   {weekSelectDataOnb.date.substring(0, 10)}
                 </div>
               </div>
@@ -261,9 +266,9 @@ const WeekdayContent = ({ liveDatas }) => {
                   <img src={weekSelectDataOns.thumbnails.medium.url} />
                 ) : null}
               </div>
-              <div className='info'>
-                <div className='tit'>{weekSelectDataOns.title}</div>
-                <div className='date'>
+              <div className={cn('info')}>
+                <div className={cn('tit')}>{weekSelectDataOns.title}</div>
+                <div className={cn('date')}>
                   {weekSelectDataOns.date.substring(0, 10)}
                 </div>
               </div>
@@ -276,9 +281,11 @@ const WeekdayContent = ({ liveDatas }) => {
                   <div className='movie'>
                     <Image src={shortsMain} placeholder='blur' quality={50} />
                   </div>
-                  <div className='info'>
-                    <div className='tit'>{/* {data?.contents[0].name} */}</div>
-                    <div className='date'></div>
+                  <div className={cn('info')}>
+                    <div className={cn('tit')}>
+                      {/* {data?.contents[0].name} */}
+                    </div>
+                    <div className={cn('date')}></div>
                   </div>
                 </li>
               }
