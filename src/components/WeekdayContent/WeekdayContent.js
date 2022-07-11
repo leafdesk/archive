@@ -7,6 +7,11 @@ import Share from '../Share';
 import YouTube from 'react-youtube';
 import Image from 'next/image';
 
+import styles from './WeekdayContent.module.scss';
+import classNames from 'classnames/bind';
+
+const cn = classNames.bind(styles);
+
 const WeekdayContent = ({ liveDatas }) => {
   const router = useRouter();
   const [weeks, setWeeks] = useState('');
@@ -146,15 +151,15 @@ const WeekdayContent = ({ liveDatas }) => {
   return (
     <div className={liveDatas.videoId ? 'section pt0' : 'section pt25'}>
       <div className='title'>주중 콘텐츠</div>
-      <div className='days_wrap'>
+      <div className={cn('days_wrap')}>
         {/* day_list */}
-        <ul className='day_list'>
+        <ul className={cn('day_list')}>
           <li
             onClick={() => {
               getWeekData('월');
               setWeeks('월');
             }}
-            className={weeks == '월' ? 'on' : ''}
+            className={weeks == '월' ? cn('on') : ''}
           >
             월요일
           </li>
@@ -163,7 +168,7 @@ const WeekdayContent = ({ liveDatas }) => {
               getWeekData('화');
               setWeeks('화');
             }}
-            className={weeks == '화' ? 'on' : ''}
+            className={weeks == '화' ? cn('on') : ''}
           >
             화요일
           </li>
@@ -172,7 +177,7 @@ const WeekdayContent = ({ liveDatas }) => {
               getWeekData('수');
               setWeeks('수');
             }}
-            className={weeks == '수' ? 'on' : ''}
+            className={weeks == '수' ? cn('on') : ''}
           >
             수요일
           </li>
@@ -181,7 +186,7 @@ const WeekdayContent = ({ liveDatas }) => {
               getWeekData('목');
               setWeeks('목');
             }}
-            className={weeks == '목' ? 'on' : ''}
+            className={weeks == '목' ? cn('on') : ''}
           >
             목요일
           </li>
@@ -190,7 +195,7 @@ const WeekdayContent = ({ liveDatas }) => {
               getWeekData('금');
               setWeeks('금');
             }}
-            className={weeks == '금' ? 'on' : ''}
+            className={weeks == '금' ? cn('on') : ''}
           >
             금요일
           </li>
@@ -198,7 +203,7 @@ const WeekdayContent = ({ liveDatas }) => {
         {/* end of day_list */}
 
         {/* con_list */}
-        <ul className='con_list'>
+        <ul className={cn('con_list')}>
           {weekSelectDataOnm.title && (
             <li
               onClick={() => {
@@ -208,17 +213,17 @@ const WeekdayContent = ({ liveDatas }) => {
                 );
               }}
             >
-              <div className='movie'>
+              <div className={cn('movie')}>
                 {weekSelectDataOnm.thumbnails ? (
                   <img src={weekSelectDataOnm.thumbnails.medium.url} />
                 ) : null}
               </div>
-              <div className='info'>
-                <div className='tit'>
+              <div className={cn('info')}>
+                <div className={cn('tit')}>
                   {weekSelectDataOnm.title}
                   {/* <span className="tag_up">UP</span> */}
                 </div>
-                <div className='date'>
+                <div className={cn('date')}>
                   {weekSelectDataOnm.date.substring(0, 10)}
                 </div>
               </div>
@@ -233,14 +238,14 @@ const WeekdayContent = ({ liveDatas }) => {
                 );
               }}
             >
-              <div className='movie'>
+              <div className={cn('movie')}>
                 {weekSelectDataOnb.thumbnails ? (
                   <img src={weekSelectDataOnb.thumbnails.medium.url} />
                 ) : null}
               </div>
-              <div className='info'>
-                <div className='tit'>{weekSelectDataOnb.title}</div>
-                <div className='date'>
+              <div className={cn('info')}>
+                <div className={cn('tit')}>{weekSelectDataOnb.title}</div>
+                <div className={cn('date')}>
                   {weekSelectDataOnb.date.substring(0, 10)}
                 </div>
               </div>
@@ -256,14 +261,14 @@ const WeekdayContent = ({ liveDatas }) => {
                 );
               }}
             >
-              <div className='movie'>
+              <div className={cn('movie')}>
                 {weekSelectDataOns.thumbnails ? (
                   <img src={weekSelectDataOns.thumbnails.medium.url} />
                 ) : null}
               </div>
-              <div className='info'>
-                <div className='tit'>{weekSelectDataOns.title}</div>
-                <div className='date'>
+              <div className={cn('info')}>
+                <div className={cn('tit')}>{weekSelectDataOns.title}</div>
+                <div className={cn('date')}>
                   {weekSelectDataOns.date.substring(0, 10)}
                 </div>
               </div>
@@ -273,12 +278,14 @@ const WeekdayContent = ({ liveDatas }) => {
             <Popup
               trigger={
                 <li>
-                  <div className='movie'>
+                  <div className={cn('movie')}>
                     <Image src={shortsMain} placeholder='blur' quality={50} />
                   </div>
-                  <div className='info'>
-                    <div className='tit'>{/* {data?.contents[0].name} */}</div>
-                    <div className='date'></div>
+                  <div className={cn('info')}>
+                    <div className={cn('tit')}>
+                      {/* {data?.contents[0].name} */}
+                    </div>
+                    <div className={cn('date')}></div>
                   </div>
                 </li>
               }
