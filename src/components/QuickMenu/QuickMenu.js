@@ -1,8 +1,12 @@
 import QuickMenuItem from '../QuickMenuItem/QuickMenuItem';
+import classNames from 'classnames/bind';
+import styles from './QuickMenu.module.scss';
+
+const cn = classNames.bind(styles);
 
 const QuickMenu = () => {
   return (
-    <div className='section quick_wrap'>
+    <div className={cn('section', 'quick_wrap')}>
       {/* <div className='title'>빠른접근</div> */}
 
       <ul className='quick_menu'>

@@ -4,6 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
+import styles from './Praise.module.scss';
+import classNames from 'classnames/bind';
+
+const cn = classNames.bind(styles);
+
 const Praise = () => {
   const router = useRouter();
 
@@ -30,12 +35,12 @@ const Praise = () => {
 
   return (
     <div className='section'>
-      <div className='title'>은혜로운 찬양</div>
+      <div className={cn('title')}>은혜로운 찬양</div>
       <Link href='/praisemain'>
-        <a className='more'>전체보기</a>
+        <a className={cn('more')}>전체보기</a>
       </Link>
       <Swiper
-        className='slide_wrap'
+        className={cn('slide_wrap')}
         spaceBetween={10}
         slidesPerView={'auto'}
         resistanceRatio={0}
@@ -49,7 +54,7 @@ const Praise = () => {
           let lDate = ListDate[0] + '. ' + ListDate[1] + '. ' + ListDate[2];
 
           return (
-            <SwiperSlide className='movie_wrap' key={doc.id}>
+            <SwiperSlide className={cn('movie_wrap')} key={doc.id}>
               <div
                 onClick={() => {
                   router.push(
@@ -64,11 +69,11 @@ const Praise = () => {
                     src={doc.snippet.thumbnails.medium.url}
                   />
                 </div>
-                <div className='info'>
-                  <div className='tit'>
+                <div className={cn('info')}>
+                  <div className={cn('tit')}>
                     <a href='#'>{ListTitle}</a>
                   </div>
-                  <div className='date'>{lDate}</div>
+                  <div className={cn('date')}>{lDate}</div>
                 </div>
               </div>
             </SwiperSlide>
@@ -83,7 +88,7 @@ const Praise = () => {
           let lDate = ListDate[0] + '. ' + ListDate[1] + '. ' + ListDate[2];
 
           return (
-            <SwiperSlide className='movie_wrap' key={doc.id}>
+            <SwiperSlide className={cn('movie_wrap')} key={doc.id}>
               <div
                 onClick={() => {
                   router.push(
@@ -96,11 +101,11 @@ const Praise = () => {
                   style={{ width: '100%' }}
                   src={doc.snippet.thumbnails.medium.url}
                 />
-                <div className='info'>
-                  <div className='tit'>
+                <div className={cn('info')}>
+                  <div className={cn('tit')}>
                     <a href='#'>{ListTitle}</a>
                   </div>
-                  <div className='date'>{lDate}</div>
+                  <div className={cn('date')}>{lDate}</div>
                 </div>
               </div>
             </SwiperSlide>

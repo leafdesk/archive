@@ -3,6 +3,11 @@ import YouTube from 'react-youtube';
 import Loading from '../Loading';
 import Share from '../Share';
 
+import styles from './SermonThisWeek.module.scss';
+import classNames from 'classnames/bind';
+
+const cn = classNames.bind(styles);
+
 const SermonThisWeek = ({ isLoading, liveDatas }) => {
   const router = useRouter();
 
@@ -16,15 +21,16 @@ const SermonThisWeek = ({ isLoading, liveDatas }) => {
     <>
       {isLoading === false ? (
         <div className='section pt0'>
-          <div className='movie_wrap'>
+          <div className={cn('movie_wrap')}>
             <YouTube
               videoId={liveDatas.videoId}
               opts={opts}
               containerClassName='iframe_wrap'
             />
 
-            <div className='info'>
+            <div className={cn('info')}>
               <Share
+                className={cn('btn_share')}
                 title={liveDatas.title}
                 thum='/images/kakao_def_new.jpg'
                 vid={liveDatas.videoId}
@@ -42,15 +48,15 @@ const SermonThisWeek = ({ isLoading, liveDatas }) => {
                 <a href='#'>{liveDatas.title}</a>
               </div>
 
-              <div className='date'>{liveDatas.publishedAt}</div>
-              <div className='preacher'>설교: 김성현 목사</div>
+              <div className={cn('date')}>{liveDatas.publishedAt}</div>
+              <div className={cn('preacher')}>설교: 김성현 목사</div>
             </div>
             {/* end of info */}
           </div>
           {/* end of movie_wrap */}
         </div>
       ) : (
-        <div className='loading_box'>
+        <div className={cn('loading_box')}>
           <Loading />
         </div>
       )}
