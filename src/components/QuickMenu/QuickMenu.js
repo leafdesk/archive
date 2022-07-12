@@ -6,10 +6,10 @@ const cn = classNames.bind(styles);
 
 const QuickMenu = () => {
   return (
-    <div className={cn('section', 'quick_wrap')}>
+    <div className={cn('section', 'QuickMenu')}>
       {/* <div className='title'>빠른접근</div> */}
 
-      <ul className='quick_menu'>
+      <ul>
         <QuickMenuItem
           pathname='/sermonmain'
           imgSrc='/icons/ico_sermon_new.svg'
