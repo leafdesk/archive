@@ -1,4 +1,4 @@
-.movie_wrap {
+.Movie {
   border: 1px solid #ebebeb;
   border-radius: 8px;
   overflow: hidden;
@@ -15,6 +15,7 @@
     font-size: 16px;
 
     .btn_share {
+      display: inline-block;
       position: absolute;
       right: 15px;
       top: 12px;
@@ -62,4 +63,11 @@
       border-left: 1px solid #d6d6d6;
     }
   }
+}
+
+.Loading {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
