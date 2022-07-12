@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import axios from 'axios';
-
 import styles from './Praise.module.scss';
 import classNames from 'classnames/bind';
 
@@ -36,9 +35,11 @@ const Praise = () => {
   return (
     <div className='section'>
       <div className={cn('title')}>은혜로운 찬양</div>
+
       <Link href='/praisemain'>
         <a className={cn('more')}>전체보기</a>
       </Link>
+
       <Swiper
         className={cn('slide_wrap')}
         spaceBetween={10}
