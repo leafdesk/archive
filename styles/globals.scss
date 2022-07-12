@@ -1,4 +1,6 @@
 @charset "utf-8";
+@import './reset.scss';
+@import './common.scss';
 
 /**********************************************************
 	FONT
@@ -55,182 +57,6 @@
   src: url('fonts/NotoSansKR-Black.woff2') format('woff2'),
     url('fonts/NotoSansKR-Black.woff') format('woff'),
     url('fonts/NotoSansKR-Black.otf') format('opentype');
-}
-
-/**********************************************************
-	CSS RESET
-***********************************************************/
-
-body,
-input,
-textarea,
-select,
-button,
-table {
-  margin: 0;
-  font-size: 13px;
-  font-family: Apple SD Gothic Neo, 'Noto Sans KR', AppleGothicNeoSD,
-    Microsoft NeoGothic, Arial, 'Malgun Gothic', '맑은 고딕', Dotum, '돋움',
-    Helvetica, Droid sans, sans-serif;
-  font-weight: 400;
-  color: #000;
-  letter-spacing: -0.02rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-dl,
-dt,
-dd,
-ul,
-li,
-ol,
-th,
-td,
-p,
-form,
-fieldset,
-legend,
-button,
-section {
-  margin: 0;
-  padding: 0;
-  font-size: 13px;
-  font-weight: 400;
-  box-sizing: border-box;
-}
-
-span,
-div {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-img,
-fieldset {
-  border: 0 none;
-}
-
-dl,
-ul,
-ol,
-li {
-  list-style: none outside none;
-}
-
-button {
-  border: 0 none;
-  cursor: pointer;
-  display: block;
-  outline: 0;
-}
-
-table,
-th,
-td {
-  border-collapse: collapse;
-}
-
-label {
-  cursor: pointer;
-}
-
-a,
-img {
-  outline: none;
-}
-
-input {
-  outline: none;
-
-  &[type='image'] {
-    -webkit-appearance: none;
-    border-radius: 0;
-  }
-}
-
-li img,
-td img {
-  vertical-align: middle;
-}
-
-a {
-  text-decoration: none;
-  color: #000;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: #000;
-    text-decoration: none;
-  }
-}
-
-table a {
-  &:link,
-  &:visited {
-    color: #000;
-  }
-
-  &:hover,
-  &:active {
-    color: #000;
-    text-decoration: underline;
-  }
-}
-
-address,
-caption,
-cite,
-code,
-dfn,
-em,
-var {
-  font-style: normal;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-strong {
-  font-weight: 600;
-}
-
-legend,
-caption {
-  display: none !important;
-}
-
-#__next {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.hide {
-  display: none !important;
-}
-
-.container {
-  margin-bottom: 82px;
-}
-
-.sub_container {
-  /* margin-top: 58px; */
-  padding-bottom: 82px;
-  flex: 1;
-  background: #f8f8f8;
 }
 
 /**********************************************************
@@ -695,70 +521,71 @@ footer {
   }
 }
 
-/**********************************************************
-	COMMON
-***********************************************************/
-/* 레이아웃 */
-/* .section:first-child {
-	padding-top: 0px;
-} */
+// Movie Wrap
 
-.section {
-  padding: 30px 15px;
+.movie_wrap {
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
   overflow: hidden;
   background: #fff;
-}
 
-.subborder {
-  border-bottom: 1px solid #ebedef;
-  margin-bottom: 6px;
-  padding: 18px 15px;
-}
-
-.subbordert {
-  border-top: 1px solid #ebedef;
-}
-
-.section {
-  &.bg_gray {
-    background-color: #f9f9f9;
+  .movie_thumb {
+    height: 135px;
+    overflow: hidden;
   }
 
-  .swiper {
-    overflow: visible;
-  }
-
-  .title {
+  .info {
     position: relative;
-    margin-bottom: 15px;
-    color: #000;
-    font-size: 20px;
-    font-weight: 500;
-    display: inline-block;
+    padding: 12px 15px;
+    font-size: 16px;
 
-    small {
-      font-size: 16px;
+    .btn_share {
+      position: absolute;
+      right: 15px;
+      top: 12px;
     }
-  }
 
-  .more {
-    float: right;
-    color: #a0a0a0;
-    font-size: 12px;
-    line-height: 29px;
-    font-weight: 400;
-  }
+    // .btn_share {
+    //   display: inline-block;
+    //   width: 25px;
+    //   height: 25px;
+    //   background: url('/icons/ico_share.svg') no-repeat center center;
+    // }
 
-  .title .filter {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding-right: 23px;
-    color: #444;
-    font-size: 14px;
-    line-height: 29px;
-    font-weight: 500;
-    background: url('/icons/ico_filter.svg') no-repeat right center;
+    .tit {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+
+      /* height: 46px; */
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 23px;
+      margin-bottom: 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: keep-all;
+      width: 88%;
+    }
+
+    .date {
+      color: #a0a0a0;
+      font-size: 12px;
+      display: inline-block;
+      font-weight: 300;
+      letter-spacing: 0.2px;
+    }
+
+    .preacher {
+      display: inline-block;
+      margin-left: 7px;
+      padding-left: 7px;
+      line-height: 10px;
+      color: #a0a0a0;
+      font-size: 12px;
+      font-weight: 300;
+      border-left: 1px solid #d6d6d6;
+    }
   }
 }
 
@@ -2588,13 +2415,6 @@ hr {
 
 .txt_right {
   text-align: right !important;
-}
-
-.loading_box {
-  min-height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .popup-content {
