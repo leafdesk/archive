@@ -9,7 +9,7 @@ const cn = classNames.bind(styles);
 const Department = () => {
   return (
     <>
-      <div className='section pt0'>
+      <section className='section pt0'>
         <div className='title'>성락교회 미래세대</div>
 
         <Swiper
@@ -59,7 +59,7 @@ const Department = () => {
             />
           </SwiperSlide>
         </Swiper>
-      </div>
+      </section>
     </>
   );
 };
