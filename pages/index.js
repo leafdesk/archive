@@ -37,8 +37,8 @@ export default function Home() {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
 
   const getPlaylistItems = async () => {
-    if (week[date.getDay()] === '일') {
-      // 오늘이 일요일이라면, date.getDay() === 0
+    if (date.getDay() === 0) {
+      // 오늘이 일요일이라면, week[date.getDay()] === '일'
       const json = await axios.get(API_URL_SUN);
       setJson(() => json);
 
