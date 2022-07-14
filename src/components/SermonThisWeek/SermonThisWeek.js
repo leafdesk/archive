@@ -21,6 +21,7 @@ const SermonThisWeek = ({ isLoading, liveDatas }) => {
       {isLoading === false ? (
         <section className='section pt0'>
           <div className={cn('Movie')}>
+            {/* 유튜브 영상 */}
             <YouTube
               videoId={liveDatas.videoId}
               opts={opts}
@@ -29,26 +30,29 @@ const SermonThisWeek = ({ isLoading, liveDatas }) => {
 
             {/* 영상 정보(Info) */}
             <div className={cn('info')}>
-              {/* 공유 버튼 */}
-              <Share
-                className={cn('btn_share')}
-                title={liveDatas.title}
-                thum='/images/kakao_def_new.jpg'
-                vid={liveDatas.videoId}
-              />
+              <div className={cn('FlexBox')}>
+                {/* 영상 제목 */}
+                <div
+                  className={cn('title', 'pr25')}
+                  onClick={() => {
+                    router.push(
+                      `/sermondetail?vid=${liveDatas.videoId}&vtit=${liveDatas.title}&vdate=${liveDatas.publishedAt}`,
+                      '/sermondetail'
+                    );
+                  }}
+                >
+                  <a href='#'>{liveDatas.title}</a>
+                </div>
 
-              {/* 영상 제목 */}
-              <div
-                className={cn('tit', 'pr25')}
-                onClick={() => {
-                  router.push(
-                    `/sermondetail?vid=${liveDatas.videoId}&vtit=${liveDatas.title}&vdate=${liveDatas.publishedAt}`,
-                    '/sermondetail'
-                  );
-                }}
-              >
-                <a href='#'>{liveDatas.title}</a>
+                {/* 공유 버튼 */}
+                <Share
+                  className={cn('ShareButton')}
+                  title={liveDatas.title}
+                  thum='/images/kakao_def_new.jpg'
+                  vid={liveDatas.videoId}
+                />
               </div>
+              {/* end of FlexBox */}
 
               {/* 영상 날짜 및 설교자 */}
               <div className={cn('date')}>{liveDatas.publishedAt}</div>
