@@ -1,0 +1,39 @@
+/**********************************************************
+	MAIN
+***********************************************************/
+/* 메인 슬라이드 */
+
+.main_swiper .swiper-slide img {
+  width: 100%;
+}
+
+/**중간배너**/
+
+.mdbanner {
+  width: 100%;
+
+  /* height:110px; */
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  .nav {
+    width: 27px;
+    height: 15px;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    background: #000000;
+    opacity: 0.6;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 4px;
+    font-weight: 200;
+    line-height: 14px;
+    letter-spacing: 1px;
+  }
+}

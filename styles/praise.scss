@@ -1,0 +1,51 @@
+/**********************************************************
+	PRAISE(찬양)
+***********************************************************/
+/* 찬양 상세 */
+
+.praise_detail {
+  .movie_wrap {
+    border-radius: 0px;
+
+    .info {
+      padding: 12px 15px 15px 15px;
+    }
+  }
+
+  .subborder {
+    padding-bottom: 0px;
+  }
+
+  .section {
+    padding: 0;
+    background-color: #fff;
+    border-top: 1px solid #ebebeb;
+  }
+
+  .tab_area {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ebebeb;
+
+    li {
+      display: inline-block;
+      padding: 0 15px;
+      line-height: 33px;
+      color: #000;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      border-radius: 33px;
+
+      &.on {
+        color: #fff;
+        background-color: #444;
+      }
+    }
+  }
+}
+
+/* 찬양목록 */
+
+.praise_wrap {
+  padding: 20px 15px 20px 15px;
+}
