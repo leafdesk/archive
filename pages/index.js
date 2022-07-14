@@ -34,7 +34,7 @@ export default function Home() {
   });
 
   const date = new Date();
-  const week = ['일', '월', '화', '수', '목', '금', '토'];
+  // const week = ['일', '월', '화', '수', '목', '금', '토'];
 
   const getPlaylistItems = async () => {
     if (date.getDay() === 0) {
