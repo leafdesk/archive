@@ -1,9 +1,9 @@
-import InsertMember from '../src/components/InsertMember/InsertMember';
+import MemberAdditionForm from '../src/components/MemberAdditionForm/MemberAdditionForm';
 
 const Home = () => {
   return (
     <>
-      <InsertMember />
+      <MemberAdditionForm />
     </>
   );
 };
