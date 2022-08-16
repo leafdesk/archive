@@ -6,6 +6,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     data: {
       name: '이상건A',
       sex: '남성',
+      department: '대학부',
       email: 'test@test.com',
     },
   });
