@@ -7,8 +7,14 @@ interface LoginForm {
 }
 
 const Forms = () => {
-  const { register, watch, handleSubmit } = useForm<LoginForm>();
-  // console.log(watch());
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>();
+
+  console.log(errors);
 
   const onValid = (data: LoginForm) => {
     console.log('success');
@@ -43,6 +49,7 @@ const Forms = () => {
         type='email'
         placeholder='Email'
       />
+      {errors.email?.message}
 
       <input
         {...register('password', {
