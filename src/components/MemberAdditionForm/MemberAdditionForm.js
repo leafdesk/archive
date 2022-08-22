@@ -29,7 +29,7 @@ const MemberAdditionForm = () => {
     console.log('[ERROR]', errors);
   }
 
-  const onValid = () => {
+  const onValid = (data) => {
     console.log('양식을 성공적으로 제출했습니다.');
   };
 
@@ -54,7 +54,8 @@ const MemberAdditionForm = () => {
           label='이름'
           type='text'
           error={errors.name != null}
-          helperText={errors.name?.message}
+          // helperText={errors.name?.message}
+          required
           {...register('name', {
             required: '이름을 입력하세요.',
           })}
@@ -84,7 +85,7 @@ const MemberAdditionForm = () => {
 
           <FormHelperText>
             {/* 성별 에러 발생 시, 성별 에러 메시지 표시 */}
-            {errors.sex != null ? errors.sex?.message : null}
+            {/* {errors.sex != null ? errors.sex?.message : null} */}
           </FormHelperText>
         </FormControl>
 
