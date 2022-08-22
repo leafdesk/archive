@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 function Copyright(props) {
   return (
@@ -34,13 +36,26 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onValid = (data) => {
+    fetch('/api/users/enter', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        // console.log(req.body.email) 동작하려면...
+        'Content-Type': 'application/json',
+      },
     });
+  };
+
+  const onInvalid = () => {
+    console.log(errors);
   };
 
   return (
@@ -63,7 +78,7 @@ export default function SignIn() {
           </Typography>
           <Box
             component='form'
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onValid, onInvalid)}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -76,6 +91,10 @@ export default function SignIn() {
               name='email'
               autoComplete='email'
               autoFocus
+              error={errors.email != null}
+              {...register('email', {
+                required: '이메일을 입력하세요.',
+              })}
             />
             <TextField
               margin='normal'
@@ -86,6 +105,10 @@ export default function SignIn() {
               type='password'
               id='password'
               autoComplete='current-password'
+              error={errors.password != null}
+              {...register('password', {
+                required: '비밀번호를 입력하세요.',
+              })}
             />
             <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
