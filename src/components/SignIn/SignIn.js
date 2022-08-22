@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import useMutation from '../../../libs/client/useMutation';
 
 function Copyright(props) {
   return (
@@ -43,16 +43,12 @@ export default function SignIn() {
     formState: { errors },
   } = useForm();
 
-  const onValid = (data) => {
-    fetch('/api/users/enter', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        // console.log(req.body.email) 동작하려면...
-        'Content-Type': 'application/json',
-      },
-    });
+  const [enter, { loading, data, error }] = useMutation('/api/users/enter');
+
+  const onValid = (validForm) => {
+    enter(validForm);
   };
+  console.log(loading, data, error);
 
   const onInvalid = () => {
     console.log(errors);
