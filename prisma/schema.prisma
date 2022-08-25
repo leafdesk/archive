@@ -24,4 +24,14 @@ model Member {
   major       String?
   phoneNumber Int?     @unique
   email       String?  @unique
+  tokens      Token[]
+}
+
+model Token {
+  id        Int      @id @default(autoincrement())
+  payload   String   @unique
+  member    Member   @relation(fields: [memberId], references: [id])
+  memberId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
