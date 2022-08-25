@@ -9,6 +9,7 @@ const withHandler = (
       return res.status(405).end();
     }
     try {
+      await fn(req, res);
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error });
