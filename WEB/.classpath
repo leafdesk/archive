@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/eGovFrame-4.0.0/bin/apache-tomcat-8.5.50/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
