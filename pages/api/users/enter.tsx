@@ -7,20 +7,41 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   console.log('클라이언트에서 다음을 요청함: ', req.body);
 
   const payload = email ? { email } : { phoneNumber: +phoneNumber };
-  const member = await client.member.upsert({
-    where: {
-      ...payload,
+  // const member = await client.member.upsert({
+  //   where: {
+  //     ...payload,
+  //   },
+  //   create: {
+  //     name: 'Anonymous',
+  //     sex: 'unknown',
+  //     department: 'unclassified',
+  //     ...payload,
+  //   },
+  //   update: {},
+  // });
+
+  // console.log(member);
+
+  const token = await client.token.create({
+    data: {
+      payload: '1234',
+      member: {
+        connectOrCreate: {
+          where: {
+            ...payload,
+          },
+          create: {
+            name: 'Anonymous',
+            sex: 'unknown',
+            department: 'unclassified',
+            ...payload,
+          },
+        },
+      },
     },
-    create: {
-      name: 'Anonymous',
-      sex: 'unknown',
-      department: 'unclassified',
-      ...payload,
-    },
-    update: {},
   });
 
-  console.log(member);
+  console.log(token);
 
   // if (email) {
   //   member = await client.member.findUnique({
