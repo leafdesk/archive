@@ -51,7 +51,6 @@ export default function SignIn() {
   const onValid = (validForm) => {
     enter(validForm);
   };
-  console.log(loading, data, error);
 
   const onInvalid = () => {
     console.log(errors);
@@ -60,6 +59,8 @@ export default function SignIn() {
   const onAvatarClick = () => {
     setLoginMethod(() => !loginMethod);
   };
+
+  console.log('[[DATA]] ', data);
 
   return (
     <ThemeProvider theme={theme}>
@@ -88,7 +89,7 @@ export default function SignIn() {
           </Typography>
 
           {loginMethod ? (
-            <LoginWithPhone />
+            <LoginWithPhone data={data} />
           ) : (
             <Box
               component='form'

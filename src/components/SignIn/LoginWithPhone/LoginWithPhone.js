@@ -11,7 +11,7 @@ import {
 import { useForm } from 'react-hook-form';
 import useMutation from '../../../../libs/client/useMutation';
 
-const LoginWithPhone = () => {
+const LoginWithPhone = ({ data }) => {
   const {
     register,
     watch,
@@ -19,12 +19,12 @@ const LoginWithPhone = () => {
     formState: { errors },
   } = useForm();
 
-  const [enter, { loading, data, error }] = useMutation('/api/users/enter');
+  const [enter] = useMutation('/api/users/enter');
 
   const onValid = (validForm) => {
     enter(validForm);
   };
-  console.log(loading, data, error);
+  console.log('[[DATA.OK]] ', data?.ok);
 
   const onInvalid = () => {
     console.log(errors);
@@ -44,23 +44,25 @@ const LoginWithPhone = () => {
         id='Phone Number'
         label='Phone Number'
         name='Phone Number'
-        // autoComplete='email'
         autoFocus
         error={errors.phoneNumber != null}
         {...register('phoneNumber', {
           required: '전화번호를 입력하세요.',
         })}
       />
-      {/* <TextField
-        margin='normal'
-        required
-        fullWidth
-        name='Verification Number'
-        label='Verification Number'
-        type='number'
-        id='Verification Number'
-        autoComplete='current-password'
-      /> */}
+
+      {data?.ok ? (
+        <TextField
+          margin='normal'
+          required
+          fullWidth
+          name='Verification Number'
+          label='Verification Number'
+          type='number'
+          id='Verification Number'
+        />
+      ) : null}
+
       <FormControlLabel
         control={<Checkbox value='remember' color='primary' />}
         label='Remember me'
