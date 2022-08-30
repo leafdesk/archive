@@ -22,7 +22,7 @@ model Member {
   address     String?
   school      String?
   major       String?
-  phoneNumber Int?     @unique
+  phoneNumber BigInt?  @unique
   email       String?  @unique
   tokens      Token[]
 }
@@ -30,7 +30,7 @@ model Member {
 model Token {
   id        Int      @id @default(autoincrement())
   payload   String   @unique
-  member    Member   @relation(fields: [memberId], references: [id])
+  member    Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
   memberId  Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
