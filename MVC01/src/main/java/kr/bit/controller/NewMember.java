@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CalcController
+ * Servlet implementation class NewMember
  */
-@WebServlet("/calc.do")
-public class CalcController extends HttpServlet {
+@WebServlet("/new")
+public class NewMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CalcController() {
+	public NewMember() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -30,18 +30,15 @@ public class CalcController extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
-		int su1 = Integer.parseInt(request.getParameter("su1"));
-		int su2 = Integer.parseInt(request.getParameter("su2"));
-
-		int sum = 0;
-		for (int i = su1; i <= su2; i++) {
-			sum += i;
-		}
+		String name = request.getParameter("name");
+		String campus = request.getParameter("campus");
+		String phoneNumber = request.getParameter("phoneNumber");
+		String birthDate = request.getParameter("birthDate");
+		String gbsCurriculum = request.getParameter("gbsCurriculum");
 
 		PrintWriter out = response.getWriter();
-		out.println("total: " + sum);
+		out.println(name + campus + phoneNumber + birthDate + gbsCurriculum);
 	}
 
 }
