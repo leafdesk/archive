@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.bit.model.MyCalc;
+
 /**
  * Servlet implementation class CalcController
  */
@@ -35,10 +37,8 @@ public class CalcController extends HttpServlet {
 		int su1 = Integer.parseInt(request.getParameter("su1"));
 		int su2 = Integer.parseInt(request.getParameter("su2"));
 
-		int sum = 0;
-		for (int i = su1; i <= su2; i++) {
-			sum += i;
-		}
+		MyCalc my = new MyCalc();
+		int sum = my.sum(su1, su2);
 
 		PrintWriter out = response.getWriter();
 		out.println("total: " + sum);
