@@ -31,6 +31,8 @@ public class NewMember extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		response.setContentType("text/html;charset=UTF-8");
+
 		String name = request.getParameter("name");
 		String campus = request.getParameter("campus");
 		String phoneNumber = request.getParameter("phoneNumber");
