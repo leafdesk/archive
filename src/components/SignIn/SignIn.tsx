@@ -11,7 +11,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import LoginWithPhone from './LoginWithPhone/LoginWithPhone';
-import LoginWithEmail from './LoginWithPhone/LoginWithEmail';
+import LoginWithEmail from './LoginWithEmail/LoginWithEmail';
 
 function Copyright(props) {
   return (
