@@ -17,6 +17,15 @@ import useMutation from '../../../libs/client/useMutation';
 import { useState } from 'react';
 import LoginWithPhone from './LoginWithPhone/LoginWithPhone';
 
+interface EnterForm {
+  email?: string;
+  phone?: string;
+}
+
+interface EnterMutationResult {
+  ok: boolean;
+}
+
 function Copyright(props) {
   return (
     <Typography
@@ -45,10 +54,12 @@ export default function SignIn() {
     formState: { errors },
   } = useForm();
 
-  const [enter, { loading, data, error }] = useMutation('/api/users/enter');
+  const [enter, { loading, data, error }] =
+    useMutation<EnterMutationResult>('/api/users/enter');
   const [loginMethod, setLoginMethod] = useState(false);
 
-  const onValid = (validForm) => {
+  const onValid = (validForm: EnterForm) => {
+    if (loading) return;
     enter(validForm);
   };
 
