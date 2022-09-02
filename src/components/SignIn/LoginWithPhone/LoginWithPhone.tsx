@@ -16,6 +16,14 @@ interface EnterForm {
   phone?: string;
 }
 
+interface TokenForm {
+  token: string;
+}
+
+interface MutationResult {
+  ok: boolean;
+}
+
 const LoginWithPhone = () => {
   const {
     register,
@@ -24,7 +32,14 @@ const LoginWithPhone = () => {
     formState: { errors },
   } = useForm();
 
-  const [enter, { data }] = useMutation('/api/users/enter');
+  const [enter, { loading, data, error }] =
+    useMutation<MutationResult>('/api/users/enter');
+
+  const [confirmToken, { loading: tokenLoading, data: tokenData }] =
+    useMutation<MutationResult>('/api/users/confirm');
+
+  const { register: tokenRegister, handleSubmit: tokenHandleSubmit } =
+    useForm<TokenForm>();
 
   const onValid = (validForm: EnterForm) => {
     enter(validForm);
@@ -34,12 +49,21 @@ const LoginWithPhone = () => {
     console.log(errors);
   };
 
+  const onTokenValid = (validForm: TokenForm) => {
+    if (tokenLoading) return;
+    confirmToken(validForm);
+  };
+
   console.log('phone: ', data);
 
   return (
     <Box
       component='form'
-      onSubmit={handleSubmit(onValid, onInvalid)}
+      onSubmit={
+        data?.ok
+          ? tokenHandleSubmit(onTokenValid)
+          : handleSubmit(onValid, onInvalid)
+      }
       noValidate
       sx={{ mt: 1 }}
     >
@@ -62,10 +86,14 @@ const LoginWithPhone = () => {
           margin='normal'
           required
           fullWidth
-          name='Verification Number'
-          label='Verification Number'
+          name='Validation Number'
+          label='Validation Number'
           type='number'
-          id='Verification Number'
+          id='Validation Number'
+          error={errors.verificationNumber != null}
+          {...tokenRegister('token', {
+            required: '인증번호를 입력하세요.',
+          })}
         />
       ) : null}
 
@@ -73,9 +101,27 @@ const LoginWithPhone = () => {
         control={<Checkbox value='remember' color='primary' />}
         label='Remember me'
       />
-      <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
-        Verification
-      </Button>
+
+      {data?.ok ? (
+        <Button
+          type='submit'
+          fullWidth
+          variant='contained'
+          sx={{ mt: 3, mb: 2 }}
+        >
+          {tokenLoading ? 'Loading...' : 'Verification'}
+        </Button>
+      ) : (
+        <Button
+          type='submit'
+          fullWidth
+          variant='contained'
+          sx={{ mt: 3, mb: 2 }}
+        >
+          {loading ? 'Loading...' : 'Send Message'}
+        </Button>
+      )}
+
       <Grid container>
         <Grid item xs>
           <Link href='#' variant='body2'>
