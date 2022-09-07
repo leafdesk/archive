@@ -3,26 +3,17 @@ import client from '@libs/client/client';
 import withHandler, { ResponseType } from '@libs/server/withHandler';
 import { withApiSession } from '@libs/server/withSession';
 
-// req.session에 member가 있다는 것을 알려주기 위함.
-declare module 'iron-session' {
-  interface IronSessionData {
-    member?: {
-      id: number;
-    };
-  }
-}
-
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>
 ) => {
   /**
-   * 클라이언트로부터 token을 받고, 존재하는지 확인
+   * 클라이언트로부터 token을 받고, 존재하는지 확인.
    */
   const { token } = req.body;
-  console.log('사용자가 입력한 토큰: ', token);
+  console.log('사용자가 입력한 인증번호는 ', +token, '입니다.');
 
-  const exists = await client.token.findUnique({
+  const foundToken = await client.token.findUnique({
     where: {
       payload: token,
     },
@@ -30,15 +21,25 @@ const handler = async (
   });
 
   // 존재하지 않으면 404.
-  if (!exists) return res.status(404).end();
-  console.log('토큰이 존재하며, 해당 멤버 ID는 ', exists.memberId, '입니다.');
+  if (!foundToken) return res.status(404).end();
+
+  console.log('[인증성공] 접속한 멤버의 ID는', foundToken.memberId, '입니다.');
 
   req.session.member = {
-    id: exists.memberId,
+    id: foundToken.memberId,
   };
 
   await req.session.save();
-  res.status(200).end();
+
+  // 사용한 token 삭제.
+  await client.token.deleteMany({
+    where: {
+      memberId: foundToken.memberId,
+    },
+  });
+
+  // res 정보는 LoginWithPhone의 tokenData 변수에 들어감.
+  res.json({ ok: true });
 };
 
 export default withApiSession(withHandler('POST', handler));
