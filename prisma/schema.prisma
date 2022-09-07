@@ -22,7 +22,7 @@ model Member {
   address     String?
   school      String?
   major       String?
-  phoneNumber BigInt?  @unique
+  phoneNumber String?  @unique
   email       String?  @unique
   tokens      Token[]
 }
