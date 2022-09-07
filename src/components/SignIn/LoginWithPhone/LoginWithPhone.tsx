@@ -9,7 +9,9 @@ import {
 } from '@mui/material';
 
 import { useForm } from 'react-hook-form';
-import useMutation from '../../../../libs/client/useMutation';
+import useMutation from '@libs/client/useMutation';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface EnterForm {
   email?: string;
@@ -54,7 +56,12 @@ const LoginWithPhone = () => {
     confirmToken(validForm);
   };
 
-  console.log('phone: ', data);
+  const router = useRouter();
+  useEffect(() => {
+    if (tokenData?.ok) {
+      router.push('/');
+    }
+  }, [tokenData, router]);
 
   return (
     <Box
