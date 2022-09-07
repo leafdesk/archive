@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import client from '../../../libs/client/client';
-import withHandler, { ResponseType } from '../../../libs/server/withHandler';
-import { withIronSessionApiRoute } from 'iron-session/next';
+import client from '@libs/client/client';
+import withHandler, { ResponseType } from '@libs/server/withHandler';
+import { withApiSession } from '@libs/server/withSession';
 
 // req.session에 member가 있다는 것을 알려주기 위함.
 declare module 'iron-session' {
@@ -16,19 +16,18 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>
 ) => {
-  console.log(req.session.member);
+  console.log('req.session.member 는 ', req.session.member, '입니다.');
   const profile = await client.member.findUnique({
     where: {
       id: req.session.member?.id,
     },
   });
+
+  // me.tsx는 개발자 확인용.
   res.json({
     ok: true,
     profile,
   });
 };
 
-export default withIronSessionApiRoute(withHandler('GET', handler), {
-  cookieName: 'session',
-  password: 'zujYsTCL727AApTDvBYwLAEJEN6GB5Bg', // 암호화에 사용.
-});
+export default withApiSession(withHandler('GET', handler));
