@@ -13,7 +13,7 @@ const handler = async (
   console.log('클라이언트에서 다음을 요청함: ', req.body);
 
   const member = phoneNumber
-    ? { phoneNumber: +phoneNumber }
+    ? { phoneNumber: phoneNumber }
     : email
     ? { email }
     : null;
