@@ -29,7 +29,6 @@ interface MutationResult {
 const LoginWithPhone = () => {
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -44,11 +43,14 @@ const LoginWithPhone = () => {
     useForm<TokenForm>();
 
   const onValid = (validForm: EnterForm) => {
+    console.log('submit:', validForm);
     enter(validForm);
+    console.log('data:', data);
+    console.log('error:', error);
   };
 
   const onInvalid = () => {
-    console.log(errors);
+    console.log('onInvalid:', errors);
   };
 
   const onTokenValid = (validForm: TokenForm) => {
