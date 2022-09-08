@@ -12,6 +12,25 @@ import {
   InputLabel,
   Container,
 } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'Segoe UI',
+      'Roboto',
+      'Oxygen',
+      'Ubuntu',
+      'Cantarell',
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
+      'sans-serif',
+    ].join(','),
+  },
+});
 
 const MemberAdditionForm = () => {
   const {
@@ -38,112 +57,167 @@ const MemberAdditionForm = () => {
   };
 
   return (
-    <Container
-      maxWidth='sm'
-      sx={{
-        border: '1px solid rgba(0, 0, 0, 0.12)',
-        borderRadius: '4px',
-        mt: 4,
-        p: 8,
-        position: 'relative',
-      }}
-    >
-      <form onSubmit={handleSubmit(onValid, onInvalid)}>
-        {/* 회원 이름 */}
-        <TextField
-          label='이름'
-          type='text'
-          error={errors.name != null}
-          // helperText={errors.name?.message}
-          required
-          {...register('name', {
-            required: '이름을 입력하세요.',
-          })}
-        />
+    <ThemeProvider theme={theme}>
+      <Container
+        maxWidth='sm'
+        sx={{
+          border: '1px solid rgba(0, 0, 0, 0.12)',
+          borderRadius: '4px',
+          mt: 4,
+          p: 8,
+          position: 'relative',
+        }}
+      >
+        <form onSubmit={handleSubmit(onValid, onInvalid)}>
+          {/* 이름 */}
+          <TextField
+            label='이름'
+            type='text'
+            fullWidth
+            variant='outlined'
+            error={errors.name != null}
+            // helperText={errors.name?.message}
+            required
+            {...register('name', {
+              required: '이름을 입력하세요.',
+            })}
+            sx={{
+              mb: 2,
+            }}
+          />
 
-        {/* 회원 성별 */}
-        <FormControl error={errors.sex != null}>
-          <RadioGroup row sx={{ minHeight: 56 }}>
-            <FormControlLabel
-              {...register('sex', {
-                required: '성별을 선택하세요.',
-              })}
-              value='남성'
-              control={<Radio />}
-              label='남성'
-            />
-
-            <FormControlLabel
-              {...register('sex', {
-                required: '성별을 선택하세요.',
-              })}
-              value='여성'
-              control={<Radio />}
-              label='여성'
-            />
-          </RadioGroup>
-
-          <FormHelperText>
-            {/* 성별 에러 발생 시, 성별 에러 메시지 표시 */}
-            {/* {errors.sex != null ? errors.sex?.message : null} */}
-          </FormHelperText>
-        </FormControl>
-
-        <br />
-        <br />
-        <br />
-
-        {/* 회원 부서 */}
-        <FormControl>
-          <InputLabel>소속 부서</InputLabel>
-
-          <Select
-            label='소속 부서'
-            defaultValue=''
-            {...register('department')}
-            sx={{ minWidth: 160 }}
+          {/* 성별 */}
+          <FormControl
+            error={errors.sex != null}
+            sx={{
+              display: 'block',
+            }}
           >
-            <MenuItem value=''>
-              <em>없음</em>
-            </MenuItem>
-            <MenuItem value='대학부'>대학부</MenuItem>
-            <MenuItem value='청년부'>청년부</MenuItem>
-          </Select>
+            <RadioGroup row sx={{ minHeight: 56 }}>
+              <FormControlLabel
+                {...register('sex', {
+                  required: '성별을 선택하세요.',
+                })}
+                value='남성'
+                control={<Radio />}
+                label='남성'
+              />
+              <FormControlLabel
+                {...register('sex', {
+                  required: '성별을 선택하세요.',
+                })}
+                value='여성'
+                control={<Radio />}
+                label='여성'
+              />
+            </RadioGroup>
+            <FormHelperText>
+              {/* 성별 에러 발생 시, 성별 에러 메시지 표시 */}
+              {/* {errors.sex != null ? errors.sex?.message : null} */}
+            </FormHelperText>
+          </FormControl>
 
-          {/* <FormHelperText>With label + helper text</FormHelperText> */}
-        </FormControl>
+          {/* 소속 부서 */}
+          <FormControl
+            sx={{
+              mb: 2,
+            }}
+          >
+            <InputLabel>소속 부서</InputLabel>
 
-        {/* 추가 정보 */}
-        <TextField label='주소' type='text' {...register('address')} />
+            <Select
+              label='소속 부서'
+              fullWidth
+              variant='outlined'
+              defaultValue=''
+              {...register('department')}
+              sx={{ minWidth: 200 }}
+            >
+              <MenuItem value=''>
+                <em>없음</em>
+              </MenuItem>
+              <MenuItem value='대학부'>대학부</MenuItem>
+              <MenuItem value='청년부'>청년부</MenuItem>
+            </Select>
 
-        <br />
-        <br />
-        <br />
+            {/* <FormHelperText>With label + helper text</FormHelperText> */}
+          </FormControl>
 
-        <TextField label='학교' type='text' {...register('school')} />
-        <TextField label='전공' type='text' {...register('major')} />
+          {/* 주소 */}
+          <TextField
+            label='주소'
+            type='text'
+            fullWidth
+            variant='outlined'
+            {...register('address')}
+            sx={{
+              mb: 2,
+            }}
+          />
 
-        <br />
-        <br />
-        <br />
+          {/* 학교 */}
+          <TextField
+            label='학교'
+            type='text'
+            fullWidth
+            variant='outlined'
+            {...register('school')}
+            sx={{
+              mb: 2,
+            }}
+          />
 
-        <TextField label='휴대전화' type='text' {...register('phoneNumber')} />
-        <TextField label='이메일' type='text' {...register('email')} />
+          {/* 전공 */}
+          <TextField
+            label='전공'
+            type='text'
+            fullWidth
+            variant='outlined'
+            {...register('major')}
+            sx={{
+              mb: 2,
+            }}
+          />
 
-        <br />
+          {/* 휴대전화 */}
+          <TextField
+            label='휴대전화'
+            type='text'
+            fullWidth
+            variant='outlined'
+            {...register('phoneNumber')}
+            sx={{
+              mb: 2,
+            }}
+          />
 
-        <Button
-          type='submit'
-          variant='contained'
-          sx={{
-            position: 'absolute',
-            right: '24px',
-          }}
-        >
-          제출
-        </Button>
-      </form>
-    </Container>
+          {/* 이메일 */}
+          <TextField
+            label='이메일'
+            type='text'
+            fullWidth
+            variant='outlined'
+            {...register('email')}
+            sx={{
+              mb: 2,
+            }}
+          />
+
+          {/* 제출 버튼 */}
+          <Button
+            type='submit'
+            variant='contained'
+            sx={{
+              position: 'absolute',
+              right: '24px',
+              bottom: '24px',
+            }}
+          >
+            제출
+          </Button>
+        </form>
+      </Container>
+    </ThemeProvider>
   );
 };
 
