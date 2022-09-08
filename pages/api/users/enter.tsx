@@ -59,7 +59,7 @@ const handler = async (
   if (phoneNumber) {
     const message = await twilioClient.messages.create({
       messagingServiceSid: process.env.TWILIO_MSID,
-      to: process.env.MY_PHONE!,
+      to: '+82' + +phoneNumber,
       body: `[인증번호: ${payload}] 사용자 본인 인증번호를 입력해주세요. (성락회원관리시스템)`,
     });
     console.log(message);
