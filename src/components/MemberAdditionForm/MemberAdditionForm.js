@@ -74,7 +74,7 @@ const MemberAdditionForm = () => {
             label='이름'
             type='text'
             fullWidth
-            variant='outlined'
+            variant='standard'
             error={errors.name != null}
             // helperText={errors.name?.message}
             required
@@ -119,15 +119,15 @@ const MemberAdditionForm = () => {
 
           {/* 소속 부서 */}
           <FormControl
+            fullWidth
             sx={{
-              mb: 2,
+              my: 2,
             }}
           >
             <InputLabel>소속 부서</InputLabel>
 
             <Select
               label='소속 부서'
-              fullWidth
               variant='outlined'
               defaultValue=''
               {...register('department')}
@@ -148,7 +148,7 @@ const MemberAdditionForm = () => {
             label='주소'
             type='text'
             fullWidth
-            variant='outlined'
+            variant='standard'
             {...register('address')}
             sx={{
               mb: 2,
@@ -160,7 +160,7 @@ const MemberAdditionForm = () => {
             label='학교'
             type='text'
             fullWidth
-            variant='outlined'
+            variant='standard'
             {...register('school')}
             sx={{
               mb: 2,
@@ -172,7 +172,7 @@ const MemberAdditionForm = () => {
             label='전공'
             type='text'
             fullWidth
-            variant='outlined'
+            variant='standard'
             {...register('major')}
             sx={{
               mb: 2,
@@ -184,7 +184,7 @@ const MemberAdditionForm = () => {
             label='휴대전화'
             type='text'
             fullWidth
-            variant='outlined'
+            variant='standard'
             {...register('phoneNumber')}
             sx={{
               mb: 2,
@@ -196,7 +196,7 @@ const MemberAdditionForm = () => {
             label='이메일'
             type='text'
             fullWidth
-            variant='outlined'
+            variant='standard'
             {...register('email')}
             sx={{
               mb: 2,
