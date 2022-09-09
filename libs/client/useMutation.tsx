@@ -29,8 +29,14 @@ export default function useMutation<T = any>(
       body: JSON.stringify(data),
     })
       .then((res) => res.json().catch(() => {}))
-      .then((data) => setState((prev) => ({ ...prev, data })))
-      .catch((error) => setState((prev) => ({ ...prev, error })))
+      .then((data) => {
+        console.log('서버의 응답 데이터: ', data);
+        setState((prev) => ({ ...prev, data }));
+      })
+      .catch((error) => {
+        console.log('서버가 준 에러 메시지: ', error);
+        setState((prev) => ({ ...prev, error }));
+      })
       .finally(() => setState((prev) => ({ ...prev, loading: false })));
   };
 
