@@ -8,9 +8,11 @@ import {
   Link,
 } from '@mui/material';
 
+import { red } from '@mui/material/colors';
+
 import { useForm } from 'react-hook-form';
 import useMutation from '@libs/client/useMutation';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 interface EnterForm {
@@ -24,6 +26,7 @@ interface TokenForm {
 
 interface MutationResult {
   ok: boolean;
+  authority: boolean;
 }
 
 const LoginWithPhone = () => {
@@ -45,8 +48,6 @@ const LoginWithPhone = () => {
   const onValid = (validForm: EnterForm) => {
     console.log('submit:', validForm);
     enter(validForm);
-    console.log('data:', data);
-    console.log('error:', error);
   };
 
   const onInvalid = () => {
@@ -67,7 +68,8 @@ const LoginWithPhone = () => {
 
   const authorityErrorStyle = {
     fontWeight: 700,
-    color: 'red',
+    fontSize: '0.96em',
+    color: red[600],
   };
 
   return (
@@ -86,7 +88,7 @@ const LoginWithPhone = () => {
         required
         fullWidth
         id='Phone Number'
-        label='Phone Number'
+        label='휴대폰 번호'
         name='Phone Number'
         autoFocus
         error={errors.phoneNumber != null}
@@ -100,7 +102,7 @@ const LoginWithPhone = () => {
           required
           fullWidth
           name='Validation Number'
-          label='Validation Number'
+          label='인증 번호'
           type='number'
           id='Validation Number'
           error={errors.verificationNumber != null}
@@ -123,7 +125,12 @@ const LoginWithPhone = () => {
           />
         </Grid>
         <Grid item>
-          <p style={authorityErrorStyle}>접근 권한이 없습니다.</p>
+          {/* 접근 권한이 undefined 또는 true이면 경고 메시지 출력하지 않음. */}
+          {data?.authority === false ? (
+            <p style={authorityErrorStyle}>
+              없는 번호이거나, 접근 권한이 없습니다.
+            </p>
+          ) : null}
         </Grid>
       </Grid>
 
@@ -134,7 +141,7 @@ const LoginWithPhone = () => {
           variant='contained'
           sx={{ mt: 3, mb: 2 }}
         >
-          {tokenLoading ? 'Loading...' : 'Verification'}
+          {tokenLoading ? '로딩 중...' : '인증하기'}
         </Button>
       ) : (
         <Button
@@ -143,7 +150,7 @@ const LoginWithPhone = () => {
           variant='contained'
           sx={{ mt: 3, mb: 2 }}
         >
-          {loading ? 'Loading...' : 'Send Message'}
+          {loading ? '로딩 중...' : 'SMS로 인증번호 받기'}
         </Button>
       )}
 

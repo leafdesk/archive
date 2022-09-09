@@ -62,8 +62,14 @@ export default function SignIn() {
           >
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component='h1' variant='h5'>
-            Sign in
+          <Typography
+            component='h1'
+            variant='h5'
+            sx={{
+              fontWeight: 600,
+            }}
+          >
+            {loginMethod ? '전화번호로 로그인' : '이메일로 로그인'}
           </Typography>
 
           {/* 로그인 방법 ? 전화번호로 로그인 : 이메일로 로그인 */}
