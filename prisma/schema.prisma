@@ -25,6 +25,7 @@ model Member {
   phoneNumber String?  @unique
   email       String?  @unique
   tokens      Token[]
+  authority   String?
 }
 
 model Token {
