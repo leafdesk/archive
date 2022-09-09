@@ -25,7 +25,9 @@ const handler = async (
       authority: 'ADMIN',
     },
   });
-  if (!permission) return res.status(400).json({ ok: false });
+  if (permission.length == 0) {
+    return res.status(400).json({ ok: false, authority: false });
+  }
 
   const payload = Math.floor(100000 + Math.random() * 900000) + '';
 
@@ -114,6 +116,7 @@ const handler = async (
 
   return res.json({
     ok: true,
+    authority: true,
   });
 };
 
