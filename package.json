@@ -27,6 +27,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.34.2",
+    "sass": "^1.54.9",
     "twilio": "^3.81.0"
   },
   "devDependencies": {
