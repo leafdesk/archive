@@ -6,6 +6,7 @@ import {
   Grid,
   Checkbox,
   Link,
+  Alert,
 } from '@mui/material';
 
 import { red } from '@mui/material/colors';
@@ -66,12 +67,6 @@ const LoginWithPhone = () => {
     }
   }, [tokenData, router]);
 
-  const authorityErrorStyle = {
-    fontWeight: 700,
-    fontSize: '0.96em',
-    color: red[600],
-  };
-
   return (
     <Box
       component='form'
@@ -95,6 +90,7 @@ const LoginWithPhone = () => {
         {...register('phoneNumber', {
           required: '전화번호를 입력하세요.',
         })}
+        disabled={data?.ok ? true : false}
       />
       {data?.ok ? (
         <TextField
@@ -112,27 +108,23 @@ const LoginWithPhone = () => {
         />
       ) : null}
 
-      <Grid
-        container
-        sx={{
-          alignItems: 'center',
-        }}
-      >
-        <Grid item xs>
-          <FormControlLabel
-            control={<Checkbox value='remember' color='primary' />}
-            label='Remember me'
-          />
-        </Grid>
-        <Grid item>
-          {/* 접근 권한이 undefined 또는 true이면 경고 메시지 출력하지 않음. */}
-          {data?.authority === false ? (
-            <p style={authorityErrorStyle}>
-              없는 번호이거나, 접근 권한이 없습니다.
-            </p>
-          ) : null}
-        </Grid>
-      </Grid>
+      {/* 접근 권한이 undefined 또는 true이면 경고 메시지 출력하지 않음. */}
+      {data?.authority === false ? (
+        <Alert
+          severity='error'
+          sx={{
+            fontWeight: 700,
+            color: red[600],
+          }}
+        >
+          없는 번호이거나, 접근 권한이 없습니다.
+        </Alert>
+      ) : null}
+
+      <FormControlLabel
+        control={<Checkbox value='remember' color='primary' />}
+        label='Remember me'
+      />
 
       {data?.ok ? (
         <Button
@@ -150,7 +142,7 @@ const LoginWithPhone = () => {
           variant='contained'
           sx={{ mt: 3, mb: 2 }}
         >
-          {loading ? '로딩 중...' : 'SMS로 인증번호 받기'}
+          {loading ? '로딩 중...' : '메시지로 인증번호 받기'}
         </Button>
       )}
 

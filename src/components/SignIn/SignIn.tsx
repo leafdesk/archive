@@ -69,7 +69,7 @@ export default function SignIn() {
               fontWeight: 600,
             }}
           >
-            {loginMethod ? '전화번호로 로그인' : '이메일로 로그인'}
+            {loginMethod ? '휴대폰 번호로 로그인' : '이메일로 로그인'}
           </Typography>
 
           {/* 로그인 방법 ? 전화번호로 로그인 : 이메일로 로그인 */}
