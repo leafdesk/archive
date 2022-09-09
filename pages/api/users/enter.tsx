@@ -19,34 +19,22 @@ const handler = async (
     : null;
   if (!member) return res.status(400).json({ ok: false });
 
-  const payload = Math.floor(100000 + Math.random() * 900000) + '';
-  // const member = await client.member.upsert({
-  //   where: {
-  //     ...member,
-  //   },
-  //   create: {
-  //     name: 'Anonymous',
-  //     sex: 'unknown',
-  //     department: 'unclassified',
-  //     ...member,
-  //   },
-  //   update: {},
-  // });
+  const permission = await client.member.findUnique({
+    where: {
+      phoneNumber: phoneNumber,
+      authority: 'ADMIN',
+    },
+  });
+  if (!permission) return res.status(400).json({ ok: false });
 
-  // console.log(member);
+  const payload = Math.floor(100000 + Math.random() * 900000) + '';
 
   const token = await client.token.create({
     data: {
       payload,
       member: {
-        connectOrCreate: {
+        connect: {
           where: {
-            ...member,
-          },
-          create: {
-            name: '(알 수 없음)',
-            sex: '(알 수 없음)',
-            department: '(알 수 없음)',
             ...member,
           },
         },
