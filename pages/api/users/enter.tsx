@@ -19,7 +19,7 @@ const handler = async (
     : null;
   if (!member) return res.status(400).json({ ok: false });
 
-  const permission = await client.member.findUnique({
+  const permission = await client.member.findMany({
     where: {
       phoneNumber: phoneNumber,
       authority: 'ADMIN',
@@ -33,9 +33,14 @@ const handler = async (
     data: {
       payload,
       member: {
-        connect: {
+        connectOrCreate: {
           where: {
             ...member,
+          },
+          create: {
+            name: '(알 수 없음)',
+            sex: '(알 수 없음)',
+            department: '(알 수 없음)',
           },
         },
       },
