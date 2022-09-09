@@ -65,6 +65,11 @@ const LoginWithPhone = () => {
     }
   }, [tokenData, router]);
 
+  const authorityErrorStyle = {
+    fontWeight: 700,
+    color: 'red',
+  };
+
   return (
     <Box
       component='form'
@@ -74,7 +79,7 @@ const LoginWithPhone = () => {
           : handleSubmit(onValid, onInvalid)
       }
       noValidate
-      sx={{ mt: 1 }}
+      sx={{ mt: 1, minWidth: '396px' }}
     >
       <TextField
         margin='normal'
@@ -89,7 +94,6 @@ const LoginWithPhone = () => {
           required: '전화번호를 입력하세요.',
         })}
       />
-
       {data?.ok ? (
         <TextField
           margin='normal'
@@ -106,10 +110,22 @@ const LoginWithPhone = () => {
         />
       ) : null}
 
-      <FormControlLabel
-        control={<Checkbox value='remember' color='primary' />}
-        label='Remember me'
-      />
+      <Grid
+        container
+        sx={{
+          alignItems: 'center',
+        }}
+      >
+        <Grid item xs>
+          <FormControlLabel
+            control={<Checkbox value='remember' color='primary' />}
+            label='Remember me'
+          />
+        </Grid>
+        <Grid item>
+          <p style={authorityErrorStyle}>접근 권한이 없습니다.</p>
+        </Grid>
+      </Grid>
 
       {data?.ok ? (
         <Button
