@@ -179,9 +179,9 @@ const MemberAdditionForm = () => {
             }}
           />
 
-          {/* 휴대전화 */}
+          {/* 휴대폰 번호 */}
           <TextField
-            label='휴대전화'
+            label='휴대폰 번호'
             type='text'
             fullWidth
             variant='standard'
