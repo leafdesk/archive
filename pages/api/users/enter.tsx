@@ -41,8 +41,6 @@ const handler = async (
           },
           create: {
             name: '(알 수 없음)',
-            sex: '(알 수 없음)',
-            department: '(알 수 없음)',
           },
         },
       },
