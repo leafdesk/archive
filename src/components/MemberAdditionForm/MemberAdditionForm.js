@@ -13,6 +13,7 @@ import {
   Container,
 } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import useMutation from '@libs/client/useMutation';
 
 const theme = createTheme({
   typography: {
@@ -48,8 +49,13 @@ const MemberAdditionForm = () => {
     console.log('[ERROR]', errors);
   }
 
-  const onValid = (data) => {
-    console.log('양식을 성공적으로 제출했습니다.');
+  const [addMember, { loading, data, error }] = useMutation(
+    '../api/admin/addMember'
+  );
+
+  const onValid = (newMemberData) => {
+    console.log('신규 회원 정보: ', newMemberData);
+    addMember(newMemberData);
   };
 
   const onInvalid = () => {
@@ -88,14 +94,14 @@ const MemberAdditionForm = () => {
 
           {/* 성별 */}
           <FormControl
-            error={errors.sex != null}
+            error={errors.gender != null}
             sx={{
               display: 'block',
             }}
           >
             <RadioGroup row sx={{ minHeight: 56 }}>
               <FormControlLabel
-                {...register('sex', {
+                {...register('gender', {
                   required: '성별을 선택하세요.',
                 })}
                 value='남성'
@@ -103,7 +109,7 @@ const MemberAdditionForm = () => {
                 label='남성'
               />
               <FormControlLabel
-                {...register('sex', {
+                {...register('gender', {
                   required: '성별을 선택하세요.',
                 })}
                 value='여성'
@@ -113,7 +119,7 @@ const MemberAdditionForm = () => {
             </RadioGroup>
             <FormHelperText>
               {/* 성별 에러 발생 시, 성별 에러 메시지 표시 */}
-              {/* {errors.sex != null ? errors.sex?.message : null} */}
+              {/* {errors.gender != null ? errors.gender?.message : null} */}
             </FormHelperText>
           </FormControl>
 
