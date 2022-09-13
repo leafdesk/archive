@@ -4,8 +4,6 @@ const main = async () => {
   const member = await client.member.create({
     data: {
       name: '이상건',
-      sex: '남성',
-      department: '대학부',
     },
   });
 };
