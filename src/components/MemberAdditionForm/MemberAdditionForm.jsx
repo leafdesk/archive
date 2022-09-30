@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   TextField,
@@ -12,37 +13,24 @@ import {
   InputLabel,
   Container,
 } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import { defaultFont } from '../../themes/defaultFont';
 import useMutation from '@libs/client/useMutation';
-
-const theme = createTheme({
-  typography: {
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      'Segoe UI',
-      'Roboto',
-      'Oxygen',
-      'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      'sans-serif',
-    ].join(','),
-  },
-});
+import MemberAdditionModal from './MemberAdditionModal';
 
 const MemberAdditionForm = () => {
+  const [modalOpened, setModalOpened] = useState(false);
+  const [modalType, setModalType] = useState('');
+
   const {
     register,
-    watch,
+    // watch,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
   // 사용자가 양식에 입력한 값을 콘솔에 출력
-  console.log('[WATCH]', watch());
+  // console.log('[WATCH]', watch());
 
   // errors 발생 시 (errors 객체가 비어있지 않으면), errors 출력
   if (Object.keys(errors).length != 0) {
@@ -56,6 +44,12 @@ const MemberAdditionForm = () => {
   const onValid = (newMemberData) => {
     console.log('신규 회원 정보: ', newMemberData);
     addMember(newMemberData);
+    if (data?.error.code == 'P2002') {
+      () => setModalType('Already Exists');
+    } else {
+      () => setModalType('Default');
+    }
+    setModalOpened(() => true);
   };
 
   const onInvalid = () => {
@@ -63,7 +57,7 @@ const MemberAdditionForm = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={defaultFont}>
       <Container
         maxWidth='sm'
         sx={{
@@ -223,6 +217,13 @@ const MemberAdditionForm = () => {
           </Button>
         </form>
       </Container>
+
+      {/* 제출 시 표시되는 팝업 모달창 */}
+      <MemberAdditionModal
+        modalOpened={modalOpened}
+        setModalOpened={setModalOpened}
+        modalType={modalType}
+      />
     </ThemeProvider>
   );
 };
