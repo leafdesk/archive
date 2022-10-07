@@ -19,13 +19,13 @@ const MemberAddition = () => {
     '../api/admin/addMember'
   );
 
-  const onValid = async (newMemberData) => {
+  const onValid = (newMemberData) => {
     addMember(newMemberData);
     setModalOpened(() => true);
   };
 
   const onInvalid = () => {
-    console.log('양식 제출에 실패했습니다.');
+    console.log('유효하지 않은 양식입니다.');
   };
 
   return (

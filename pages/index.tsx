@@ -10,7 +10,7 @@ const Home = () => {
 
       <Button
         onClick={() => {
-          router.push('/Admin');
+          router.push('/admin');
         }}
       >
         관리자

@@ -1,14 +1,14 @@
 import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 
-const AdminIndexPage = () => {
+const Page = () => {
   const router = useRouter();
 
   return (
     <>
       <Button
         onClick={() => {
-          router.push('/Admin/MemberAdditionForm');
+          router.push('/admin/member-addition');
         }}
       >
         새로운 멤버 추가
@@ -17,4 +17,4 @@ const AdminIndexPage = () => {
   );
 };
 
-export default AdminIndexPage;
+export default Page;

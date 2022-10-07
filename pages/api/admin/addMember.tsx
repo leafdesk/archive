@@ -2,17 +2,6 @@ import client from '@libs/client/client';
 import withHandler, { ResponseType } from '@libs/server/withHandler';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-interface MemberInfoType {
-  name?: string;
-  gender?: string;
-  department?: string;
-  address?: string;
-  school?: string;
-  major?: string;
-  phoneNumber?: string;
-  email?: string;
-}
-
 const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>
@@ -29,7 +18,7 @@ const handler = async (
   } = req.body;
 
   // 신규 회원 생성
-  const newMember: MemberInfoType = await client.member.create({
+  const newMember = await client.member.create({
     data: {
       name,
       gender,
