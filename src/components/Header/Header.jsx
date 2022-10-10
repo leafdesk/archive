@@ -1,24 +1,23 @@
 import { AppBar, Button, Container, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 
 const cn = classNames.bind(styles);
 
+const ADMIN_MENU = [
+  {
+    title: '회원 등록',
+    url: '/admin/member-addition',
+  },
+  {
+    title: '회원 조회',
+    url: '/admin',
+  },
+];
+
 const Header = () => {
   const router = useRouter();
-
-  const menuOfAdmin = [
-    {
-      title: '회원 등록',
-      url: '/admin/member-addition',
-    },
-    {
-      title: '회원 조회',
-      url: '/admin',
-    },
-  ];
 
   return (
     <AppBar
@@ -34,9 +33,9 @@ const Header = () => {
       <Container sx={{ display: 'flex' }}>
         <Button onClick={() => router.push('/')}>홈</Button>
 
-        {router.pathname == '/admin' && (
+        {router.pathname.indexOf('/admin') > -1 && (
           <>
-            <Typography>/ </Typography>
+            <Typography>/</Typography>
             <Button
               onClick={() => {
                 router.push('/admin');
@@ -49,11 +48,8 @@ const Header = () => {
       </Container>
 
       <Container>
-        {/* <Button>메뉴 1</Button>
-        <Button>메뉴 2</Button> */}
-
-        {router.pathname == '/admin' &&
-          menuOfAdmin.map((item) => (
+        {router.pathname.indexOf('/admin') > -1 &&
+          ADMIN_MENU.map((item) => (
             <Button
               key={item.title}
               onClick={() => {
