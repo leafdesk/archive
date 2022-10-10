@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import { useRouter } from 'next/router';
 
 const Page = () => {
@@ -6,13 +6,7 @@ const Page = () => {
 
   return (
     <>
-      <Button
-        onClick={() => {
-          router.push('/admin/member-addition');
-        }}
-      >
-        새로운 멤버 추가
-      </Button>
+      <Container></Container>
     </>
   );
 };
