@@ -6,28 +6,10 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>
 ) => {
-  const {
-    name,
-    gender,
-    department,
-    address,
-    school,
-    major,
-    phoneNumber,
-    email,
-  } = req.body;
-
   // 신규 회원 생성
   const newMember = await client.member.create({
     data: {
-      name,
-      gender,
-      department,
-      address,
-      school,
-      major,
-      phoneNumber,
-      email,
+      ...req.body,
     },
   });
 
