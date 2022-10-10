@@ -43,6 +43,10 @@ const Header = () => {
       </Container>
 
       <Container>
+        {/**
+         * /admin, ADMIN_MENU 부분도 일반화 시킬 수 있음 !!!!
+         * 시간 날 때 수정하기 !!!!
+         */}
         {router.pathname.indexOf('/admin') > -1 &&
           ADMIN_MENU.map((item) => (
             <Button
