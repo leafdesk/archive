@@ -1,9 +1,5 @@
 import { AppBar, Button, Container, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import classNames from 'classnames/bind';
-import styles from './Header.module.scss';
-
-const cn = classNames.bind(styles);
 
 const ADMIN_MENU = [
   {
@@ -22,7 +18,6 @@ const Header = () => {
   return (
     <AppBar
       position='static'
-      className={cn('AppBar')}
       sx={{
         color: 'black',
         background: 'white',
@@ -30,7 +25,7 @@ const Header = () => {
         borderBottom: '1px solid lightgray',
       }}
     >
-      <Container sx={{ display: 'flex' }}>
+      <Container sx={{ display: 'flex', alignItems: 'center' }}>
         <Button onClick={() => router.push('/')}>홈</Button>
 
         {router.pathname.indexOf('/admin') > -1 && (
