@@ -35,13 +35,8 @@ const handler = async (
     data: {
       payload,
       member: {
-        connectOrCreate: {
-          where: {
-            ...member,
-          },
-          create: {
-            name: '(알 수 없음)',
-          },
+        connect: {
+          ...member,
         },
       },
     },
@@ -57,60 +52,6 @@ const handler = async (
     });
     console.log(message);
   }
-
-  // if (email) {
-  //   member = await client.member.findUnique({
-  //     where: {
-  //       email,
-  //     },
-  //   });
-
-  //   if (member) {
-  //     console.log('존재하는 멤버입니다.');
-  //   }
-
-  //   if (!member) {
-  //     console.log('멤버 정보가 없습니다. 신규 멤버를 생성합니다.');
-
-  //     member = await client.member.create({
-  //       data: {
-  //         name: 'Anonymous',
-  //         sex: 'unknown',
-  //         department: 'unclassified',
-  //         email: email,
-  //       },
-  //     });
-  //   }
-
-  //   console.log(member);
-  // }
-
-  // if (phoneNumber) {
-  //   member = await client.member.findUnique({
-  //     where: {
-  //       phoneNumber: +phoneNumber,
-  //     },
-  //   });
-
-  //   if (member) {
-  //     console.log('존재하는 멤버');
-  //   }
-
-  //   if (!member) {
-  //     console.log('멤버 정보 없음, 신규 생성');
-
-  //     member = await client.member.create({
-  //       data: {
-  //         name: 'Anonymous',
-  //         sex: 'unknown',
-  //         department: 'unclassified',
-  //         phoneNumber: +phoneNumber,
-  //       },
-  //     });
-  //   }
-
-  //   console.log(member);
-  // }
 
   return res.json({
     ok: true,
