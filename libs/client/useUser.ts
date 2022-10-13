@@ -10,7 +10,7 @@ const useUser = () => {
       .then((response) => response.json())
       .then((data) => {
         // 로그인 하지 않았다면 로그인 페이지로 Redirect
-        if (!data.ok) return router.push('/Login');
+        if (!data.ok) return router.replace('/login');
 
         // 로그인 상태라면
         setUser(data.profile);
