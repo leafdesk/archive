@@ -38,6 +38,7 @@ const MemberAddition = () => {
       modalOpened={modalOpened}
       errors={errors}
       data={data}
+      loading={loading}
     />
   );
 };
