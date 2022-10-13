@@ -25,6 +25,7 @@ const View = ({
   modalOpened,
   errors,
   data,
+  loading,
 }) => {
   return (
     <ThemeProvider theme={defaultFont}>
@@ -103,8 +104,12 @@ const View = ({
         </form>
       </Container>
 
-      {/* 제출 시 표시되는 팝업 모달창 */}
-      {modalOpened ? (
+      {/**
+       * 양식 제출 => 서버 응답 => loading: false
+       * => 응답에 따라 모달이 열리도록 처리
+       * (만약 !loading이 없으면 모달이 먼저 열리고 내부 텍스트가 바뀌는 현상이 발생)
+       */}
+      {!loading && modalOpened ? (
         <PopupModal
           modalOpened={modalOpened}
           setModalClosed={setModalClosed}
