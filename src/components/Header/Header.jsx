@@ -1,4 +1,4 @@
-import { AppBar, Button, Container, Typography } from '@mui/material';
+import { AppBar, Button, Container, Typography, Box } from '@mui/material';
 import { useRouter } from 'next/router';
 
 const ADMIN_MENU = [
@@ -8,7 +8,7 @@ const ADMIN_MENU = [
   },
   {
     title: '회원 조회',
-    url: '/admin',
+    url: '/admin/member-inquiry',
   },
 ];
 
@@ -25,21 +25,36 @@ const Header = () => {
         borderBottom: '1px solid lightgray',
       }}
     >
-      <Container sx={{ display: 'flex', alignItems: 'center' }}>
-        <Button onClick={() => router.push('/')}>홈</Button>
+      <Container
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Button onClick={() => router.push('/')}>홈</Button>
 
-        {router.pathname.indexOf('/admin') > -1 && (
-          <>
-            <Typography>/</Typography>
-            <Button
-              onClick={() => {
-                router.push('/admin');
-              }}
-            >
-              관리자
-            </Button>
-          </>
-        )}
+          {router.pathname.indexOf('/admin') > -1 && (
+            <>
+              <Typography>/</Typography>
+              <Button
+                onClick={() => {
+                  router.push('/admin');
+                }}
+              >
+                관리자
+              </Button>
+            </>
+          )}
+        </Box>
+
+        <Button onClick={() => router.push('/login')}>로그인</Button>
       </Container>
 
       <Container>
