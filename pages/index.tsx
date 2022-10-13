@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Typography, Alert, Card, Button } from '@mui/material';
+import { Typography, Alert, Button } from '@mui/material';
 
 const Home = () => {
   const router = useRouter();
