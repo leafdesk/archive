@@ -11,6 +11,7 @@ const MemberAddition = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -32,6 +33,7 @@ const MemberAddition = () => {
     <View
       register={register}
       handleSubmit={handleSubmit}
+      reset={reset}
       onValid={onValid}
       onInvalid={onInvalid}
       setModalClosed={setModalClosed}

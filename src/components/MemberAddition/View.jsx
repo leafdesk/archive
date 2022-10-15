@@ -19,6 +19,7 @@ import PopupModal from './PopupModal';
 const View = ({
   register,
   handleSubmit,
+  reset,
   onValid,
   onInvalid,
   setModalClosed,
