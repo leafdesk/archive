@@ -24,7 +24,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/SignIn/SignIn.tsx"
+    "src/components/SignIn/SignIn.tsx",
+    "pages/_app.js"
   ],
   "exclude": ["node_modules"]
 }
