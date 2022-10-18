@@ -13,6 +13,6 @@ const handler = async (
 };
 
 export default withHandler({
-  method: 'GET',
+  methods: ['GET', 'POST'],
   handler: handler,
 });
