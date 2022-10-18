@@ -25,7 +25,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/SignIn/SignIn.tsx",
-    "pages/_app.js"
+    "pages/_app.js",
+    "src/components/MemberInquiry/index.js"
   ],
   "exclude": ["node_modules"]
 }
