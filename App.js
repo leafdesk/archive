@@ -1,19 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from './src/screens/HomeScreen';
+import WorshipScreen from './src/screens/WorshipScreen';
+import BibleScreen from './src/screens/BibleScreen';
+import ContentsScreen from './src/screens/ContentsScreen';
+import ViewAllScreen from './src/screens/ViewAllScreen';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{ title: '홈' }}
+        />
+        <Tab.Screen
+          name='Worship'
+          component={WorshipScreen}
+          options={{ title: '예배' }}
+        />
+        <Tab.Screen
+          name='Bible'
+          component={BibleScreen}
+          options={{ title: '성경' }}
+        />
+        <Tab.Screen
+          name='Contents'
+          component={ContentsScreen}
+          options={{ title: '콘텐츠' }}
+        />
+        <Tab.Screen
+          name='ViewAll'
+          component={ViewAllScreen}
+          options={{ title: '전체보기' }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
