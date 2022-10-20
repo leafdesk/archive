@@ -12,6 +12,7 @@
     "@emotion/css": "^11.10.0",
     "@emotion/native": "^11.10.0",
     "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@expo/webpack-config": "^0.17.0",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.10",
