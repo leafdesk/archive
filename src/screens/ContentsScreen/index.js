@@ -8,7 +8,7 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function ContentsScreen() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName='OnSeries'>
       <Tab.Screen
         name='OnSeries'
         component={OnSeriesScreen}

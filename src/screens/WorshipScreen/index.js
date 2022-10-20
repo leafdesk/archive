@@ -7,7 +7,7 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function WorshipScreen() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName='SundaySermon'>
       <Tab.Screen
         name='SundaySermon'
         component={SundaySermonScreen}
