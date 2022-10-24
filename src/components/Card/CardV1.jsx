@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import styled from '@emotion/native';
 import Icon from 'react-native-vector-icons/Feather';
-import ContainerV1 from '../../designs/Container/ContainerV1';
+import Container from '../Container/ContainerV1';
 
 const Card = styled.View`
   border: 1px solid #ebebeb;
@@ -38,7 +38,7 @@ const Date = styled.Text`
 
 export default function CardV1({ thumbnail, title, date, endOfContainer }) {
   return (
-    <ContainerV1 endOfContainer={endOfContainer}>
+    <Container endOfContainer={endOfContainer}>
       <Card>
         <Thumbnail defaultSource={thumbnail} />
 
@@ -51,6 +51,6 @@ export default function CardV1({ thumbnail, title, date, endOfContainer }) {
           <Icon name='share' size={20} color='#a0a0a0' />
         </Bottom>
       </Card>
-    </ContainerV1>
+    </Container>
   );
 }

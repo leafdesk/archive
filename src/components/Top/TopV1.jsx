@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import Container from '../../designs/Container/ContainerV1';
+import Container from '../Container/ContainerV1';
 
 const Title = styled.Text`
   font-size: 20px;
