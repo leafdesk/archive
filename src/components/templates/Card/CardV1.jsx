@@ -36,9 +36,9 @@ const Date = styled.Text`
   color: #a0a0a0;
 `;
 
-export default function CardV1({ thumbnail, title, date, endOfContainer }) {
+export default function CardV1({ thumbnail, title, date, bottomGap }) {
   return (
-    <Container endOfContainer={endOfContainer}>
+    <Container bottomGap={bottomGap}>
       <Card>
         <Thumbnail defaultSource={thumbnail} />
 

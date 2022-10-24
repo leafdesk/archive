@@ -5,11 +5,11 @@ const Container = styled.View`
   background-color: #ffffff;
 `;
 
-export default function ContainerV1({ children, endOfContainer }) {
+export default function ContainerV1({ children, bottomGap }) {
   return (
     <Container
       style={
-        endOfContainer && {
+        bottomGap && {
           paddingBottom: 16,
           marginBottom: 12,
         }
