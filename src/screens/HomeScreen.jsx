@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native';
-import Top from '../components/templates/Top/TopV1';
-import Card from '../components/templates/Card/CardV1';
+import Top from '../components/Top/TopV1';
+import Card from '../components/Card/CardV1';
 
 export default function HomeScreen() {
   return (
