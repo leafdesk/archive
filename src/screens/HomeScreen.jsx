@@ -17,17 +17,17 @@ export default function HomeScreen() {
       <Top title='주중 콘텐츠' />
       <Container bottomGap={true}>
         <ListRow
-          thumbnail='https://THUMBNAIL_URL'
+          // thumbnail='https://THUMBNAIL_URL'
           title='열왕기상9-20장'
           date='2022.10.24'
         />
         <ListRow
-          thumbnail='https://THUMBNAIL_URL'
+          // thumbnail='https://THUMBNAIL_URL'
           title='온라인특별 새벽기도회'
           date='2022.10.24'
         />
         <ListRow
-          thumbnail='https://THUMBNAIL_URL'
+          // thumbnail='https://THUMBNAIL_URL'
           title='최고의 사랑'
           date='2022.10.24'
         />

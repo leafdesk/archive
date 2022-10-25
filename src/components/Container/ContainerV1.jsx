@@ -11,7 +11,7 @@ export default function ContainerV1({ children, bottomGap }) {
       style={
         bottomGap && {
           paddingBottom: 16,
-          marginBottom: 12,
+          marginBottom: 16,
         }
       }
     >
