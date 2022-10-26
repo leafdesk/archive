@@ -2,6 +2,9 @@ import { View, Text } from 'react-native';
 import styled from '@emotion/native';
 import Icon from 'react-native-vector-icons/Feather';
 import Container from '../Container/ContainerV1';
+import Title from '../designs/Title';
+import Date from '../designs/Date';
+import Thumbnail from '../designs/Thumbnail';
 
 const Card = styled.View`
   border: 1px solid #ebebeb;
@@ -9,43 +12,21 @@ const Card = styled.View`
   height: 300px;
 `;
 
-const Thumbnail = styled.Image`
-  height: 200px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-`;
-
 const Bottom = styled.View`
   padding: 12px 16px;
   justify-content: space-between;
 `;
 
-const Title = styled.Text`
-  width: 260px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 22;
-  color: #333333;
-`;
-
-const Date = styled.Text`
-  font-size: 14px;
-  font-weight: 400;
-  padding: 8px 0 0;
-  color: #a0a0a0;
-`;
-
 export default function CardV1({ thumbnail, title, date }) {
   return (
-    <Container bottomGap={true}>
+    <Container bottomGap>
       <Card>
-        <Thumbnail defaultSource={thumbnail} />
+        <Thumbnail.Large defaultSource={thumbnail} />
 
         <Bottom style={{ flexDirection: 'row' }}>
-          <View>
-            <Title numberOfLines={2}>{title}</Title>
-            <Date>{date}</Date>
+          <View style={{ width: 260 }}>
+            <Title.V1 numberOfLines={2}>{title}</Title.V1>
+            <Date.V1>{date}</Date.V1>
           </View>
 
           <Icon name='share' size={20} color='#a0a0a0' />

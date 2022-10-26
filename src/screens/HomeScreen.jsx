@@ -15,7 +15,7 @@ export default function HomeScreen() {
       />
 
       <Top title='주중 콘텐츠' />
-      <Container bottomGap={true}>
+      <Container bottomGap>
         <ListRow
           // thumbnail='https://THUMBNAIL_URL'
           title='열왕기상9-20장'
@@ -30,6 +30,7 @@ export default function HomeScreen() {
           // thumbnail='https://THUMBNAIL_URL'
           title='최고의 사랑'
           date='2022.10.24'
+          lastRow
         />
       </Container>
     </ScrollView>
