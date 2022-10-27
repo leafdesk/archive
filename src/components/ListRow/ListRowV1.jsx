@@ -6,7 +6,6 @@ import Thumbnail from '../designs/Thumbnail';
 
 const styles = StyleSheet.create({
   nextRow: {
-    paddingBottom: 8,
     borderBottomWidth: 1,
     borderBottomColor: '#eeeeee',
   },
@@ -14,13 +13,14 @@ const styles = StyleSheet.create({
 
 export default function ListRowV1({ thumbnail, title, date, lastRow }) {
   return (
-    <TouchableHighlight underlayColor='transparent' onPress={() => {}}>
+    <TouchableHighlight underlayColor='#eeeeee' onPress={() => {}}>
       <View
         style={[
           {
             flexDirection: 'row',
             alignItems: 'center',
             paddingTop: 8,
+            paddingBottom: 8,
           },
           !lastRow && styles.nextRow,
         ]}
@@ -29,7 +29,6 @@ export default function ListRowV1({ thumbnail, title, date, lastRow }) {
 
         <View>
           <Title.V1>{title}</Title.V1>
-
           <Date.V1>{date}</Date.V1>
         </View>
       </View>
