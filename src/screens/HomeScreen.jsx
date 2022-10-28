@@ -1,10 +1,9 @@
 import { ScrollView } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Top from '../components/Top/TopV1';
 import Card from '../components/Card/CardV1';
-import WeekdayContent from './WeekdayContent';
-
-const Tab = createMaterialTopTabNavigator();
+import Container from '../components/Container/ContainerV1';
+import BadgeTab from '../components/BadgeTab/BadgeTab';
+import { weekdayContentTabs } from '../components/WeekdayContent/tabs';
 
 export default function HomeScreen() {
   return (
@@ -17,7 +16,9 @@ export default function HomeScreen() {
       />
 
       <Top title='주중 콘텐츠' />
-      <WeekdayContent />
+      <Container bottomGap>
+        <BadgeTab tabs={weekdayContentTabs} />
+      </Container>
     </ScrollView>
   );
 }
