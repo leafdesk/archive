@@ -1,18 +1,20 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import { useEffect, useState } from 'react';
 
 /**
- * SSR: Server Side Rendering. 서버가 데이터를 가져와서 그린다. 서버 부하 발생.
+ * CSR: Client Side Rendering. 클라이언트가 데이터를 가져와서 그린다.
  *
- * 여기서 리턴된 값은 페이지에 전달됨. 페이지를 새로고침 할 때마다 Data Fetching.
+ * 함수는 따로 존재하지 않음. React와 동일.
  */
-export async function getServerSideProps() {
-  console.log('이 로그는 Server에 표시됩니다.');
-  return { props: { time: new Date().toISOString() } };
-}
+export default function CSR() {
+  const [time, setTime] = useState();
 
-export default function Home({ time }) {
+  useEffect(() => {
+    console.log('이 로그는 Client에 표시됩니다.');
+    setTime(new Date().toISOString());
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -22,11 +24,6 @@ export default function Home({ time }) {
 
       <main>
         <h1 className={styles.title}>{time}</h1>
-
-        <h1>
-          <Link href='csr'>CSR</Link> <Link href='ssg'>SSG</Link>{' '}
-          <Link href='isr'>ISR</Link>
-        </h1>
       </main>
 
       <footer>
