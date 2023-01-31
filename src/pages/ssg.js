@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import SubLayout from '../components/SubLayout';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 
 /**
  * SSG: Static Site Generation. 빌드 시 데이터를 가져와서 정적인 사이트를 그려둔다.

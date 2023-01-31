@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 
 /**
  * SSR: Server Side Rendering. 서버가 데이터를 가져와서 그린다. 서버 부하 발생.

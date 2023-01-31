@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 
 /**
  * 페이지가 아닌 컴포넌트는 서버 사이드 렌더링 불가능.

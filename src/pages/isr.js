@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import SubLayout from '../components/SubLayout';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 
 /**
  * ISR: Incremental Static Regeneration. 특정 주기로 데이터를 가져와서 정적인 사이트를 다시 그려둔다.
