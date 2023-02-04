@@ -1,5 +1,5 @@
-import Layout from '../components/Layout';
-import SubLayout from '../components/SubLayout';
+import Layout from 'components/Layout';
+import SubLayout from 'components/SubLayout';
 import styles from '../../styles/Home.module.css';
 
 /**

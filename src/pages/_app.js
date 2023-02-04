@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import Layout from 'components/Layout';
 
 /**
  * 여기서 Component는 페이지를 의미.
