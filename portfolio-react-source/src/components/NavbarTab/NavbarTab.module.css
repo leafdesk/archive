@@ -1,0 +1,40 @@
+.NavbarTab {
+  display: flex;
+  align-items: center;
+  padding: 12px 32px;
+  cursor: pointer;
+  color: #8f8989;
+}
+.NavbarTab .icon {
+  display: inline-block;
+  font-size: 1.2em;
+  padding: 4px 16px 0 0;
+}
+.NavbarTab span {
+  font-size: 0.96em;
+}
+.NavbarTab span {
+  font-weight: 400;
+}
+
+.NavbarTabFocused {
+  display: flex;
+  align-items: center;
+  padding: 12px 32px;
+  cursor: pointer;
+  background-color: #fafafa;
+  color: #333333;
+}
+.NavbarTabFocused .icon {
+  display: inline-block;
+  font-size: 1.2em;
+  padding: 4px 16px 0 0;
+}
+.NavbarTabFocused span {
+  font-size: 0.96em;
+}
+.NavbarTabFocused span {
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=NavbarTab.module.css.map */

@@ -1,0 +1,33 @@
+@import '../../core/utils/_color.scss';
+@import '../../core/utils/_mixin.scss';
+
+.NavbarInfo {
+  margin: 0 32px;
+  padding: 16px 0 32px;
+  border-top: 1px solid $lightgray-background-secondary;
+  line-height: 0.9;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  h3 {
+    font-size: 1.04em;
+    font-weight: 700;
+    color: $black-text;
+  }
+
+  a {
+    font-size: 0.9em;
+    color: $lightgray-text;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include laptop {
+    display: none;
+  }
+}

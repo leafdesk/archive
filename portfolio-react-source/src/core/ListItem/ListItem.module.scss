@@ -1,0 +1,31 @@
+@import '../utils/_color.scss';
+
+.ListItem {
+  list-style: none;
+  border: 1px solid $lightgray-border;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 0 0 16px;
+  font-size: 0.96em;
+  font-weight: 400;
+  color: $black-text;
+  background-color: $white-background;
+  box-sizing: border-box;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    color: $lightgray-text;
+    cursor: pointer;
+
+    &:hover {
+      color: $red-text;
+      font-weight: 500;
+    }
+  }
+}

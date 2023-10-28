@@ -1,0 +1,9 @@
+@import '../../../core/utils/_mixin.scss';
+
+.AppContainer {
+  display: flex;
+
+  @include laptop {
+    display: block;
+  }
+}

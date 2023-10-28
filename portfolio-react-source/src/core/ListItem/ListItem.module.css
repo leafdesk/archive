@@ -1,0 +1,29 @@
+.ListItem {
+  list-style: none;
+  border: 1px solid #c7cad1;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 0 0 16px;
+  font-size: 0.96em;
+  font-weight: 400;
+  color: #333333;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ListItem button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: #8f8989;
+  cursor: pointer;
+}
+.ListItem button:hover {
+  color: #af445e;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=ListItem.module.css.map */
