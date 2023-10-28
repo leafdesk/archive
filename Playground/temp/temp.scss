@@ -1,0 +1,9 @@
+@mixin temp($index) {
+  &:nth-child(#{$index}) {
+    background-color: red;
+  }
+}
+
+.class {
+  @include temp(1);
+}

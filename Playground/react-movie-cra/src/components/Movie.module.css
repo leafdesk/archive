@@ -1,0 +1,47 @@
+.Movie {
+  width: 200px;
+  height: 300px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 8px #aaa;
+  border-radius: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.Movie img {
+  width: 200px;
+  height: 300px;
+}
+.Movie .TextBox {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1.4px);
+}
+.Movie .TextBox h3 {
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 1.06em;
+}
+.Movie .TextBox h3 a {
+  text-decoration: none;
+  color: #eee;
+}
+.Movie .TextBox ul {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+}
+.Movie .TextBox ul li {
+  display: inline-block;
+  list-style: none;
+  padding: 0 10px;
+  color: yellow;
+}
+
+/*# sourceMappingURL=Movie.module.css.map */
