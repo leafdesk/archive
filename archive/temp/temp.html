@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head></head>
+  <body>
+    <project-item title="WC" date="220419" name="the title" />
+  </body>
+
+  <script>
+    class Item extends HTMLElement {
+      static get observedAttributes() {
+        return ['date', 'name'];
+      }
+
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.render();
+      }
+
+      render() {
+        this.innerHTML = `
+        <li>
+          <span>${this.date}</span>
+          <span>${this.name}</span>
+        </li>`;
+      }
+
+      // attributeChangedCallback()
+    }
+
+    window.customElements.define('project-item', Item);
+  </script>
+</html>

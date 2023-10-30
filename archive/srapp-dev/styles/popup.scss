@@ -1,0 +1,52 @@
+/**********************************************************
+	POPUP
+***********************************************************/
+
+.pop_toast {
+  position: relative;
+
+  .btn_close {
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    top: 0;
+
+    /* float: right; */
+    width: 15px;
+    height: 15px;
+    background: url(/icons/ico_close.svg) no-repeat center center;
+  }
+
+  .title {
+    padding: 16px 15px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    display: block;
+    text-align: center;
+  }
+
+  .sns_list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 25px;
+
+    li {
+      text-align: center;
+
+      img {
+        width: 66px;
+      }
+
+      .tit {
+        margin-top: 8px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+/* .pop_toast .sns_list li + li {
+	margin-left: 10px;
+} */

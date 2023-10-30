@@ -1,0 +1,9 @@
+@import '../../../core/utils/mixin';
+
+.AppContainer {
+  display: flex;
+
+  @include laptop {
+    display: block;
+  }
+}

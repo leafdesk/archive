@@ -1,0 +1,246 @@
+/**********************************************************
+	ON SERIES
+***********************************************************/
+
+.onseries_wrap {
+  .top_area .tab_wrap {
+    padding-right: 15px;
+  }
+
+  .guide {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: #f9f9f9;
+  }
+}
+
+/* 온특새 - 상세 */
+
+.onseries_detail {
+  .prayer_wrap {
+    padding: 30px 20px;
+  }
+
+  .prayer_list {
+    counter-reset: prayer_list;
+
+    li {
+      color: #444;
+      font-size: 16px;
+      line-height: 26px;
+      font-weight: 400;
+
+      &:before {
+        counter-increment: prayer_list;
+        content: counter(prayer_list) '. ';
+      }
+    }
+  }
+}
+
+/* 온3분 메인 - 슬라이드 */
+
+.onseries_wrap .three_swiper {
+  padding: 0 26px;
+
+  .swiper-pagination {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 100;
+    padding: 0 5px;
+    color: #fff;
+    font-size: 11px;
+    line-height: 19px;
+    background-color: #000;
+    border-radius: 4px;
+  }
+
+  .swiper-slide {
+    border-radius: 8px;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+/* 온3분 - 상세 - 설교요지 */
+
+.onseries_detail {
+  .gist_wrap {
+    padding: 20px 20px 40px 20px;
+
+    .gist_title {
+      position: relative;
+      padding-right: 30px;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 23px;
+
+      .translation {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: url('/icons/ico_trans.svg') no-repeat center center;
+      }
+    }
+
+    .main_bible {
+      padding: 8px 0 15px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      line-height: 18px;
+      border-bottom: 2px solid #000;
+    }
+
+    .gist {
+      font-size: 16px;
+      line-height: 26px;
+      word-break: keep-all;
+    }
+
+    .btn_mission {
+      height: 57px;
+      margin-top: 40px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 57px;
+      text-align: center;
+      background-color: #5ab94d;
+      border-radius: 8px;
+
+      &:before {
+        content: 'N';
+        display: inline-block;
+        margin: 2px 5px 0 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+        vertical-align: middle;
+      }
+    }
+
+    .txt_mission {
+      margin-top: 15px;
+      color: #999;
+      font-size: 14px;
+      line-height: 22px;
+      text-align: center;
+    }
+  }
+
+  .three_swiper {
+    padding: 15px 0 25px;
+
+    .swiper-slide {
+      border-radius: 8px;
+      overflow: hidden;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  .section {
+    padding: 0;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ebebeb;
+  }
+
+  .tab_area {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ebebeb;
+
+    li {
+      display: inline-block;
+      padding: 0 15px;
+      line-height: 33px;
+      color: #000;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      border-radius: 33px;
+
+      &.on {
+        color: #fff;
+        background-color: #444;
+      }
+    }
+  }
+
+  .movie_wrap {
+    border: 0;
+    border-radius: 0;
+
+    .info {
+      padding: 12px 15px 30px 15px;
+    }
+  }
+
+  .order_wrap {
+    position: relative;
+    padding: 30px 20px;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 25px;
+      top: 38px;
+      bottom: 38px;
+      border-left: 1px solid #ddd;
+    }
+
+    li {
+      position: relative;
+      padding-left: 26px;
+      font-size: 20px;
+      font-weight: 600;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 11px;
+        height: 11px;
+        background-color: #ddd;
+        border-radius: 11px;
+      }
+
+      + li {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .bible_wrap {
+    .top_area {
+      background-color: #f9f9f9;
+    }
+
+    .bible_con {
+      border: 0;
+    }
+  }
+}
+
+/* 선교센터 블로그 바로가기 */
+
+/* 선교센터 PR */
+
+/* 온성경 - 상세 */
+
+/* 온성경 순서 */
+
+/* 온성경 말씀 */

@@ -1,0 +1,108 @@
+/**********************************************************
+	JUBO(주보) => WEEKLY(주보) 로 이름 변경 예정
+***********************************************************/
+
+.jubo_wrap {
+  .top_area .info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    font-size: 14px;
+
+    .issue {
+      padding-right: 25px;
+      background: url('/icons/ico_list.svg') no-repeat right 15px;
+    }
+  }
+
+  .visual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 180px;
+    padding: 20px;
+    text-align: center;
+    background: url('/images/bg_jubo.png') no-repeat center top;
+    background-size: cover;
+
+    .title {
+      color: #000;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .eng {
+      margin: 5px 0 15px;
+      color: #999;
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    .bible {
+      color: #000;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  &.sermon_detail .tab_con {
+    background-color: #fff;
+  }
+}
+
+/* 주보 리스트 */
+
+.layer_jubo {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+
+  &.on {
+    display: block;
+  }
+
+  .title {
+    padding: 18px 0;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    line-height: 24px;
+    background-color: #f9f9f9;
+  }
+
+  .btn_close {
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 10;
+    width: 24px;
+    height: 24px;
+    background: url('/icons/ico_close.svg') no-repeat center center;
+  }
+
+  .jubo_list li {
+    position: relative;
+    padding: 20px 15px;
+    font-size: 16px;
+    line-height: initial;
+    border-bottom: 1px solid #ebebeb;
+
+    .info2 {
+      margin-bottom: 8px;
+      font-size: 12px;
+
+      span {
+        display: inline-block;
+        margin: 0 3px;
+        font-size: 10px;
+        color: #999;
+      }
+    }
+  }
+}
