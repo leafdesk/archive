@@ -11,7 +11,6 @@
   "dependencies": {
     "next": "^12",
     "react": "^17",
-    "react-dom": "^17",
-    "react-router-dom": "^6"
+    "react-dom": "^17"
   }
 }

@@ -14,9 +14,6 @@ dependencies:
   react-dom:
     specifier: ^17
     version: 17.0.2(react@17.0.2)
-  react-router-dom:
-    specifier: ^6
-    version: 6.18.0(react-dom@17.0.2)(react@17.0.2)
 
 packages:
 
@@ -141,11 +138,6 @@ packages:
     dev: false
     optional: true
 
-  /@remix-run/router@1.11.0:
-    resolution: {integrity: sha512-BHdhcWgeiudl91HvVa2wxqZjSHbheSgIiDvxrF1VjFzBzpTtuDPkOdOi3Iqvc08kXtFkLjhbS+ML9aM8mJS+wQ==}
-    engines: {node: '>=14.0.0'}
-    dev: false
-
   /@swc/helpers@0.4.11:
     resolution: {integrity: sha512-rEUrBSGIoSFuYxwBYtlUFMlE2CwGhmW+w9355/5oduSw8e5h2+Tj4UrAGNNgP9915++wj5vkQo0UuOBqOAq4nw==}
     dependencies:
@@ -245,29 +237,6 @@ packages:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
-    dev: false
-
-  /react-router-dom@6.18.0(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-Ubrue4+Ercc/BoDkFQfc6og5zRQ4A8YxSO3Knsne+eRbZ+IepAsK249XBH/XaFuOYOYr3L3r13CXTLvYt5JDjw==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.11.0
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-router: 6.18.0(react@17.0.2)
-    dev: false
-
-  /react-router@6.18.0(react@17.0.2):
-    resolution: {integrity: sha512-vk2y7Dsy8wI02eRRaRmOs9g2o+aE72YCx5q9VasT1N9v+lrdB79tIqrjMfByHiY5+6aYkH2rUa5X839nwWGPDg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@remix-run/router': 1.11.0
-      react: 17.0.2
     dev: false
 
   /react@17.0.2:
