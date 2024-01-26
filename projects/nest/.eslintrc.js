@@ -21,5 +21,12 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+
+    // 세미콜론 규칙 비활성화.
+    semi: 'off',
+    '@typescript-eslint/semi': ['off'],
+
+    // 개행문자 규칙 비활성화.
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
-};
+}
