@@ -8,11 +8,11 @@ datasource db {
 }
 
 model Member {
-  id          Int       @id @default(autoincrement())
-  name        String
-  gender      Int
-  birth_date  DateTime?
-  nation      String?
-  create_date DateTime  @default(now())
-  update_date DateTime
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  name      String
+  gender    Int
+  birthDate DateTime?
+  nation    String?
 }
