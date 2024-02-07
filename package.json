@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "next": "pnpm -F @lab/next",
+    "sdk": "pnpm -F @lab/sdk",
     "dev": "pnpm -r dev"
   },
   "keywords": [],
