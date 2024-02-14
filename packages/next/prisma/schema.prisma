@@ -12,7 +12,7 @@ model Member {
   createdAt DateTime  @default(now())
   updatedAt DateTime
   name      String
-  gender    Int
+  gender    String
   birthDate DateTime?
   nation    String?
 }
