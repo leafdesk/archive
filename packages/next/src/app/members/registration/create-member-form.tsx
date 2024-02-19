@@ -5,11 +5,19 @@ import { Input } from '@/components/ui/input'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { Gender, MemberFormId } from '@/constants/enums/form'
-import { onMemberFormSubmit } from '@/app/actions/member'
+import { onMemberFormSubmit } from '@/app/actions/members'
+import { useRouter } from 'next/navigation'
+import { ROUTE_MEMBER } from '@/constants/routes'
 
-const MemberForm = () => {
+const CreateMemberForm = () => {
+  const router = useRouter()
+
   const handleSubmit = (formData: FormData) => {
-    onMemberFormSubmit(formData).then(() => window.location.reload())
+    onMemberFormSubmit(formData).then((response) => {
+      console.log('🚀 ~ onMemberFormSubmit ~ response:', response)
+      // window.location.reload()
+      router.push(ROUTE_MEMBER)
+    })
   }
 
   return (
@@ -18,11 +26,7 @@ const MemberForm = () => {
       <Input type="text" name="name" placeholder="Name" />
 
       {/* 성별 */}
-      <RadioGroup
-        className="flex"
-        name="gender"
-        defaultValue={Gender.OTHER}
-      >
+      <RadioGroup className="flex" name="gender" defaultValue={Gender.OTHER}>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value={Gender.MALE} id={MemberFormId.GENDER_MALE} />
           <Label htmlFor={MemberFormId.GENDER_MALE}>Male</Label>
@@ -35,10 +39,7 @@ const MemberForm = () => {
           <Label htmlFor={MemberFormId.GENDER_FEMALE}>Female</Label>
         </div>
         <div className="flex items-center space-x-2">
-          <RadioGroupItem
-            value={Gender.OTHER}
-            id={MemberFormId.GENDER_OTHER}
-          />
+          <RadioGroupItem value={Gender.OTHER} id={MemberFormId.GENDER_OTHER} />
           <Label htmlFor={MemberFormId.GENDER_OTHER}>Other</Label>
         </div>
       </RadioGroup>
@@ -57,4 +58,4 @@ const MemberForm = () => {
   )
 }
 
-export default MemberForm
+export default CreateMemberForm

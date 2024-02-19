@@ -31,10 +31,13 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { getMembers } from '@/app/actions/member'
+import { getMembers } from '@/app/actions/members'
 import { columns } from './columns'
+import { ROUTE_MEMBER } from '@/constants/routes'
+import { useRouter } from 'next/navigation'
 
 const MemberDataTable = () => {
+  const router = useRouter()
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
@@ -45,7 +48,7 @@ const MemberDataTable = () => {
   useEffect(() => {
     const loadData = async () => {
       const members = await getMembers()
-      console.log('🚀 ~ loadData ~ members:', members)
+      // console.log('🚀 ~ loadData ~ members:', members)
       setData(() => members)
     }
     loadData()

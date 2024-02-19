@@ -1,9 +1,15 @@
 'use client'
 
-import { CaretSortIcon, DotsHorizontalIcon } from '@radix-ui/react-icons'
+import {
+  CaretSortIcon,
+  DotsHorizontalIcon,
+  Pencil2Icon,
+} from '@radix-ui/react-icons'
+
 import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +22,8 @@ import {
 import { Member } from '@/types/member'
 import dayjs from 'dayjs'
 import { Gender } from '@/constants/enums/form'
+import { useRouter } from 'next/navigation'
+import { ROUTE_MEMBER } from '@/constants/routes'
 
 export const columns: ColumnDef<Member>[] = [
   {
@@ -111,10 +119,28 @@ export const columns: ColumnDef<Member>[] = [
   //   },
   // },
   {
+    id: 'edit',
+    enableHiding: false,
+    cell: ({ row }) => {
+      const router = useRouter()
+
+      return (
+        <Button
+          variant="ghost"
+          className="h-8 w-8 p-0"
+          onClick={() => router.push(`${ROUTE_MEMBER}/${row.original.id}`)}
+        >
+          <span className="sr-only">Open menu</span>
+          <Pencil2Icon className="h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
     id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original
+      const router = useRouter()
 
       return (
         <DropdownMenu>
@@ -126,17 +152,27 @@ export const columns: ColumnDef<Member>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
+
+            {/* 회원 이름 복사 */}
             <DropdownMenuItem
               onClick={() => {
-                navigator.clipboard.writeText(payment.name)
-                console.log('🚀 ~ payment:', payment)
+                navigator.clipboard.writeText(row.original.name)
               }}
             >
-              Copy payment name
+              Copy member name
             </DropdownMenuItem>
+
+            {/* 구분선 */}
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+
+            {/* 회원 상세 */}
+            <DropdownMenuItem
+              onClick={() => {
+                router.push(`${ROUTE_MEMBER}/${row.original.id}`)
+              }}
+            >
+              View member details
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
