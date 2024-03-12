@@ -1,12 +1,5 @@
 'use client'
 
-import {
-  CaretSortIcon,
-  DotsHorizontalIcon,
-  Pencil2Icon,
-} from '@radix-ui/react-icons'
-
-import { ColumnDef } from '@tanstack/react-table'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 
@@ -19,12 +12,49 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { Member } from '@/types/member'
+import {
+  CaretSortIcon,
+  DotsHorizontalIcon,
+  Pencil2Icon,
+} from '@radix-ui/react-icons'
+
+import { ColumnDef } from '@tanstack/react-table'
+
 import dayjs from 'dayjs'
 import { Gender } from '@/constants/enums/form'
 import { useRouter } from 'next/navigation'
+import { Member } from '@/types/member'
 import { ROUTE_MEMBER } from '@/constants/routes'
 
+/**
+ * 공통 헤더 컴포넌트 생성 함수.
+ */
+const createHeader =
+  (title: string, sort = true) =>
+  ({ column }: { column: any }) => {
+    return sort ? (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+      >
+        {title}
+        <CaretSortIcon className="ml-2 h-4 w-4" />
+      </Button>
+    ) : (
+      <div>{title}</div>
+    )
+  }
+
+/**
+ * 공통 셀 렌더링 함수
+ */
+const renderCell =
+  (accessor: keyof Member) =>
+  ({ row }: { row: any }) => <div>{row.getValue(accessor)}</div>
+
+/**
+ * 칼럼 정의.
+ */
 export const columns: ColumnDef<Member>[] = [
   {
     id: 'select',
@@ -48,76 +78,48 @@ export const columns: ColumnDef<Member>[] = [
     enableSorting: false,
     enableHiding: false,
   },
+
+  {
+    accessorKey: 'memberCode',
+    header: createHeader('성도 코드'),
+    cell: renderCell('memberCode'),
+  },
   {
     accessorKey: 'name',
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-        >
-          Name
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue('name')}</div>,
+    header: createHeader('이름'),
+    cell: renderCell('name'),
   },
   {
     accessorKey: 'gender',
-    header: 'Gender',
-    cell: ({ row }) => {
-      const gender = row.getValue('gender')
-      const genderString =
-        gender == Gender.MALE
-          ? 'Male'
-          : gender == Gender.FEMALE
-          ? 'Female'
-          : '-'
-
-      return <div className="capitalize">{genderString}</div>
-    },
+    header: createHeader('성별'),
+    cell: renderCell('gender'),
   },
   {
     accessorKey: 'birthDate',
-    header: 'Birth Date',
-    cell: ({ row }) => {
-      const birthDate = dayjs(row.getValue('birthDate')).format('YYYY-MM-DD')
-      return <div className="capitalize">{birthDate}</div>
-    },
+    header: createHeader('생년월일'),
+    cell: renderCell('birthDate'),
   },
   {
-    accessorKey: 'nation',
-    header: 'Nation',
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue('nation')}</div>
-    ),
+    accessorKey: 'affiliation',
+    header: createHeader('소속'),
+    cell: renderCell('affiliation'),
   },
   {
-    accessorKey: 'updatedAt',
-    header: 'Updated At',
-    cell: ({ row }) => {
-      const updatedAt = dayjs(row.getValue('updatedAt')).format(
-        'YYYY-MM-DD HH:mm:ss',
-      )
-      return <div className="capitalize">{updatedAt}</div>
-    },
+    accessorKey: 'position',
+    header: createHeader('직분'),
+    cell: renderCell('position'),
   },
-  // {
-  //   accessorKey: 'birthDate',
-  //   header: () => <div className="text-right">BirthDate</div>,
-  //   cell: ({ row }) => {
-  //     const amount = parseFloat(row.getValue('amount'))
+  {
+    accessorKey: 'phoneNumber',
+    header: createHeader('핸드폰 번호'),
+    cell: renderCell('phoneNumber'),
+  },
+  {
+    accessorKey: 'department',
+    header: createHeader('봉사 기관'),
+    cell: renderCell('department'),
+  },
 
-  //     // Format the amount as a dollar amount
-  //     const formatted = new Intl.NumberFormat('en-US', {
-  //       style: 'currency',
-  //       currency: 'USD',
-  //     }).format(amount)
-
-  //     return <div className="text-right font-medium">{formatted}</div>
-  //   },
-  // },
   {
     id: 'edit',
     enableHiding: false,
@@ -128,7 +130,7 @@ export const columns: ColumnDef<Member>[] = [
         <Button
           variant="ghost"
           className="h-8 w-8 p-0"
-          onClick={() => router.push(`${ROUTE_MEMBER}/${row.original.id}`)}
+          onClick={() => router.push(`${ROUTE_MEMBER}/${row.original.uuid}`)}
         >
           <span className="sr-only">Open menu</span>
           <Pencil2Icon className="h-4 w-4" />
@@ -151,27 +153,21 @@ export const columns: ColumnDef<Member>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-
-            {/* 회원 이름 복사 */}
+            <DropdownMenuLabel>더 보기</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => {
                 navigator.clipboard.writeText(row.original.name)
               }}
             >
-              Copy member name
+              회원 이름 복사
             </DropdownMenuItem>
-
-            {/* 구분선 */}
             <DropdownMenuSeparator />
-
-            {/* 회원 상세 */}
             <DropdownMenuItem
               onClick={() => {
                 router.push(`${ROUTE_MEMBER}/${row.original.id}`)
               }}
             >
-              View member details
+              회원 상세 보기
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

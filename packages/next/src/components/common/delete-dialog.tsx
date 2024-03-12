@@ -15,22 +15,21 @@ import { deleteMember } from '@/app/actions/members'
 import { useRouter } from 'next/navigation'
 import { ROUTE_MEMBER } from '@/constants/routes'
 
-const DeleteDialog = ({ memberId }: { memberId: number }) => {
+const DeleteDialog = ({ uuid }: { uuid: string }) => {
   const router = useRouter()
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button type="button" variant="destructive">
-          Delete member
+          삭제
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Delete</DialogTitle>
+          <DialogTitle>회원 정보 삭제</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete the member data? This action cannot
-            be undone.
+            회원 데이터를 삭제할까요? 이 동작은 되돌릴 수 없어요.
           </DialogDescription>
         </DialogHeader>
         {/* <div className="grid gap-4 py-4">
@@ -52,13 +51,13 @@ const DeleteDialog = ({ memberId }: { memberId: number }) => {
             type="submit"
             variant="destructive"
             onClick={() => {
-              deleteMember(Number(memberId)).then((response) => {
+              deleteMember(Number(uuid)).then((response) => {
                 console.log('🚀 ~ deleteMember ~ response:', response)
                 router.push(ROUTE_MEMBER)
               })
             }}
           >
-            Delete member
+            회원 정보를 완전히 삭제할게요.
           </Button>
         </DialogFooter>
       </DialogContent>

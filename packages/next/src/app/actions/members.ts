@@ -3,20 +3,24 @@
 import prisma from '@lab/sdk/utils/prisma'
 import dayjs from 'dayjs'
 
+const BANSEOK_URL = 'http://localhost:8080'
+
 /**
  * 전체 회원 조회.
  */
 export const getMembers = async () => {
-  const members = await prisma.member.findMany()
-  return members
+  return await fetch(`${BANSEOK_URL}/members`).then((response) =>
+    response.json(),
+  )
 }
 
 /**
- * ID로 회원 조회.
+ * UUID 로 회원 조회.
  */
-export const getMemberById = async (id: number) => {
-  const member = await prisma.member.findUnique({ where: { id: id } })
-  return member
+export const getMemberByUuid = async (uuid: string) => {
+  return await fetch(`${BANSEOK_URL}/members/${uuid}`).then((response) =>
+    response.json(),
+  )
 }
 
 /**
@@ -69,8 +73,8 @@ export const deleteMember = async (id: number) => {
  * 회원 양식 제출 시.
  */
 export const onMemberFormSubmit = async (formData: FormData) => {
-  const id = formData.get('id')
-  const member = await getMemberById(Number(id))
+  const uuid = formData.get('uuid')
+  const member = await getMemberByUuid(uuid)
 
   if (member) {
     return await updateMember(formData)
