@@ -21,19 +21,19 @@ const ResponseDialog = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button type="button" variant="outline">
-          Save
+          저장
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Update Success</DialogTitle>
+          <DialogTitle>정보 업데이트</DialogTitle>
           <DialogDescription>
-            User information has been updated successfully.
+            유저 정보가 성공적으로 업데이트 되었습니다.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <DialogClose>
-            <Button type="submit">Ok</Button>
+            <Button type="submit">확인</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>
