@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from '@lab/sdk/utils/prisma'
+import prisma from '@lab/utils/prisma'
 import dayjs from 'dayjs'
 import axios from 'axios'
 
