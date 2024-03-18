@@ -6,7 +6,7 @@ import Top from '@/components/common/top'
 
 const MemberDetailPage = ({ params }: { params: { uuid: string } }) => {
   return (
-    <main className="bg-[#fafafa]">
+    <main className="">
       <div className="p-5">
         <Top backRoute={ROUTE_MEMBER} pageTitle="회원 상세" />
         <UpdateMemberForm uuid={params.uuid} />

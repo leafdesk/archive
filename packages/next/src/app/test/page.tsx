@@ -11,7 +11,7 @@ const TestPage = () => {
   }
 
   return (
-    <main className="bg-[#fafafa]">
+    <main className="">
       <div className="p-5">
         <Button onClick={() => batchInsertMembers()}>
           Batch insert members

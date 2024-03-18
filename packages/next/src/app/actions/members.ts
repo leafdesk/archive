@@ -2,6 +2,7 @@
 
 import prisma from '@lab/sdk/utils/prisma'
 import dayjs from 'dayjs'
+import axios from 'axios'
 
 const BANSEOK_URL = 'http://localhost:8080'
 
@@ -9,37 +10,28 @@ const BANSEOK_URL = 'http://localhost:8080'
  * 전체 회원 조회.
  */
 export const getMembers = async () => {
-  return await fetch(`${BANSEOK_URL}/members`).then((response) =>
-    response.json(),
-  )
+  const response = await axios.get(`${BANSEOK_URL}/members`)
+  return response.data
 }
 
 /**
  * UUID 로 회원 조회.
  */
 export const getMemberByUuid = async (uuid: string) => {
-  return await fetch(`${BANSEOK_URL}/members/${uuid}`).then((response) =>
-    response.json(),
-  )
+  const response = await axios.get(`${BANSEOK_URL}/members/${uuid}`)
+  return response.data
 }
 
 /**
  * 신규 회원 추가.
  */
 export const postMember = async (formData: FormData) => {
-  const birthDateStr = String(formData.get('birthDate'))
-  const createMemberDto = {
-    name: formData.get('name'),
-    gender: formData.get('gender'),
-    birthDate: dayjs(birthDateStr),
-    nation: formData.get('nation'),
-    updatedAt: new Date(),
-  }
-  return await prisma.member.create({
-    data: {
-      ...createMemberDto,
-    },
+  const json = JSON.stringify(Object.fromEntries(formData.entries()))
+
+  const response = await axios.post(`${BANSEOK_URL}/members`, json, {
+    headers: { 'Content-Type': 'application/json' },
   })
+  return `postMember. status: (${response.status})${response.statusText}`
 }
 
 /**

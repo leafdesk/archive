@@ -119,12 +119,12 @@ const UpdateMemberForm = ({ uuid }: { uuid: string }) => {
               />
             </div>
 
-            {/* 직책 */}
+            {/* 직분 */}
             <div>
-              <Label htmlFor="position">직책</Label>
+              <Label htmlFor="position">직분</Label>
               <Input
                 name="position"
-                placeholder="직책"
+                placeholder="직분"
                 defaultValue={member.position}
               />
             </div>
