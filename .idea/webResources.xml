@@ -6,7 +6,7 @@
         <entryData>
           <resourceRoots>
             <path value="file://$PROJECT_DIR$/packages/next" />
-            <path value="file://$PROJECT_DIR$/packages/sdk" />
+            <path value="file://$PROJECT_DIR$/packages/srm" />
           </resourceRoots>
         </entryData>
       </entry>

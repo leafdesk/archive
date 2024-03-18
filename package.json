@@ -5,11 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "next": "pnpm -F @lab/next",
+    "srm": "pnpm -F @lab/srm",
     "sdk": "pnpm -F @lab/sdk",
+    "ui": "pnpm -F @lab/ui",
+    "utils": "pnpm -F @lab/utils",
     "dev": "pnpm -r dev"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1"
+  }
 }
