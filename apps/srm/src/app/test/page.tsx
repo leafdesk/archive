@@ -1,9 +1,9 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
 import { batchInsertMembers } from '../actions/batch'
 import { getMembers } from '../actions/members'
 import { togglePartialTextVisibility } from '@lab/utils/security'
+import { Button } from '@lab/ui/shadcn/button'
 
 const TestPage = () => {
   const handleClick = async () => {

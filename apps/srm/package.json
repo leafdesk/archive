@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@lab/sdk": "workspace:*",
+    "@lab/ui": "workspace:^",
     "@lab/utils": "workspace:^",
     "@prisma/client": "5.9.0",
     "@radix-ui/react-checkbox": "^1.0.4",

@@ -7,5 +7,5 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["**/*", "types/global.d.ts"]
+  "include": ["**/*"]
 }
