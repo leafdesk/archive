@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "srm": "pnpm -F @lab/srm",
+    "workbox": "pnpm -F @lab/workbox",
     "sdk": "pnpm -F @lab/sdk",
     "ui": "pnpm -F @lab/ui",
     "utils": "pnpm -F @lab/utils",
