@@ -10,31 +10,43 @@ const EventJoin = () => {
   const router = useRouter()
   const { getLocalStorageData, setLocalStorageData } = useLocalStorage()
   const [step, setStep] = useState(1)
-  const [team, setTeam] = useState('')
+  const [team, setTeam] = useState(-1)
+  const [teams, setTeams] = useState([])
+  const [selectedChurch, setSelectedChurch] = useState(-1)
   const [nickname, setNickname] = useState('')
   const [isNicknameValid, setIsNicknameValid] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [deviceId, setDeviceId] = useState('')
 
   useEffect(() => {
-    // deviceId가 없으면 생성하여 저장
-    let storedDeviceId = getLocalStorageData(localStorageKey.DEVICE_ID)
-    if (!storedDeviceId) {
-      storedDeviceId = 'device-' + Date.now()
-      setLocalStorageData(localStorageKey.DEVICE_ID, storedDeviceId)
+    const fetchTeams = async () => {
+      try {
+        const response = await API.fetchTeamList()
+        const fetchedTeams = response.data.map(team => ({
+          id: team.id,
+          name: team.name,
+          iconUrl: team.icon_url,
+          ministries: team.ministries,
+          target: team.target,
+        }))
+        setTeams(fetchedTeams)
+      } catch (error) {
+        console.error('Failed to fetch teams', error)
+      }
     }
-    setDeviceId(storedDeviceId)
+    fetchTeams()
   }, [])
 
   const handleTeamSelection = (selectedTeam) => {
     setTeam(selectedTeam)
+    setSelectedChurch(-1)
   }
 
   const handleNicknameChange = (e) => {
-    setNickname(e.target.value)
-    setIsNicknameValid(false) // 닉네임이 변경되면 다시 검증 필요
+    const value = e.target.value
+    setNickname(value)
+    setIsNicknameValid(value.length >= 2 && value.length <= 20)
     setSuccessMessage('')
     setErrorMessage('')
   }
@@ -42,15 +54,14 @@ const EventJoin = () => {
   const handleNicknameValidation = async () => {
     try {
       const response = await API.validateNickName(nickname)
+
       if (response.status === 200) {
         setIsNicknameValid(true)
         setSuccessMessage('닉네임이 유효합니다.')
         setErrorMessage('')
       } else {
         setIsNicknameValid(false)
-        setErrorMessage(
-          '닉네임이 유효하지 않습니다. 다른 닉네임을 입력해주세요.',
-        )
+        setErrorMessage('닉네임이 유효하지 않습니다. 다른 닉네임을 입력해주세요.')
         setSuccessMessage('')
       }
     } catch (error) {
@@ -62,81 +73,87 @@ const EventJoin = () => {
   }
 
   const handleSubmit = async () => {
-    if (!team || !nickname || !isNicknameValid) return
+    if (team === -1 || !nickname || !isNicknameValid) return
 
     setIsSubmitting(true)
 
     try {
       const response = await API.join({
         nickname,
-        teamId: parseInt(team.replace('팀', '')),
+        teamId: teams[team].id,
+        ministry: teams[team].ministries[selectedChurch],
         agent: navigator.userAgent,
-        deviceId,
       })
       setLocalStorageData(localStorageKey.EVENT_TOKEN, response.data.token)
       router.push('/home')
     } catch (error) {
-      console.error('Failed to join event', error)
+      console.error('why', error)
     } finally {
       setIsSubmitting(false)
     }
   }
 
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    <div className="flex flex-col max-w-md mx-auto h-screen w-[360px]">
+      <div className="w-full flex justify-end mb-4 mt-4">
+        <div
+          className="w-10 h-10 bg-[url('/icons/close.svg')] bg-no-repeat cursor-pointer"
+          onClick={() => router.push('/')}
+        />
+      </div>
       {step === 1 && (
-        <div>
-          <h2 className="text-xl font-bold mb-4">팀선택</h2>
-          <div className="flex flex-wrap justify-center mb-4">
-            <button
-              onClick={() => handleTeamSelection('1팀')}
-              className={`p-4 m-2 border rounded ${
-                team === '1팀'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white text-black border-gray-300'
-              }`}
-            >
-              1팀
-            </button>
-            <button
-              onClick={() => handleTeamSelection('2팀')}
-              className={`p-4 m-2 border rounded ${
-                team === '2팀'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white text-black border-gray-300'
-              }`}
-            >
-              2팀
-            </button>
-            <button
-              onClick={() => handleTeamSelection('3팀')}
-              className={`p-4 m-2 border rounded ${
-                team === '3팀'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white text-black border-gray-300'
-              }`}
-            >
-              3팀
-            </button>
-            <button
-              onClick={() => handleTeamSelection('4팀')}
-              className={`p-4 m-2 border rounded ${
-                team === '4팀'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white text-black border-gray-300'
-              }`}
-            >
-              4팀
-            </button>
+        <div className="w-full">
+          <div className="mb-4">
+            <div className="font-bold text-[30px] leading-[30px] tracking-[-0.03em] text-center mb-6">팀선택</div>
+            <div
+              className="w-[180px] h-[37px] mx-auto mt-4"
+              style={{
+                backgroundImage: 'url(\'/images/teamSelect.jpg\')',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            ></div>
+          </div>
+          <div className="mt-12">
+            <div className="font-noto-sans-kr font-bold text-[20px] leading-[20px] tracking-[-0.03em]">
+              팀을 선택해 주세요!
+            </div>
+            <div className="grid grid-cols-2 gap-4 mb-8 mt-4">
+              {teams.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleTeamSelection(index)}
+                  className="p-[24px] rounded-[16px] text-center bg-[#F3F1F4]"
+                  style={{
+                    width: '170px',
+                    height: '160px',
+                    gap: '14px',
+                    border: team === index ? '2px solid #5B67F2' : '2px solid #F3F1F4',
+                  }}
+                >
+                  <div
+                    className="w-[82px] h-[82px] mx-auto"
+                    style={{
+                      backgroundImage: `url('${item.iconUrl}')`,
+                      backgroundSize: 'contain',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'center',
+                    }}
+                  ></div>
+                  <span
+                    className="block font-bold text-[20px] leading-[20px] tracking-[-0.03em] mt-3">{item.name}</span>
+                </button>
+              ))}
+            </div>
           </div>
           <button
             onClick={() => setStep(2)}
-            className={`px-4 py-2 rounded ${
-              team
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            className={`w-[358px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium mt-16 ${
+              team !== -1 ? 'bg-[#5B67F2] text-[#FFFFFF]' : 'bg-[#EAE6E3] text-[#222222] cursor-not-allowed'
             }`}
-            disabled={!team}
+            disabled={team === -1}
           >
             다음
           </button>
@@ -144,39 +161,123 @@ const EventJoin = () => {
       )}
 
       {step === 2 && (
-        <div>
-          <h2 className="text-xl font-bold mb-4">닉네임 설정</h2>
-          <input
-            type="text"
-            value={nickname}
-            onChange={handleNicknameChange}
-            className="border p-2 mb-2 w-full"
-            placeholder="닉네임을 입력해주세요"
-          />
-          <button
-            onClick={handleNicknameValidation}
-            className="bg-blue-500 text-white px-4 py-2 rounded mb-2"
-          >
-            인증하기
-          </button>
-          {errorMessage && <p className="text-red-500 mb-2">{errorMessage}</p>}
-          {successMessage && (
-            <p className="text-green-500 mb-2">{successMessage}</p>
-          )}
-          <div className="flex justify-between">
+        <div className="w-full">
+          <div className="mb-4">
+            <div className="font-bold text-[30px] leading-[30px] tracking-[-0.03em] text-center mb-6">
+              팀 확인
+            </div>
+            <div
+              className="w-[180px] h-[37px] mx-auto mt-4"
+              style={{
+                backgroundImage: 'url(\'/images/teamSelect2.jpg\')',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            ></div>
+          </div>
+          <div className="mt-12">
+            <div className="font-noto-sans-kr font-bold text-[20px] leading-[24px] tracking-[-0.03em] text-left">
+              <span className="text-[#5B67F2]">{teams[team].name}</span>을 선택하셨습니다!
+            </div>
+            <div className="font-noto-sans-kr font-medium text-[16px] leading-[16px] tracking-[-0.03em] text-left mt-2">
+              성도님이 속하신 예배당(기관)을 선택해주세요!
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-8 mt-4">
+            {teams[team].ministries.map((church, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedChurch(index)}
+                className="p-[24px] rounded-[16px] text-center bg-[#F3F1F4]"
+                style={{
+                  width: '170px',
+                  height: '160px',
+                  gap: '14px',
+                  border: selectedChurch === index ? '2px solid #5B67F2' : '2px solid #F3F1F4',
+                }}
+              >
+                <div className="w-[82px] h-[82px] mx-auto"></div>
+                <span className="block font-bold text-[20px] leading-[20px] tracking-[-0.03em] mt-3">{church}</span>
+              </button>
+            ))}
+          </div>
+          <div className="flex justify-between mt-16 gap-4">
             <button
               onClick={() => setStep(1)}
-              className="bg-gray-500 text-white px-4 py-2 rounded"
+              className="w-[120px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium bg-[#EAE6E3] text-[#222222]"
             >
               이전
             </button>
             <button
-              onClick={handleSubmit}
-              className="bg-blue-500 text-white px-4 py-2 rounded"
-              disabled={!isNicknameValid || isSubmitting}
+              onClick={() => setStep(3)}
+              className={`w-[228px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium ${
+                selectedChurch !== -1 ? 'bg-[#5B67F2] text-[#FFFFFF]' : 'bg-[#EAE6E3] text-[#222222] cursor-not-allowed'
+              }`}
+              disabled={selectedChurch === -1}
             >
-              {isSubmitting ? '가입 중...' : '완료'}
+              다음
             </button>
+          </div>
+        </div>
+      )}
+
+      {step === 3 && (
+        <div className="mb-4">
+          <div className="font-bold text-[30px] leading-[30px] tracking-[-0.03em] text-center mb-6">
+            닉네임 설정
+          </div>
+          <div
+            className="w-[180px] h-[37px] mx-auto mt-4"
+            style={{
+              backgroundImage: 'url(\'/images/teamSelect3.jpg\')',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+            }}
+          ></div>
+          <div className="mt-12">
+            <div
+              className="font-pretendard font-semibold text-[18px] leading-[18px] tracking-[-0.03em] text-[#222222] mb-2">
+              닉네임
+            </div>
+            <div className="flex items-center gap-4 mb-2">
+              <input
+                type="text"
+                value={nickname}
+                onChange={(e) => {
+                  handleNicknameChange(e)
+                  setIsNicknameValid(false) // 닉네임 변경 시 유효성 상태 초기화
+                }}
+                className="border p-4 w-[246px] h-[46px] rounded-lg placeholder-[#999999] placeholder-pretendard placeholder-font-normal placeholder-text-[18px] placeholder-leading-[18px] placeholder-tracking-[-0.03em]"
+                placeholder="닉네임을 입력해주세요"
+              />
+              <button
+                onClick={handleNicknameValidation}
+                className="w-[100px] h-[46px] rounded-[4px] bg-[#222222] text-[#FFFFFF] text-pretendard font-normal text-[18px] leading-[18px] tracking-[-0.03em]">
+                중복확인
+              </button>
+            </div>
+            {(!errorMessage && !successMessage) && <p
+              className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-[#999999] mb-4">
+              최대 20자를 입력해주세요.
+            </p>}
+            {errorMessage && <p
+              className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-red-500 mb-4">{errorMessage}</p>}
+            {successMessage && <p
+              className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-[#5B67F2] mb-4">{successMessage}</p>}
+            <div className="flex justify-between mt-32">
+              <button onClick={() => setStep(2)}
+                      className="w-[120px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium bg-[#EAE6E3] text-[#222222]">
+                이전
+              </button>
+              <button
+                onClick={handleSubmit}
+                className={`w-[228px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium ${!isNicknameValid || isSubmitting ? 'bg-[#EAE6E3] text-[#222222] cursor-not-allowed' : 'bg-[#5B67F2] text-[#FFFFFF]'}`}
+                disabled={!isNicknameValid || isSubmitting}>
+                {isSubmitting ? '가입 중...' : '완료'}
+              </button>
+            </div>
           </div>
         </div>
       )}

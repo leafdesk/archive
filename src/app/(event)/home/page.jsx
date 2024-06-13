@@ -1,66 +1,49 @@
-'use client'; // Next.js v14 에서 사용자 상호 작용을 위해 최상단 고정 필수.
+'use client' // Next.js v14 에서 사용자 상호 작용을 위해 최상단 고정 필수.
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
-import useLocalStorage from '@/hooks/useLocalStorage';
-import localStorageKey from '@/constants/localStorageKey';
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import useLocalStorage from '@/hooks/useLocalStorage'
+import localStorageKey from '@/constants/localStorageKey'
+import { API } from '@/api/api'
 
 const EventHome = () => {
-  const router = useRouter();
-  const { getLocalStorageData } = useLocalStorage();
-  const [eventData, setEventData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const router = useRouter()
+  const { getLocalStorageData } = useLocalStorage()
+  const [eventData, setEventData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    const token = getLocalStorageData(localStorageKey.EVENT_TOKEN);
-    // console.log('token:', token)
+    const token = getLocalStorageData(localStorageKey.EVENT_TOKEN)
     if (!token) {
-      router.push('/join');
-      return;
+      router.push('/join')
+      return
     }
 
     const fetchEventData = async () => {
-      console.log(token);
       try {
-        // const response = await axios.get('http://localhost:8080/event-api/event/test', {
-        //   headers: {
-        //     'Authorization': `Bearer ${token}`,
-        //     'Custom': `test`,
-        //   },
-        // });
-
-        const response = await axios({
-          method: 'get',
-          url: 'http://localhost:8080/event-api/event/test',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
+        const response = await API.joinTest()
         if (response.status === 200) {
-          setEventData(response.data);
+          setEventData(response.data)
         } else {
-          setError('Failed to fetch event data.');
+          setError('Failed to fetch event data.')
         }
       } catch (error) {
-        console.error('Error fetching event data:', error);
-        setError('Failed to fetch event data.');
+        console.error('Error fetching event data:', error)
+        setError('Failed to fetch event data.')
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
-
-    fetchEventData();
-  }, [router, getLocalStorageData]);
+    }
+    fetchEventData()
+  }, [router, getLocalStorageData])
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>{error}</div>
   }
 
   return (
@@ -75,7 +58,7 @@ const EventHome = () => {
         <div>No event data available.</div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default EventHome;
+export default EventHome
