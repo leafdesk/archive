@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import MissionCard from '@/components/mission-card'
 import useEventData from '@/hooks/useEventData'
 
@@ -7,6 +8,7 @@ import useEventData from '@/hooks/useEventData'
  * 팀 페이지. (이벤트 홈)
  */
 const EventHomePage = () => {
+  const router = useRouter()
   const { data: eventData, loading, error } = useEventData()
   // console.log(eventData, loading, error)
 
@@ -36,11 +38,19 @@ const EventHomePage = () => {
         <div className="bg-[#F7F7F7]">
           {/* 홈 상단 */}
           <div className="h-[54px] px-4 mb-9 flex items-center justify-end">
-            <button className="font-normal text-[#666] text-base w-fit bg-white rounded-full h-[38px] flex items-center justify-center px-[14px]">
+            <button
+              className="font-normal text-[#666] text-base w-fit bg-white rounded-full h-[38px] flex items-center justify-center px-[14px]"
+              onClick={() => router.push('/guide')}
+            >
               미션방법
+              <div className="ml-[2px] w-5 h-5 bg-[url('/icons/icon_home_info.svg')]" />
             </button>
-            <button className="font-normal text-[#666] text-base w-fit bg-white rounded-full h-[38px] flex items-center justify-center px-[14px] ml-2">
+            <button
+              className="font-normal text-[#666] text-base w-fit bg-white rounded-full h-[38px] flex items-center justify-center px-[14px] ml-2"
+              onClick={() => router.push('/overview')}
+            >
               전체 미션보드
+              <div className="ml-[2px] w-5 h-5 bg-[url('/icons/icon_home_right_arrow.svg')]" />
             </button>
           </div>
 
