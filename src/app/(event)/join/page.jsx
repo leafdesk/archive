@@ -14,6 +14,7 @@ const EventJoin = () => {
   const [teams, setTeams] = useState([])
   const [selectedChurch, setSelectedChurch] = useState(-1)
   const [nickname, setNickname] = useState('')
+  const [isFocused, setIsFocused] = useState(false);
   const [isNicknameValid, setIsNicknameValid] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
@@ -57,11 +58,11 @@ const EventJoin = () => {
 
       if (response.status === 200) {
         setIsNicknameValid(true)
-        setSuccessMessage('닉네임이 유효합니다.')
+        setSuccessMessage('사용이 가능한 닉네임입니다.')
         setErrorMessage('')
       } else {
         setIsNicknameValid(false)
-        setErrorMessage('닉네임이 유효하지 않습니다. 다른 닉네임을 입력해주세요.')
+        setErrorMessage('사용이 불가능한 닉네임입니다.')
         setSuccessMessage('')
       }
     } catch (error) {
@@ -95,19 +96,19 @@ const EventJoin = () => {
 
 
   return (
-    <div className="flex flex-col max-w-md mx-auto h-screen w-[360px]">
-      <div className="w-full flex justify-end mb-4 mt-4">
+    <div className="flex flex-col items-center max-w-md mx-auto h-full min-h-screen w-[430px] relative">
+      <div className="w-full flex justify-end absolute top-[5vh]">
         <div
-          className="w-10 h-10 bg-[url('/icons/close.svg')] bg-no-repeat cursor-pointer"
+          className="w-10 h-10 mr-2 bg-[url('/icons/close.svg')] bg-no-repeat cursor-pointer"
           onClick={() => router.push('/')}
         />
       </div>
       {step === 1 && (
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center mt-[10vh]">
           <div className="mb-4">
             <div className="font-bold text-[30px] leading-[30px] tracking-[-0.03em] text-center mb-6">팀선택</div>
             <div
-              className="w-[180px] h-[37px] mx-auto mt-4"
+              className="w-[180px] h-[4.5vh] mx-auto mt-[36px]"
               style={{
                 backgroundImage: 'url(\'/images/teamSelect.jpg\')',
                 backgroundSize: 'contain',
@@ -116,25 +117,28 @@ const EventJoin = () => {
               }}
             ></div>
           </div>
-          <div className="mt-12">
-            <div className="font-noto-sans-kr font-bold text-[20px] leading-[20px] tracking-[-0.03em]">
+          <div className="mt-[60px]">
+            <div
+              className="font-noto-sans-kr font-normal text-[18px] leading-[24px] tracking-[-0.03em] text-[#222222] text-center">
               팀을 선택해 주세요!
             </div>
-            <div className="grid grid-cols-2 gap-4 mb-8 mt-4">
+            <div className="grid grid-cols-2 gap-4 mt-6 justify-center">
               {teams.map((item, index) => (
                 <button
                   key={index}
                   onClick={() => handleTeamSelection(index)}
-                  className="p-[24px] rounded-[16px] text-center bg-[#F3F1F4]"
+                  className={`rounded-[16px] text-center border ${
+                    team === index ? 'bg-[#F6FEF8] border-[#46AE78]' : 'bg-white border-[#DDDDDD]'
+                  }`}
                   style={{
-                    width: '170px',
-                    height: '160px',
+                    width: '194px',
+                    height: '140px',
+                    padding: '24px 46px',
                     gap: '14px',
-                    border: team === index ? '2px solid #5B67F2' : '2px solid #F3F1F4',
                   }}
                 >
                   <div
-                    className="w-[82px] h-[82px] mx-auto"
+                    className="w-[60px] h-[60px] mx-auto"
                     style={{
                       backgroundImage: `url('${item.iconUrl}')`,
                       backgroundSize: 'contain',
@@ -143,31 +147,39 @@ const EventJoin = () => {
                     }}
                   ></div>
                   <span
-                    className="block font-bold text-[20px] leading-[20px] tracking-[-0.03em] mt-3">{item.name}</span>
+                    className="block font-noto-sans-kr font-normal text-[18px] leading-[18px] tracking-[-0.03em] text-[#222222] mt-3">
+                {item.name}
+              </span>
                 </button>
               ))}
             </div>
           </div>
-          <button
-            onClick={() => setStep(2)}
-            className={`w-[358px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium mt-16 ${
-              team !== -1 ? 'bg-[#5B67F2] text-[#FFFFFF]' : 'bg-[#EAE6E3] text-[#222222] cursor-not-allowed'
-            }`}
-            disabled={team === -1}
-          >
-            다음
-          </button>
+          <div className="absolute bottom-[5vh] w-full flex justify-between px-4">
+            <button
+              onClick={() => router.push('/')}
+              className="w-[111px] h-[60px] rounded-[8px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium bg-[#F5F5F5] text-[#666666]"
+            >
+              이전
+            </button>
+            <button
+              onClick={() => setStep(2)}
+              className={`w-[277px] h-[60px] rounded-[8px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium ${
+                team !== -1 ? 'bg-[#31C678] text-[#FFFFFF]' : 'bg-[#F5F5F5] text-[#666666] cursor-not-allowed'
+              }`}
+              disabled={team === -1}
+            >
+              다음
+            </button>
+          </div>
         </div>
       )}
 
       {step === 2 && (
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center mt-[10vh]">
           <div className="mb-4">
-            <div className="font-bold text-[30px] leading-[30px] tracking-[-0.03em] text-center mb-6">
-              팀 확인
-            </div>
+            <div className="font-bold text-[30px] leading-[30px] tracking-[-0.03em] text-center mb-6">기관 선택</div>
             <div
-              className="w-[180px] h-[37px] mx-auto mt-4"
+              className="w-[180px] h-[4.5vh] mx-auto mt-[36px]"
               style={{
                 backgroundImage: 'url(\'/images/teamSelect2.jpg\')',
                 backgroundSize: 'contain',
@@ -176,43 +188,43 @@ const EventJoin = () => {
               }}
             ></div>
           </div>
-          <div className="mt-12">
-            <div className="font-noto-sans-kr font-bold text-[20px] leading-[24px] tracking-[-0.03em] text-left">
-              <span className="text-[#5B67F2]">{teams[team].name}</span>을 선택하셨습니다!
-            </div>
-            <div className="font-noto-sans-kr font-medium text-[16px] leading-[16px] tracking-[-0.03em] text-left mt-2">
-              성도님이 속하신 예배당(기관)을 선택해주세요!
+          <div className="mt-[60px]">
+            <div
+              className="font-noto-sans-kr font-normal text-[18px] leading-[24px] tracking-[-0.03em] text-[#222222] text-center">
+              소속된 예배당(기관)을 선택해 주세요!
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4 mb-8 mt-4">
+          <div className="grid grid-cols-2 gap-x-[9px] gap-y-[15px] mt-[35px] justify-center">
             {teams[team].ministries.map((church, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedChurch(index)}
-                className="p-[24px] rounded-[16px] text-center bg-[#F3F1F4]"
+                className={`rounded-[8px] text-center border ${
+                  selectedChurch === index ? 'bg-[#F6FEF8] border-[#46AE78]' : 'bg-white border-[#DDDDDD]'
+                }`}
                 style={{
-                  width: '170px',
-                  height: '160px',
-                  gap: '14px',
-                  border: selectedChurch === index ? '2px solid #5B67F2' : '2px solid #F3F1F4',
+                  width: '179px',
+                  height: '54px',
                 }}
               >
-                <div className="w-[82px] h-[82px] mx-auto"></div>
-                <span className="block font-bold text-[20px] leading-[20px] tracking-[-0.03em] mt-3">{church}</span>
+                <span
+                  className="block font-noto-sans-kr font-normal text-[18px] leading-[18px] tracking-[-0.03em] text-[#222222]">
+        {church}
+      </span>
               </button>
             ))}
           </div>
-          <div className="flex justify-between mt-16 gap-4">
+          <div className="absolute bottom-[5vh] w-full flex justify-between px-4">
             <button
               onClick={() => setStep(1)}
-              className="w-[120px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium bg-[#EAE6E3] text-[#222222]"
+              className="w-[111px] h-[60px] rounded-[8px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium bg-[#F5F5F5] text-[#666666]"
             >
               이전
             </button>
             <button
               onClick={() => setStep(3)}
-              className={`w-[228px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium ${
-                selectedChurch !== -1 ? 'bg-[#5B67F2] text-[#FFFFFF]' : 'bg-[#EAE6E3] text-[#222222] cursor-not-allowed'
+              className={`w-[277px] h-[60px] rounded-[8px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium ${
+                selectedChurch !== -1 ? 'bg-[#31C678] text-[#FFFFFF]' : 'bg-[#F5F5F5] text-[#666666] cursor-not-allowed'
               }`}
               disabled={selectedChurch === -1}
             >
@@ -223,61 +235,92 @@ const EventJoin = () => {
       )}
 
       {step === 3 && (
-        <div className="mb-4">
-          <div className="font-bold text-[30px] leading-[30px] tracking-[-0.03em] text-center mb-6">
-            닉네임 설정
-          </div>
-          <div
-            className="w-[180px] h-[37px] mx-auto mt-4"
-            style={{
-              backgroundImage: 'url(\'/images/teamSelect3.jpg\')',
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-            }}
-          ></div>
-          <div className="mt-12">
+        <div className="w-full flex flex-col items-center mt-[10vh]">
+          <div className="mb-4">
+            <div className="font-bold text-[30px] leading-[30px] tracking-[-0.03em] text-center mb-6">닉네임</div>
             <div
-              className="font-pretendard font-semibold text-[18px] leading-[18px] tracking-[-0.03em] text-[#222222] mb-2">
-              닉네임
+              className="w-[180px] h-[4.5vh] mx-auto mt-[36px]"
+              style={{
+                backgroundImage: 'url(\'/images/teamSelect3.jpg\')',
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }}
+            ></div>
+          </div>
+          <div className="mt-[60px] w-full px-4">
+            <div
+              className="font-noto-sans-kr font-normal text-[18px] leading-[24px] tracking-[-0.03em] text-[#222222] text-center">
+              닉네임을 설정해 주세요!
             </div>
-            <div className="flex items-center gap-4 mb-2">
+            <div className="flex justify-center gap-2 mb-2 mt-6">
               <input
                 type="text"
                 value={nickname}
                 onChange={(e) => {
                   handleNicknameChange(e)
-                  setIsNicknameValid(false) // 닉네임 변경 시 유효성 상태 초기화
+                  setIsNicknameValid(false)
                 }}
-                className="border p-4 w-[246px] h-[46px] rounded-lg placeholder-[#999999] placeholder-pretendard placeholder-font-normal placeholder-text-[18px] placeholder-leading-[18px] placeholder-tracking-[-0.03em]"
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                className="border p-4 w-full max-w-[279px] h-[54px] rounded-lg placeholder-[#999999] placeholder-pretendard placeholder-font-normal placeholder-text-[18px] placeholder-leading-[18px] placeholder-tracking-[-0.03em]"
+                style={{
+                  borderColor: nickname || isFocused ? '#0DC1C1' : '#DDDDDD',
+                  borderWidth: '1px',
+                }}
                 placeholder="닉네임을 입력해주세요"
               />
               <button
-                onClick={handleNicknameValidation}
-                className="w-[100px] h-[46px] rounded-[4px] bg-[#222222] text-[#FFFFFF] text-pretendard font-normal text-[18px] leading-[18px] tracking-[-0.03em]">
+                onClick={nickname ? handleNicknameValidation : null}
+                className={`w-[111px] h-[54px] rounded-[8px] font-normal text-[18px] leading-[18px] tracking-[-0.03em] ${
+                  nickname ? 'bg-[#333333] text-[#FFFFFF]' : 'bg-[#AAAAAA] text-[#FFFFFF] cursor-not-allowed'
+                }`}
+                disabled={!nickname}
+              >
                 중복확인
               </button>
             </div>
-            {(!errorMessage && !successMessage) && <p
-              className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-[#999999] mb-4">
-              최대 20자를 입력해주세요.
-            </p>}
-            {errorMessage && <p
-              className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-red-500 mb-4">{errorMessage}</p>}
-            {successMessage && <p
-              className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-[#5B67F2] mb-4">{successMessage}</p>}
-            <div className="flex justify-between mt-32">
-              <button onClick={() => setStep(2)}
-                      className="w-[120px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium bg-[#EAE6E3] text-[#222222]">
-                이전
-              </button>
-              <button
-                onClick={handleSubmit}
-                className={`w-[228px] h-[60px] rounded-[16px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium ${!isNicknameValid || isSubmitting ? 'bg-[#EAE6E3] text-[#222222] cursor-not-allowed' : 'bg-[#5B67F2] text-[#FFFFFF]'}`}
-                disabled={!isNicknameValid || isSubmitting}>
-                {isSubmitting ? '가입 중...' : '완료'}
-              </button>
-            </div>
+            {(!errorMessage && !successMessage && nickname) && (
+              <p
+                className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-[#999999] mt-[14px]">
+                중복확인을 해주세요.
+              </p>
+            )}
+            {(!errorMessage && !successMessage && !nickname) && (
+              <p
+                className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-[#999999] mt-[14px]">
+                최대 00자를 입력해주세요.
+              </p>
+            )}
+            {errorMessage && (
+              <p
+                className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-[#F32F15] mt-[14px]">
+                {errorMessage}
+              </p>
+            )}
+            {successMessage && (
+              <p
+                className="font-nanum-gothic font-normal text-[14px] leading-[14px] tracking-[-0.03em] text-[#007AD3] mt-[14px]">
+                {successMessage}
+              </p>
+            )}
+          </div>
+          <div className="absolute bottom-[5vh] w-full flex justify-between px-4">
+            <button
+              onClick={() => setStep(2)}
+              className="w-[111px] h-[60px] rounded-[8px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium bg-[#F5F5F5] text-[#666666]"
+            >
+              이전
+            </button>
+            <button
+              onClick={handleSubmit}
+              className={`w-[277px] h-[60px] rounded-[8px] text-[20px] leading-[20px] tracking-[-0.03em] font-noto-sans-kr font-medium ${
+                !isNicknameValid || isSubmitting ? 'bg-[#F5F5F5] text-[#666666] cursor-not-allowed' : 'bg-[#31C678] text-[#FFFFFF]'
+              }`}
+              disabled={!isNicknameValid || isSubmitting}
+            >
+              완료
+            </button>
           </div>
         </div>
       )}
