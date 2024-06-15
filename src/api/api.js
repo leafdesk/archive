@@ -8,4 +8,6 @@ export const API = {
       (res) => res,
     ),
   fetchTeamList: () => AX.get(`/event-api/event/teams`).then((res) => res),
+  contentUpload: (data) =>
+    AX.post(`/event-api/event/post`, data).then((res) => res),
 }
