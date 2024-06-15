@@ -6,7 +6,6 @@ import { IoCheckmark } from 'react-icons/io5'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import PhotoAlbum from 'react-photo-album'
 import axios from 'axios'
-import ImageBadge from '@/components/image-badge'
 import {
   ClearIndicator,
   CustomMultiValue,
@@ -14,6 +13,8 @@ import {
   DropdownIndicator,
   NoWarningInput,
 } from '@/components/react-select-custom'
+import PostPhoto from '@/components/PostPhoto'
+import Skeleton from 'react-loading-skeleton'
 
 
 /**
@@ -64,15 +65,10 @@ const OverviewPage = () => {
 
   const renderPhoto = ({ photo, wrapperStyle, layoutOptions }) => {
     const { onClick } = layoutOptions
+
     return (
       <div style={{ ...wrapperStyle }} onClick={() => onClick(photo)}>
-        <div className="w-full h-full rounded-lg"
-             style={{ backgroundImage: `url(${photo.src})`, backgroundSize: 'cover' }}>
-          <div className="flex w-full h-full items-end gap-1.5 pl-2 pb-2">
-            <ImageBadge text="1팀" bgColor="#222222" />
-            <ImageBadge text={missionInfo[0].label} bgColor={missionInfo[0].bgColor} color={missionInfo[0].color} />
-          </div>
-        </div>
+        <PostPhoto photo={photo} missionInfo={missionInfo[0]} />
       </div>
     )
   }
@@ -113,8 +109,9 @@ const OverviewPage = () => {
       </div>
       <div className="mt-4">
         {/*TODO :: skeleton loading*/}
-        <PhotoAlbum photos={images} layout="masonry" spacing={6} padding={0} columns={2} onClick={onClickImage}
-                    renderPhoto={renderPhoto} />
+        {images.length === 0 ? (<Skeleton height="1500px" />) :
+          <PhotoAlbum photos={images} layout="masonry" spacing={6} padding={0} columns={2} onClick={onClickImage}
+                      renderPhoto={renderPhoto} />}
       </div>
     </div>
   </div>

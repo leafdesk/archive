@@ -23,6 +23,9 @@ importers:
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.3.1)
+      react-loading-skeleton:
+        specifier: ^3.4.0
+        version: 3.4.0(react@18.3.1)
       react-photo-album:
         specifier: ^2.4.0
         version: 2.4.0(react@18.3.1)
@@ -760,6 +763,11 @@ packages:
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  react-loading-skeleton@3.4.0:
+    resolution: {integrity: sha512-1oJEBc9+wn7BbkQQk7YodlYEIjgeR+GrRjD+QXkVjwZN7LGIcAFHrx4NhT7UHGBxNY1+zax3c+Fo6XQM4R7CgA==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   react-photo-album@2.4.0:
     resolution: {integrity: sha512-HSTxQKTYK6rLRM0dFlOMf2QgyrwffQHO21JjmffYBw6BQPPijYv3kLL5c+hwhxWhaZwLBY5TmJkb6sBZSy3UGw==}
@@ -1630,6 +1638,10 @@ snapshots:
       react: 18.3.1
 
   react-is@16.13.1: {}
+
+  react-loading-skeleton@3.4.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   react-photo-album@2.4.0(react@18.3.1):
     dependencies:
