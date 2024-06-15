@@ -31,13 +31,14 @@ export const contentUpload = async (compressedFile, teamMissionId, comment) => {
     const formData = new FormData()
     formData.append('images', compressedFile, compressedFile.name)
     formData.append('token', token)
+
     const responseBS = await fetch('https://cba.sungrak.or.kr:9000/api/upload', {
       method: 'POST',
       body: formData,
     })
 
     if (!responseBS.ok) throw new Error('Failed to upload to CBA backend')
-    const reponseBSData = responseBS.json()
+    const reponseBSData = await responseBS.json()
     const image_height = reponseBSData[0].height
     const file_url = reponseBSData[0].url
     const image_width = reponseBSData[0].width
@@ -51,9 +52,6 @@ export const contentUpload = async (compressedFile, teamMissionId, comment) => {
       file_type: 'IMAGE',
     })
 
-    if (!response.ok) throw new Error('Failed to upload to backend B')
-
-    return compressedFile
   } catch (error) {
     throw new Error('Image upload failed')
   }
