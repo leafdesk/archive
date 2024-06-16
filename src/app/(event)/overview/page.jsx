@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Select from 'react-select'
 import { IoCheckmark } from 'react-icons/io5'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import PhotoAlbum from 'react-photo-album'
-import axios from 'axios'
+import { API } from '@/api/api'
 import {
   ClearIndicator,
   CustomMultiValue,
@@ -13,7 +13,7 @@ import {
   DropdownIndicator,
   NoWarningInput,
 } from '@/components/react-select-custom'
-import PostPhoto from '@/components/PostPhoto'
+import PostPhoto from '@/components/post-photo'
 import Skeleton from 'react-loading-skeleton'
 
 
@@ -22,7 +22,10 @@ import Skeleton from 'react-loading-skeleton'
  */
 const OverviewPage = () => {
 
-  const [images, setImages] = useState([])
+  const [posts, setPosts] = useState([])
+  const [page, setPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const observer = useRef(null);
 
   const teams = [
     { value: 1, label: '1팀' },
@@ -43,19 +46,24 @@ const OverviewPage = () => {
   ]
 
   useEffect(() => {
-    getImages()
-  }, [])
+    getPosts()
+  }, [page])
 
-  const getImages = async () => {
-    const response = await axios.get('https://cba.sungrak.or.kr:9000/event/images?eventName=2024W&classification=0')
-    const images = response.data.map((image) => {
-      return {
-        src: image.url,
-        width: image.width,
-        height: image.height,
-      }
-    })
-    setImages(images.slice(0, 30))
+  const getPosts = async () => {
+    const response = await API.fetchPost({page, size: 20})
+    const startIndex = posts.length
+    const postList = response.posts.map((post, idx) => ({
+      ...post,
+      width: post.image_width,
+      height: post.image_height,
+      src: post.file_url,
+      index: startIndex + idx,
+      key: post.id,
+    }))
+    setPosts((prevPosts) => {
+      return [...prevPosts, ...postList]
+    });
+    setHasMore(!response.last);
   }
 
   const onClickImage = (photo) => {
@@ -63,12 +71,22 @@ const OverviewPage = () => {
     console.log(photo)
   }
 
+  const lastPostElementRef = useCallback((node) => {
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
+        setPage(prevPage => prevPage + 1);
+      }
+    });
+    if (node) observer.current.observe(node);
+  }, [hasMore]);
+
   const renderPhoto = ({ photo, wrapperStyle, layoutOptions }) => {
     const { onClick } = layoutOptions
-
+    const applyCallback = photo.index === posts.length - 1
     return (
-      <div style={{ ...wrapperStyle }} onClick={() => onClick(photo)}>
-        <PostPhoto photo={photo} missionInfo={missionInfo[0]} />
+      <div id={photo.id} style={{ ...wrapperStyle }} onClick={() => onClick(photo)} ref={applyCallback ? lastPostElementRef : null} >
+        <PostPhoto key={photo.id} photo={photo} missionInfo={missionInfo[0]} />
       </div>
     )
   }
@@ -109,8 +127,8 @@ const OverviewPage = () => {
       </div>
       <div className="mt-4">
         {/*TODO :: skeleton loading*/}
-        {images.length === 0 ? (<Skeleton height="1500px" />) :
-          <PhotoAlbum photos={images} layout="masonry" spacing={6} padding={0} columns={2} onClick={onClickImage}
+        {posts.length === 0 ? (<Skeleton height="1500px" />) :
+          <PhotoAlbum photos={posts} layout="masonry" spacing={6} padding={0} columns={2} onClick={onClickImage}
                       renderPhoto={renderPhoto} />}
       </div>
     </div>
