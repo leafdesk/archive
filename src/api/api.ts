@@ -9,7 +9,6 @@ export const API = {
       (res) => res,
     ),
   fetchTeamList: () => AX.get(`/event-api/event/teams`).then((res) => res),
-  contentUpload: (data) =>
-    AX.post(`/event-api/event/post`, data).then((res) => res),
+  contentUpload: (data: any) => AX.post(`/event-api/event/post`, data).then((res) => res),
   fetchPost: (params: any) => AX.get(`/event-api/event/post`, { params }).then((res) => res.data as PostsResponse),
 }
