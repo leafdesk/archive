@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import MissionCard from '@/components/mission-card'
 import useEventData from '@/hooks/useEventData'
 
@@ -7,6 +8,7 @@ import useEventData from '@/hooks/useEventData'
  * 팀 페이지. (이벤트 홈)
  */
 const EventHomePage = () => {
+  const router = useRouter()
   const { data: eventData, loading, error } = useEventData()
   // console.log(eventData, loading, error)
 
@@ -30,14 +32,25 @@ const EventHomePage = () => {
   return (
     <>
       {eventData ? (
+        /**
+         * 이벤트 데이터 존재 시 UI. [정상]
+         */
         <div className="bg-[#F7F7F7]">
           {/* 홈 상단 */}
           <div className="h-[54px] px-4 mb-9 flex items-center justify-end">
-            <button className="font-normal text-[#666] text-base w-fit bg-white rounded-full h-[38px] flex items-center justify-center px-[14px]">
+            <button
+              className="font-normal text-[#666] text-base w-fit bg-white rounded-full h-[38px] flex items-center justify-center px-[14px]"
+              onClick={() => router.push('/guide')}
+            >
               미션방법
+              <div className="ml-[2px] w-5 h-5 bg-[url('/icons/icon_home_info.svg')]" />
             </button>
-            <button className="font-normal text-[#666] text-base w-fit bg-white rounded-full h-[38px] flex items-center justify-center px-[14px] ml-2">
+            <button
+              className="font-normal text-[#666] text-base w-fit bg-white rounded-full h-[38px] flex items-center justify-center px-[14px] ml-2"
+              onClick={() => router.push('/overview')}
+            >
               전체 미션보드
+              <div className="ml-[2px] w-5 h-5 bg-[url('/icons/icon_home_right_arrow.svg')]" />
             </button>
           </div>
 
@@ -64,16 +77,81 @@ const EventHomePage = () => {
           {/* 미션 카드 리스트 */}
           <div className="px-4 pb-6 grid gap-4">
             <MissionCard
-              number={1}
+              number={5}
               title="감독님을 향한 사랑의 편지 작성하기"
-              colorIndex={0}
-              isPendingApproval={true}
+              colors={{ background: 'bg-[#FFEFEC]', text: 'text-[#EF4424]' }}
+              buttonStatus={3}
+              rate={25}
+            />
+            <MissionCard
+              number={6}
+              title="SUM WORSHIP 좋아요, 댓글 남기기, 구독, 알림설정 하기"
+              colors={{ background: 'bg-[#EFF6E0]', text: 'text-[#547708]' }}
+              buttonStatus={2}
+              rate={33}
+            />
+          </div>
+
+          {/* 다음 미션 공개일 */}
+          <div className="text-center pb-9 block">
+            <span className="font-normal text-[#666] text-sm mr-2">
+              다음 미션 공개일
+            </span>
+            <strong className="font-medium text-[#222] text-sm">
+              7월 10일 수요일
+            </strong>
+          </div>
+
+          {/* 지난 미션을 확인해보세요! */}
+          <h3 className="block pt-9 px-4 pb-6 font-medium text-lg text-[#222]">
+            지난 미션을 확인해보세요!
+          </h3>
+
+          {/* 미완료된 미션 */}
+          <span className="font-normal text-base text-[#888] px-4 pb-[18px] flex items-center gap-[6px]">
+            미완료된 미션
+            <span className="block w-[18px] h-[18px] bg-[#D9D9D9]" />
+          </span>
+
+          {/* 미완료된 미션 카드 리스트 */}
+          <div className="px-4 pb-6 grid gap-4">
+            <MissionCard
+              number={4}
+              title="SUM WORSHIP 좋아요, 댓글 남기기, 구독, 알림설정 하기"
+              colors={{ background: 'bg-[#FFF9E2]', text: 'text-[#997A00]' }}
+              buttonStatus={3}
+              rate={50}
+            />
+            <MissionCard
+              number={3}
+              title="감독님을 향한 사랑의 편지 작성하기"
+              colors={{ background: 'bg-[#F0FCFC]', text: 'text-[#11758D]' }}
+              buttonStatus={2}
+              rate={75}
             />
             <MissionCard
               number={2}
               title="SUM WORSHIP 좋아요, 댓글 남기기, 구독, 알림설정 하기"
-              colorIndex={1}
-              isPendingApproval={false}
+              colors={{ background: 'bg-[#ECF8F4]', text: 'text-[#107054]' }}
+              buttonStatus={2}
+              rate={84}
+            />
+          </div>
+
+          {/* 완료된 미션 */}
+          <span className="font-normal text-base text-[#888] px-4 pb-[18px] flex items-center gap-[6px]">
+            완료된 미션
+            <span className="block w-[18px] h-[18px] bg-[#D9D9D9]" />
+          </span>
+
+          {/* 완료된 미션 카드 리스트 */}
+          <div className="px-4 pb-6 grid gap-4">
+            <MissionCard
+              number={1}
+              title="사랑 및 긍휼 2행시 지어보기"
+              colors={{ background: 'bg-[#E0E6F6]', text: 'text-[#446CC1]' }}
+              buttonStatus={3}
+              rate={100}
             />
           </div>
         </div>
