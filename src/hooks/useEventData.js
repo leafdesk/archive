@@ -38,10 +38,10 @@ const useEventData = () => {
    * 유저 토큰 검사.
    */
   useEffect(() => {
-    if (!getLocalStorageData(localStorageKey.EVENT_TOKEN)) {
-      router.push('/join')
-      return
-    }
+    // if (!getLocalStorageData(localStorageKey.EVENT_TOKEN)) {
+    //   router.push('/join')
+    //   return
+    // }
     fetchEventData()
   }, [router, getLocalStorageData])
 
