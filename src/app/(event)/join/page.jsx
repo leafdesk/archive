@@ -1,4 +1,4 @@
-'use client' // Next.js v14 에서 사용자 상호 작용을 위해 최상단 고정 필수.
+'use client'
 
 import { useEffect, useState } from 'react'
 import useLocalStorage from '@/hooks/useLocalStorage'
